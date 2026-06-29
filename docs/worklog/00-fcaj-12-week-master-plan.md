@@ -50,7 +50,7 @@ Do not claim production-grade deployment for services that were only researched 
 
 | Week | Worklog title | AWS/service focus | Project tie-in | Source folders | Expected evidence |
 | --- | --- | --- | --- | --- | --- |
-| 1 | AWS Account, IAM & FCAJ Landing Zone | Root security, IAM users/groups, MFA, password policy, billing credits, region | Safe team access before building infrastructure | `FCAJ-Internship/00_Worklog/week_01`, `01_AWS-Labs/IAM` | Root MFA, no root access key, IAM users/groups, group policies, billing/region screenshots |
+| 1 | AWS Account Security & IAM Access Baseline | Root security, IAM users/groups, MFA onboarding, password policy, billing credits, region | Safe team access before building infrastructure | `FCAJ-Internship/00_Worklog/week_01`, `01_AWS-Labs/IAM` | Root MFA, no root access key, IAM users/groups, group policies, billing/region screenshots |
 | 2 | VPC Network Foundation | VPC, subnets, route tables, IGW, public/private subnet, security groups | Cloud network segmentation for security workloads | `01_AWS-Labs/lab003_VPC` | VPC, subnet, route table, IGW, SG screenshots and network diagram |
 | 3 | EC2, Bastion, NAT & Private Compute | EC2 public/private, key pair, NAT Gateway, EIP, bastion/private access | Compute pattern for backend/AI engine in private subnet | `lab003_VPC/Deploying Amazon EC2 Instance` | EC2 public/private, NAT route, SSH/private connection, route tables |
 | 4 | Secure Operations & Observability | SSM Session Manager, EIC Endpoint, VPC Flow Logs, Reachability Analyzer, CloudWatch | Operate and troubleshoot infrastructure instead of only creating it | `Session Manager`, `Enable VPC Flow Logs`, `CloudWatch Monitoring & Alerting` | SSM target, endpoints, Flow Logs, Reachability Analyzer, CloudWatch metrics/alarm |
@@ -97,7 +97,7 @@ Do not claim production-grade deployment for services that were only researched 
 
 Only include items that have evidence or strong notes:
 
-- AWS IAM landing zone with root protection, admin user, IAM groups, password/MFA baseline.
+- AWS single-account IAM baseline with root protection, admin user, IAM groups, password policy, and MFA onboarding.
 - VPC lab with public/private subnets, route tables, Internet Gateway, Security Groups.
 - EC2 public/private pattern, NAT Gateway, bastion/private access flow.
 - Session Manager, EIC Endpoint, VPC Flow Logs, Reachability Analyzer, CloudWatch monitoring notes.
@@ -147,4 +147,3 @@ Next week plan
 ```
 
 This keeps the report strong for FCAJ evaluators while preserving the Hybrid IDS/AI SOC storyline.
-

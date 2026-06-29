@@ -63,7 +63,7 @@ Use these labels to avoid overstating unfinished services.
 
 | Week | Title | Service focus | Project tie-in |
 | --- | --- | --- | --- |
-| 1 | AWS Account, IAM & FCAJ Landing Zone | Root security, IAM, MFA, groups, billing credits, region | Secure team access before building infrastructure |
+| 1 | AWS Account Security & IAM Access Baseline | Root security, IAM, MFA onboarding, groups, billing credits, region | Secure team access before building infrastructure |
 | 2 | VPC Network Foundation | VPC, subnet, route table, IGW, SG | Network segmentation for security workloads |
 | 3 | EC2, Bastion, NAT & Private Compute | EC2 public/private, NAT Gateway, EIP, key pair | Private compute pattern for backend/AI engine |
 | 4 | Secure Operations & Observability | SSM, EIC Endpoint, VPC Flow Logs, Reachability Analyzer, CloudWatch | Operate and troubleshoot cloud infrastructure |
@@ -178,11 +178,10 @@ This is better than pretending the MVP is production-grade.
 ## Final Review Before Publishing
 
 - [ ] 12 weeks have service coverage, not only AI content.
-- [ ] Week 1 starts with IAM/account landing zone.
+- [ ] Week 1 starts with a single-account IAM/access baseline.
 - [ ] Week 2 starts VPC.
 - [ ] Claims are labeled as implemented, PoC, researched, proposed, or future enhancement.
 - [ ] Screenshots are stored in `static/images/worklog/weekX/`.
 - [ ] Hugo paths use existing repo casing: `1.1-Week1`, not lowercase `week1`.
 - [ ] `public/` is not manually edited.
 - [ ] Hugo build/server renders the pages correctly.
-

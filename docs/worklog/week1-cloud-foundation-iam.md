@@ -302,7 +302,7 @@ Week 1 will be considered complete when:
 
 This week focuses on establishing a secure cloud and identity foundation before deploying project infrastructure.
 
-The practical outcome is a team access model in which every member has an individual identity, permissions are assigned through role-based groups, MFA is required, and unauthorized operations are restricted according to the principle of least privilege.
+The practical outcome is a team access model in which every member has an individual identity, permissions are assigned through role-based groups, MFA enrollment is handled during onboarding, and unauthorized operations are restricted according to the principle of least privilege.
 
 The main lesson is that AWS security begins with identity design. Compute, storage, database, and networking resources should only be deployed after user access and administrative responsibilities have been clearly defined.
 

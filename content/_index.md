@@ -13,11 +13,11 @@ chapter: false
 {{% /notice %}}
 
 ### Student Information:
-&emsp; **Full Name:** Nguyen Van A
+&emsp; **Full Name:** Tran Thanh Thien
 
-&emsp; **Phone Number:** 0989888999 
+&emsp; **Phone Number:** 0819094054
 
-&emsp; **Email:** Anguyenvan@gmail.com
+&emsp; **Email:** thientran805954@gmail.com
 
 &emsp; **University:** Ho Chi Minh City University of Technology and Education
 

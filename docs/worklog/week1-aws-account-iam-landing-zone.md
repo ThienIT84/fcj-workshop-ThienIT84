@@ -1,6 +1,6 @@
-# Week 1 Draft - AWS Account, IAM & FCAJ Landing Zone
+# Week 1 Draft - AWS Account Security & IAM Access Baseline
 
-This is the working draft for Week 1 before publishing to Hugo.
+This file is the working source and implementation guide for Week 1 before publishing to Hugo.
 
 Target Hugo page:
 
@@ -8,62 +8,158 @@ Target Hugo page:
 content/1-Worklog/1.1-Week1/_index.md
 ```
 
-Recommended evidence folder:
+Raw private evidence:
+
+```text
+static/images/week1/
+```
+
+Public-safe evidence folder:
 
 ```text
 static/images/worklog/week1/
 ```
 
-Primary source notes:
+Do not embed raw screenshots from `static/images/week1/` in Hugo. Those screenshots may contain account IDs, credit IDs, user identifiers, or other sensitive information. Only public-safe cropped screenshots should be copied to `static/images/worklog/week1/`.
+
+## Positioning
+
+Use the title:
 
 ```text
-/mnt/d/StorgeVault/Thiện học AI/FCAJ-Internship/00_Worklog/week_01/
+Week 1 - AWS Account Security & IAM Access Baseline
 ```
 
-## Objective
+Avoid presenting this week as a full AWS landing zone implementation. In official AWS usage, a landing zone often implies a multi-account environment with governance, organizational units, centralized logging, and AWS Control Tower.
 
-Establish a secure AWS account foundation for the FCAJ project before creating infrastructure resources.
-
-The week focuses on AWS account security, IAM access management, billing/credit awareness, and a team permission baseline. This is the landing zone for later VPC, EC2, S3, RDS, CloudWatch, and migration work.
-
-## FCAJ Context
-
-The project uses one standalone AWS account with active AWS Free Tier credits. AWS Organizations will not be enabled in this phase to avoid changing the current credit/account setup.
-
-The project needs multiple team members to access AWS safely, but root credentials must not be shared or used for daily work.
-
-Landing zone principle:
+If the phrase **lightweight landing zone** is used, define it clearly:
 
 ```text
-Root user
--> emergency/account-level tasks only
-
-thien-admin
--> account administration and setup
-
-role-based IAM users/groups
--> project members work with only the permissions needed for each phase
+In this worklog, "lightweight landing zone" refers to a single-account security, identity, Region, and cost baseline. It does not refer to a multi-account AWS Control Tower landing zone.
 ```
 
-## Services and Concepts
+## Publication Mode
 
-- AWS Identity and Access Management
-- AWS root user security
-- IAM users
-- IAM user groups
-- IAM policies
-- AWS managed policies
-- Customer-managed policies
-- Multi-Factor Authentication
-- Account password policy
-- Temporary passwords
-- Least privilege
-- Role-based access control
-- Account alias and IAM sign-in URL
-- AWS Region selection
-- Billing, Free Tier, and credit monitoring
+The Hugo page should stay in draft mode until the required evidence and time logs are finalized:
 
-## Planned IAM Structure
+```yaml
+draft: true
+```
+
+Switch to `draft: false` only after:
+
+- Daily worklog dates are final and use explicit start/completion dates.
+- Four to six public-safe cropped screenshots are available under `static/images/worklog/week1/`.
+- The Hugo page has no placeholder text.
+- The Hugo page does not claim validation work that was not performed.
+
+## Evidence Mode
+
+Week 1 uses **minimal evidence mode**.
+
+The public page should prove the main implemented outcomes without turning the worklog into a screenshot album. Credential reports and representative access tests are optional future validation items, not Week 1 public requirements.
+
+Public evidence filenames:
+
+```text
+static/images/worklog/week1/
+├── w1-e01-root-security.png
+├── w1-e02-admin-identity.png
+├── w1-e03-group-structure.png
+├── w1-e04-viewonly-baseline.png
+├── w1-e05-team-users.png
+└── w1-e06-membership.png
+```
+
+Public evidence meaning:
+
+| ID | Evidence | Proves |
+| --- | --- | --- |
+| W1-E01 | Root security baseline | Root MFA and root access-key status were reviewed |
+| W1-E02 | Administrative IAM identity | `thien-admin` and admin group support daily administration without root |
+| W1-E03 | IAM group structure | Role-based groups exist for admin, base users, cloud, backend, AI, and frontend |
+| W1-E04 | View-only permission baseline | `FCAJ-Base-Users` receives AWS-managed `ViewOnlyAccess` |
+| W1-E05 | Team IAM users | Project members have individual IAM identities |
+| W1-E06 | Group membership | Users are assigned through groups rather than direct permissions |
+
+## Final Hugo Structure
+
+Use this order for the Week 1 public page:
+
+```text
+1. Week at a Glance
+2. Objective
+3. Daily Worklog
+4. Technical Implementation Summary
+5. IAM Structure
+6. Key Validation and Evidence
+7. Issues and Troubleshooting
+8. Lessons Learned
+9. Weekly Outcome
+10. Next Week Plan
+```
+
+This keeps the page aligned with the FCAJ worklog expectation: daily work, result, issues, and next plan. Screenshots support the worklog but do not replace it.
+
+## Week at a Glance Template
+
+| Item | Result |
+| --- | --- |
+| Primary service | AWS Identity and Access Management |
+| Main objective | Secure the AWS account and create individual team access |
+| Key output | Root protection, admin IAM user, IAM groups, and team users |
+| Primary Region | `ap-southeast-1` - Asia Pacific (Singapore) |
+| Account model | Standalone AWS account |
+| Start date | 17/04/2026 |
+| Completion date | 21/04/2026 |
+| Migration status | Not started |
+| Week status | Implementation completed; selected public evidence added |
+
+## Daily Worklog Template
+
+Use explicit `Start Date` and `Completion Date` values for every daily worklog row.
+
+Only keep days that were actually worked. If Week 1 was implemented in three days, use three rows instead of forcing a five-day log.
+
+| Day | Work completed | Start Date | Completion Date | Result | Issue / decision | Next step |
+| --- | --- | --- | --- | --- | --- | --- |
+| Day 1 | Reviewed root account security, root MFA status, root access-key status, billing credits, and primary Region selection | 17/04/2026 | 17/04/2026 | Root protection and account constraints were understood before creating project resources | Root should not be used for daily work; `ap-southeast-1` was selected as the primary Region | Create an administrative IAM identity |
+| Day 2 | Configured the account alias/IAM sign-in flow, created `thien-admin`, and prepared the `FCAJ-Admins` group | 18/04/2026 | 18/04/2026 | Daily administration can be separated from the root user | Administration should use an IAM identity instead of shared root credentials | Design role-based IAM groups for the team |
+| Day 3 | Designed IAM groups, created role builder groups, and configured the account password policy | 19/04/2026 | 19/04/2026 | A group-based access model was prepared for cloud, backend, AI, and frontend responsibilities | Forced-MFA and self-service MFA custom policies were deferred to keep Week 1 practical | Add common learning-stage permissions |
+| Day 4 | Created `FCAJ-Base-Users` and attached AWS-managed `ViewOnlyAccess` | 20/04/2026 | 20/04/2026 | Members can inspect AWS resources during the learning stage without deployment permissions | `ViewOnlyAccess` is broad view-only learning access, not the final least-privilege model | Create individual member users and assign groups |
+| Day 5 | Created member IAM users, assigned group memberships, and avoided access keys for Console-only users | 21/04/2026 | 21/04/2026 | Team access was prepared through individual identities rather than shared credentials | Screenshots were cropped before publishing to keep the report focused | Move to Week 2 VPC foundation |
+
+## Image Placement
+
+Place cropped screenshots near the claim they prove:
+
+- After account/root context: `w1-e01-root-security.png`
+- After admin identity explanation: `w1-e02-admin-identity.png`
+- Under IAM Users: `w1-e05-team-users.png`
+- Under IAM Groups: `w1-e03-group-structure.png`
+- After `ViewOnlyAccess` explanation: `w1-e04-viewonly-baseline.png`
+- In evidence section: `w1-e06-membership.png`
+
+Each image should use a short caption. Do not place a long screenshot gallery at the end of the page.
+
+## Technical Implementation Summary
+
+Keep this section short. It should summarize the end state, not repeat every screenshot.
+
+Final Week 1 access baseline:
+
+- Root user is protected and reserved for account-level, recovery, and emergency tasks.
+- `thien-admin` is used for routine account administration.
+- `FCAJ-Admins` holds administrative access for the designated administrator.
+- `FCAJ-Base-Users` provides broad view-only learning access through AWS-managed `ViewOnlyAccess`.
+- Role builder groups describe cloud, backend, AI, and frontend responsibilities.
+- Builder groups do not receive deployment permissions in Week 1.
+- Team users receive individual IAM identities instead of shared credentials.
+- Console users do not receive access keys unless a later task explicitly requires programmatic access.
+
+Deployment permissions are intentionally deferred. They should be granted only to selected members during the Week 11 AWS MVP migration sprint and reviewed after the deployment is complete.
+
+## IAM Structure
 
 IAM users:
 
@@ -71,245 +167,86 @@ IAM users:
 | --- | --- |
 | `thien-admin` | Account administrator and team leader |
 | `fcaj-cloud` | Cloud infrastructure and networking |
-| `fcaj-backend` | FastAPI backend and deployment |
+| `fcaj-backend` | Backend application and deployment |
 | `fcaj-ai` | Dataset, AI models, and detection worker |
 | `fcaj-frontend` | Frontend deployment, monitoring, and reporting |
 
 IAM groups:
 
-| IAM group | Purpose |
+| IAM group | Purpose in Week 1 |
 | --- | --- |
-| `FCAJ-Admins` | Account administration |
-| `FCAJ-Base-Users` | Common password/MFA baseline |
-| `FCAJ-Cloud-Builders` | VPC, subnet, route table, SG permissions added in Week 2 |
-| `FCAJ-Backend-Builders` | EC2/backend deployment permissions added later |
-| `FCAJ-AI-Builders` | Dataset/model/worker permissions added later |
-| `FCAJ-Frontend-Builders` | S3/CloudFront/frontend permissions added later |
+| `FCAJ-Admins` | Administrative account operations |
+| `FCAJ-Base-Users` | Common learning-stage access with `ViewOnlyAccess` |
+| `FCAJ-Cloud-Builders` | Cloud infrastructure role group, no deployment permission yet |
+| `FCAJ-Backend-Builders` | Backend role group, no deployment permission yet |
+| `FCAJ-AI-Builders` | AI/data role group, no deployment permission yet |
+| `FCAJ-Frontend-Builders` | Frontend role group, no deployment permission yet |
 
-Membership plan:
+## Full Internal Evidence Archive
 
-```text
-thien-admin
-├── FCAJ-Base-Users
-└── FCAJ-Admins
-
-fcaj-cloud
-├── FCAJ-Base-Users
-└── FCAJ-Cloud-Builders
-
-fcaj-backend
-├── FCAJ-Base-Users
-└── FCAJ-Backend-Builders
-
-fcaj-ai
-├── FCAJ-Base-Users
-└── FCAJ-AI-Builders
-
-fcaj-frontend
-├── FCAJ-Base-Users
-└── FCAJ-Frontend-Builders
-```
-
-## Implementation Plan
-
-### Phase 1A - Root User Security
-
-Tasks:
-
-- Sign in using the root user only for bootstrap tasks.
-- Verify root MFA status.
-- Enable MFA if not already enabled.
-- Confirm that root access keys do not exist.
-- Reserve root for account recovery, billing, and root-only tasks.
-
-Evidence:
-
-- `01-root-mfa-enabled.png`
-- `02-root-no-access-key.png`
-
-Reviewer value:
+The older 17-item list can remain as an internal archive map. It is not a public page requirement.
 
 ```text
-Shows that the project started with security hygiene before deploying resources.
+static/images/worklog/week1/
+├── 01-root-mfa-enabled.png
+├── 02-root-no-access-key.png
+├── 03-free-tier-credits.png
+├── 04-primary-region-singapore.png
+├── 05-account-alias.png
+├── 06-thien-admin-created.png
+├── 07-fcaj-admins-policy.png
+├── 08-thien-admin-mfa.png
+├── 09-thien-admin-signed-in.png
+├── 10-account-password-policy.png
+├── 11-fcaj-base-users-viewonly.png
+├── 12-iam-groups-overview.png
+├── 13-builder-group-no-deployment-permission.png
+├── 14-five-iam-users-list.png
+├── 15-team-user-group-memberships.png
+├── 16-iam-credential-report.png
+└── 17-member-access-validation.png
 ```
 
-### Phase 1B - Billing Credits and Primary Region
+## Optional Future Validation
 
-Tasks:
+The following items may improve the report later, but they are not required for the Week 1 public page:
 
-- Review AWS Billing and Credits.
-- Record remaining Free Tier credits and expiration date without exposing sensitive account information.
-- Select `ap-southeast-1` as the primary working Region.
-- Decide not to enable AWS Organizations during this phase due to active credits.
+- Redacted IAM credential report with only safe columns.
+- Representative read-only access check.
+- Representative denied administrative action.
 
-Evidence:
+If these are not performed, do not mention them in the Hugo page.
 
-- `03-free-tier-credits.png`
-- `04-primary-region-singapore.png`
+## Issues And Troubleshooting
 
-Reviewer value:
-
-```text
-Shows cost awareness and Region consistency before creating lab resources.
-```
-
-### Phase 2 - Administrative IAM User
-
-Tasks:
-
-- Create account alias if useful, such as `fcaj-soc-team`.
-- Create `FCAJ-Admins`.
-- Create `thien-admin`.
-- Enable AWS Management Console access.
-- Use temporary password and require password change at first sign-in.
-- Attach `AdministratorAccess` to `FCAJ-Admins`, not to all users.
-- Sign out from root.
-- Sign in using `thien-admin`.
-- Enable MFA for `thien-admin`.
-
-Evidence:
-
-- `05-account-alias.png`
-- `06-fcaj-admins-group.png`
-- `07-thien-admin-created.png`
-- `08-thien-admin-mfa.png`
-- `09-thien-admin-signed-in.png`
-
-Reviewer value:
-
-```text
-Shows separation between root and day-to-day administration.
-```
-
-### Phase 3 - IAM Groups and Baseline Policies
-
-Tasks:
-
-- Configure account password policy.
-- Create `FCAJ-Base-Users`.
-- Create builder groups for cloud, backend, AI, and frontend roles.
-- Create or document customer-managed policies for self password/MFA management.
-- Keep builder groups limited until their service week begins.
-
-Evidence:
-
-- `10-account-password-policy.png`
-- `11-fcaj-base-users-created.png`
-- `12-iam-groups-overview.png`
-- `13-builder-groups-no-service-policy.png`
-- `14-self-manage-password-mfa-policy.png`
-
-Reviewer value:
-
-```text
-Shows least privilege by delaying service permissions until the relevant project phase.
-```
-
-### Phase 4 - Team IAM Users
-
-Tasks:
-
-- Create `fcaj-cloud`.
-- Create `fcaj-backend`.
-- Create `fcaj-ai`.
-- Create `fcaj-frontend`.
-- Enable console access with temporary passwords.
-- Require password reset at first sign-in.
-- Add every user to `FCAJ-Base-Users`.
-- Add each user to the correct builder group.
-- Do not create access keys unless there is a verified technical requirement.
-
-Evidence:
-
-- `15-iam-users-list.png`
-- `16-user-group-membership-cloud.png`
-- `17-user-group-membership-backend-ai-frontend.png`
-- `18-no-access-keys-for-members.png`
-
-Reviewer value:
-
-```text
-Shows individual accountability and avoids shared AWS credentials.
-```
-
-### Phase 5 - Validation
-
-Tasks:
-
-- Confirm that each active IAM user can sign in.
-- Confirm temporary password change behavior.
-- Confirm MFA enrollment.
-- Test one allowed operation.
-- Test one denied operation, such as attempting IAM changes from a non-admin user.
-
-Evidence:
-
-- `19-member-sign-in-success.png`
-- `20-member-mfa-status.png`
-- `21-allowed-read-operation.png`
-- `22-expected-access-denied.png`
-
-Reviewer value:
-
-```text
-Shows that IAM design was validated, not only configured.
-```
-
-## Permission Expansion Plan
-
-Permissions should expand with the project, not all at once.
-
-| Week | Permission area |
+| Issue / decision | Resolution |
 | --- | --- |
-| Week 1 | Identity, sign-in, MFA, baseline read access |
-| Week 2 | VPC, subnet, route table, IGW, SG permissions |
-| Week 3 | EC2, NAT Gateway, EIP, bastion/private compute permissions |
-| Week 4 | SSM, EIC Endpoint, VPC Flow Logs, CloudWatch permissions |
-| Week 5 | S3 and CloudFront permissions |
-| Week 6 | RDS permissions |
-| Week 11 | Backend deployment and artifact access |
-| Week 12 | SQS/SNS/Budget/cleanup permissions if implemented |
+| Root credentials should not be shared with team members | Created `thien-admin` and member IAM users for daily access |
+| AWS Free Tier credits were active | Kept the account standalone and did not enable AWS Organizations or AWS Control Tower during Week 1 |
+| Forced-MFA policy adds complexity during first onboarding | Deferred forced-MFA JSON and self-service MFA custom policy; active users manually enroll MFA during onboarding |
+| `ViewOnlyAccess` is broader than a final production least-privilege policy | Used it only as learning-stage read access and documented that it can be narrowed later |
+| Builder groups could accidentally imply deployment access | Created the groups for role structure but did not attach deployment permissions in Week 1 |
+| Evidence may expose sensitive AWS information | Kept raw screenshots private and only publish selected cropped evidence |
 
-## Success Criteria
+## Publication Checklist
 
-Week 1 is complete when:
+Before changing the Hugo page to `draft: false`, confirm:
 
-- Root MFA is enabled.
-- Root access keys are absent or reviewed and removed/inactivated.
-- Root is no longer used for daily work.
-- Billing credits and primary Region are reviewed.
-- `thien-admin` exists and uses MFA.
-- IAM groups are created by project responsibility.
-- Password/MFA baseline policy is prepared.
-- Team IAM users exist or are planned with individual access.
-- At least one allowed operation and one denied operation are validated.
-- No credentials, passwords, MFA QR codes, or access keys are stored in the repo.
-
-## Final Hugo Layout Recommendation
-
-Use this structure in `content/1-Worklog/1.1-Week1/_index.md`:
-
-```text
-Objective
-FCAJ account context
-IAM landing zone design
-Implementation summary
-Validation and evidence
-Challenges and lessons learned
-Weekly outcome
-Next week plan
-```
-
-Keep the final page concise. Put implementation details in this doc, and put the strongest evidence in the Hugo page.
+- Daily worklog dates are explicit and correct.
+- The Week 1 page has no placeholder text.
+- Four to six public-safe cropped screenshots are placed under `static/images/worklog/week1/`.
+- Raw screenshots from `static/images/week1/` are not embedded.
+- The public page uses only the minimal evidence set.
+- The public page does not claim credential report or access-test validation unless those tasks were actually performed.
+- Week 2 transition points to VPC Network Foundation.
 
 ## Next Week Plan
 
 Week 2 will use the secured IAM baseline to build the VPC network foundation:
 
-- VPC CIDR design.
-- Public and private subnets.
-- Route tables.
-- Internet Gateway.
-- Security Groups.
-- Network segmentation pattern for later backend, AI engine, and database workloads.
-
+- VPC CIDR design
+- Public and private subnets
+- Route tables
+- Internet Gateway
+- Security Groups
+- Network segmentation pattern for backend, AI engine, and database workloads

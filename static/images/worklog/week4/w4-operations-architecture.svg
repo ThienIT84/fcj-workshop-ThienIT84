@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="760" viewBox="0 0 1400 760" role="img" aria-labelledby="title desc">
+  <title id="title">Week 4 Operations Architecture</title>
+  <desc id="desc">Operational access and network observability flow for the SOC MVP EC2 environment.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#2f4f6f"/>
+    </marker>
+    <style>
+      .bg { fill: #f7f9fb; }
+      .panel { fill: #ffffff; stroke: #d6dde7; stroke-width: 2; rx: 16; }
+      .title { font: 700 30px Arial, sans-serif; fill: #24364b; }
+      .subtitle { font: 400 18px Arial, sans-serif; fill: #607083; }
+      .panel-title { font: 700 24px Arial, sans-serif; fill: #24364b; }
+      .box { fill: #fdfefe; stroke: #9fb0c3; stroke-width: 2; rx: 12; }
+      .box-blue { fill: #eef6ff; stroke: #4f8edc; }
+      .box-green { fill: #eef8f1; stroke: #47a66a; }
+      .box-orange { fill: #fff6e8; stroke: #f0a23a; }
+      .box-purple { fill: #f5f0ff; stroke: #8a68d5; }
+      .label { font: 700 18px Arial, sans-serif; fill: #24364b; }
+      .small { font: 400 15px Arial, sans-serif; fill: #5a6878; }
+      .flow { fill: none; stroke: #2f4f6f; stroke-width: 3; marker-end: url(#arrow); }
+      .divider { stroke: #d6dde7; stroke-width: 2; stroke-dasharray: 8 8; }
+    </style>
+  </defs>
+
+  <rect class="bg" width="1400" height="760"/>
+  <text x="70" y="70" class="title">Week 4 - Operations Architecture Overview</text>
+  <text x="70" y="105" class="subtitle">Controlled administration and network-observability flow for the existing SOC MVP EC2 environment</text>
+
+  <rect x="70" y="145" width="590" height="540" class="panel"/>
+  <text x="105" y="195" class="panel-title">Managed Access</text>
+
+  <rect x="155" y="235" width="420" height="74" class="box box-orange"/>
+  <text x="185" y="265" class="label">Administrator</text>
+  <text x="185" y="290" class="small">AWS console or browser session</text>
+
+  <rect x="115" y="365" width="220" height="82" class="box box-blue"/>
+  <text x="140" y="396" class="label">Systems Manager</text>
+  <text x="140" y="421" class="small">Session Manager</text>
+
+  <rect x="395" y="365" width="220" height="82" class="box box-green"/>
+  <text x="418" y="396" class="label">EIC Endpoint</text>
+  <text x="418" y="421" class="small">Private IPv4 TCP 22</text>
+
+  <rect x="155" y="515" width="420" height="82" class="box"/>
+  <text x="185" y="547" class="label">Backend EC2 Instance</text>
+  <text x="185" y="572" class="small">Managed node and private IPv4 target</text>
+
+  <path class="flow" d="M 290 309 C 240 330, 230 342, 225 360"/>
+  <path class="flow" d="M 440 309 C 490 330, 500 342, 505 360"/>
+  <path class="flow" d="M 225 447 C 230 480, 275 498, 335 512"/>
+  <path class="flow" d="M 505 447 C 500 480, 455 498, 395 512"/>
+
+  <line x1="700" y1="160" x2="700" y2="670" class="divider"/>
+
+  <rect x="740" y="145" width="590" height="540" class="panel"/>
+  <text x="775" y="195" class="panel-title">Network Observability</text>
+
+  <rect x="825" y="235" width="420" height="72" class="box"/>
+  <text x="855" y="265" class="label">VPC Traffic</text>
+  <text x="855" y="289" class="small">Accepted and rejected network metadata</text>
+
+  <rect x="825" y="350" width="420" height="72" class="box box-blue"/>
+  <text x="855" y="380" class="label">VPC Flow Logs</text>
+  <text x="855" y="404" class="small">Delivered to CloudWatch Logs</text>
+
+  <rect x="825" y="465" width="420" height="72" class="box box-purple"/>
+  <text x="855" y="495" class="label">RejectedConnections Filter</text>
+  <text x="855" y="519" class="small">REJECT records become SOC/Network metric</text>
+
+  <rect x="825" y="580" width="420" height="72" class="box box-orange"/>
+  <text x="855" y="610" class="label">SOC-Rejected-Connections Alarm</text>
+  <text x="855" y="634" class="small">Alarm state changes when threshold is reached</text>
+
+  <path class="flow" d="M 1035 307 L 1035 342"/>
+  <path class="flow" d="M 1035 422 L 1035 457"/>
+  <path class="flow" d="M 1035 537 L 1035 572"/>
+</svg>

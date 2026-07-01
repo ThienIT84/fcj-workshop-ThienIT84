@@ -23,8 +23,8 @@ Secure AWS account
 -> build cloud network foundation
 -> deploy compute and private workloads
 -> add observability and secure operations
--> store and deliver data through S3/CloudFront
--> persist alert data in RDS
+-> persist structured alert data in RDS
+-> store and deliver artifacts through S3/CloudFront
 -> generate real IDS telemetry locally
 -> build AI-ready datasets
 -> design AI/backend APIs
@@ -51,11 +51,11 @@ Do not claim production-grade deployment for services that were only researched 
 | Week | Worklog title | AWS/service focus | Project tie-in | Source folders | Expected evidence |
 | --- | --- | --- | --- | --- | --- |
 | 1 | AWS Account Security & IAM Access Baseline | Root security, IAM users/groups, MFA onboarding, password policy, billing credits, region | Safe team access before building infrastructure | `FCAJ-Internship/00_Worklog/week_01`, `01_AWS-Labs/IAM` | Root MFA, no root access key, IAM users/groups, group policies, billing/region screenshots |
-| 2 | VPC Network Foundation | VPC, subnets, route tables, IGW, public/private subnet, security groups | Cloud network segmentation for security workloads | `01_AWS-Labs/lab003_VPC` | VPC, subnet, route table, IGW, SG screenshots and network diagram |
+| 2 | VPC Network Foundation & Segmentation | VPC, subnets, route tables, IGW, public/private subnet, security groups | Cloud network segmentation for security workloads | `01_AWS-Labs/lab003_VPC` | VPC, subnet, route table, IGW, SG screenshots and network diagram |
 | 3 | EC2, Bastion, NAT & Private Compute | EC2 public/private, key pair, NAT Gateway, EIP, bastion/private access | Compute pattern for backend/AI engine in private subnet | `lab003_VPC/Deploying Amazon EC2 Instance` | EC2 public/private, NAT route, SSH/private connection, route tables |
 | 4 | Secure Operations & Observability | SSM Session Manager, EIC Endpoint, VPC Flow Logs, Reachability Analyzer, CloudWatch | Operate and troubleshoot infrastructure instead of only creating it | `Session Manager`, `Enable VPC Flow Logs`, `CloudWatch Monitoring & Alerting` | SSM target, endpoints, Flow Logs, Reachability Analyzer, CloudWatch metrics/alarm |
-| 5 | S3 Storage & CloudFront Delivery | S3 bucket, object ownership, Block Public Access, versioning, lifecycle, static hosting, CloudFront | S3 for logs/datasets/artifacts; CloudFront for frontend/report/dashboard | `01_AWS-Labs/S3` | S3 bucket config, website endpoint, CloudFront URL, versioning/lifecycle |
-| 6 | RDS PostgreSQL Data Layer | RDS PostgreSQL, DB subnet group, private subnet, RDS SG, EC2 client | Store alerts, risk scores, and dashboard data separately from raw logs | `01_AWS-Labs/Lab005_RDS`, `FCAJ_Project/Lab/RDS.md` | RDS VPC, DB subnet group, SG, PostgreSQL settings, EC2 client connection |
+| 5 | RDS PostgreSQL Data Layer | RDS PostgreSQL, DB subnet group, private subnet, RDS SG, EC2 client | Store alerts, risk scores, and dashboard data separately from raw logs | `01_AWS-Labs/Lab005_RDS`, `FCAJ_Project/Lab/RDS.md` | RDS VPC, DB subnet group, SG, PostgreSQL settings, EC2 client connection, alert queries |
+| 6 | S3 Storage & CloudFront Delivery | S3 bucket, object ownership, Block Public Access, versioning, lifecycle, static hosting, CloudFront | S3 for logs/datasets/artifacts; CloudFront for frontend/report/dashboard | `01_AWS-Labs/S3`, later user-provided Week 6 evidence | S3 bucket config, website endpoint, CloudFront URL, versioning/lifecycle |
 | 7 | Local IDS Lab Architecture | pfSense, Suricata, Zeek/ELK, Kali, Victim Ubuntu | Build realistic telemetry source instead of relying only on public datasets | `FCAJ_Project/Config Virtual Machine/Phase 0-7` | VM topology, IP plan, pfSense rules, Zeek/ELK running, connectivity tests |
 | 8 | Telemetry Collection & Traffic Campaigns | AWS tie-in: prepare logs for S3/SQS ingestion | Generate normal and attack traffic, capture Zeek logs, create event diary | `Config Virtual Machine/Phase 8-9`, `Campain_crawl_dataset`, `List_attacks` | Campaign commands, attack commands, `conn.log`, `http.log`, `events.csv`, Suricata/ELK evidence |
 | 9 | Dataset Factory & Data Quality Validation | AWS tie-in: data lake/artifact storage design on S3 | Convert raw logs into AI-ready CSV and validate quality | `Run_Crawl`, `Quy trình cào`, `profile_008`, `profile_009` | Parser command, output CSV, report JSON, row count, label/service distribution, `missed_bytes` check |
@@ -71,8 +71,8 @@ Do not claim production-grade deployment for services that were only researched 
 | VPC, subnet, route table, IGW, SG | Week 2 | Implemented evidence |
 | EC2 public/private, NAT, EIP | Week 3 | Implemented evidence |
 | SSM, EIC Endpoint, Flow Logs, CloudWatch | Week 4 | Implemented or troubleshooting evidence |
-| S3, versioning, lifecycle, CloudFront | Week 5 | Implemented evidence |
-| RDS PostgreSQL, DB subnet group | Week 6 | Implemented or lab evidence |
+| RDS PostgreSQL, DB subnet group | Week 5 | Implemented lab evidence |
+| S3, versioning, lifecycle, CloudFront | Week 6 | Implemented evidence when provided |
 | Local IDS lab | Week 7 | Implemented evidence |
 | Dataset generation and labeling | Week 8-9 | Implemented evidence |
 | AI/API design | Week 10 | Design, PoC, or implementation evidence |
@@ -86,7 +86,7 @@ Do not claim production-grade deployment for services that were only researched 
 | Security monitoring problem framing | Week 1 | Mention briefly, but keep AWS account/IAM as the service focus |
 | AWS network foundation | Week 2-3 | Build VPC and private compute foundation |
 | Cloud operations | Week 4 | Show troubleshooting and monitoring mindset |
-| Data storage and delivery | Week 5-6 | Separate raw logs/artifacts from structured alert data |
+| Data storage and delivery | Week 5-6 | Separate structured alert data in RDS from raw logs/artifacts in S3 |
 | Local IDS telemetry | Week 7-8 | Show personal project depth |
 | Dataset factory | Week 9 | Strong differentiator; include data quality checks |
 | AI detection/backend | Week 10 | Keep as architecture and API layer, not the whole report |
@@ -101,8 +101,8 @@ Only include items that have evidence or strong notes:
 - VPC lab with public/private subnets, route tables, Internet Gateway, Security Groups.
 - EC2 public/private pattern, NAT Gateway, bastion/private access flow.
 - Session Manager, EIC Endpoint, VPC Flow Logs, Reachability Analyzer, CloudWatch monitoring notes.
-- S3 bucket, static website hosting, CloudFront distribution, versioning/lifecycle learning.
 - RDS PostgreSQL private design with DB subnet group and EC2 client pattern.
+- S3 bucket, static website hosting, CloudFront distribution, versioning/lifecycle learning when Week 6 evidence is added.
 - Local IDS lab with Kali, pfSense, Suricata, Victim Ubuntu, Zeek/ELK.
 - Zeek-based dataset generation using `conn.log`, `http.log`, `events.csv`, and parser scripts.
 - AI/backend design notes for AI1, AI2A, AI2B, FastAPI, and fusion layer.

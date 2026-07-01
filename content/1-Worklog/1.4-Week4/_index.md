@@ -235,12 +235,12 @@ Reachability Analyzer remained optional and was not presented as a completed val
 
 ## Next Week Plan
 
-Week 5 will move from compute operations to storage and static content delivery. The focus will be:
+Week 5 will move from compute operations to the managed database layer. The focus will be:
 
-- Amazon S3 storage design
-- Private frontend bucket configuration
-- S3 versioning and lifecycle settings
-- Amazon CloudFront distribution
-- Origin Access Control
-- Direct S3 access restriction
-- Secure static frontend delivery through CloudFront
+- Amazon RDS PostgreSQL
+- DB Subnet Group design
+- Private database placement
+- EC2 client access
+- Security Group source references
+- PostgreSQL SSL connection
+- SOC-style alert records and query validation

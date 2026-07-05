@@ -48,7 +48,7 @@ draft: true
 
 Switch to `draft: false` only after:
 
-- Daily worklog dates are final and use explicit start/completion dates.
+- Daily worklog dates and time-spent values are finalized.
 - Four to six public-safe cropped screenshots are available under `static/images/worklog/week1/`.
 - The Hugo page has no placeholder text.
 - The Hugo page does not claim validation work that was not performed.
@@ -80,7 +80,7 @@ Public evidence meaning:
 | W1-E03 | IAM group structure | Role-based groups exist for admin, base users, cloud, backend, AI, and frontend |
 | W1-E04 | View-only permission baseline | `FCAJ-Base-Users` receives AWS-managed `ViewOnlyAccess` |
 | W1-E05 | Team IAM users | Project members have individual IAM identities |
-| W1-E06 | Group membership | Users are assigned through groups rather than direct permissions |
+| W1-E06 | Team users and group assignments | Users are assigned through groups rather than direct permissions |
 
 ## Final Hugo Structure
 
@@ -117,17 +117,19 @@ This keeps the page aligned with the FCAJ worklog expectation: daily work, resul
 
 ## Daily Worklog Template
 
-Use explicit `Start Date` and `Completion Date` values for every daily worklog row.
+Use one `Date` value and one `Time spent` value for every daily worklog row.
 
 Only keep days that were actually worked. If Week 1 was implemented in three days, use three rows instead of forcing a five-day log.
 
-| Day | Work completed | Start Date | Completion Date | Result | Issue / decision | Next step |
+Before publishing, verify that the time-spent values match the actual work record. Do not inflate hours just to make the log look heavier.
+
+| Day | Date | Time spent | Work completed | Result | Issue / decision | Next step |
 | --- | --- | --- | --- | --- | --- | --- |
-| Day 1 | Reviewed root account security, root MFA status, root access-key status, billing credits, and primary Region selection | 17/04/2026 | 17/04/2026 | Root protection and account constraints were understood before creating project resources | Root should not be used for daily work; `ap-southeast-1` was selected as the primary Region | Create an administrative IAM identity |
-| Day 2 | Configured the account alias/IAM sign-in flow, created `thien-admin`, and prepared the `FCAJ-Admins` group | 18/04/2026 | 18/04/2026 | Daily administration can be separated from the root user | Administration should use an IAM identity instead of shared root credentials | Design role-based IAM groups for the team |
-| Day 3 | Designed IAM groups, created role builder groups, and configured the account password policy | 19/04/2026 | 19/04/2026 | A group-based access model was prepared for cloud, backend, AI, and frontend responsibilities | Forced-MFA and self-service MFA custom policies were deferred to keep Week 1 practical | Add common learning-stage permissions |
-| Day 4 | Created `FCAJ-Base-Users` and attached AWS-managed `ViewOnlyAccess` | 20/04/2026 | 20/04/2026 | Members can inspect AWS resources during the learning stage without deployment permissions | `ViewOnlyAccess` is broad view-only learning access, not the final least-privilege model | Create individual member users and assign groups |
-| Day 5 | Created member IAM users, assigned group memberships, and avoided access keys for Console-only users | 21/04/2026 | 21/04/2026 | Team access was prepared through individual identities rather than shared credentials | Screenshots were cropped before publishing to keep the report focused | Move to Week 2 VPC foundation |
+| Day 1 | 17/04/2026 | 2 hours | Reviewed root account security, root MFA status, root access-key status, billing credits, and primary Region selection | Root protection and account constraints were understood before creating project resources | Root should not be used for daily work; `ap-southeast-1` was selected as the primary Region | Create an administrative IAM identity |
+| Day 2 | 18/04/2026 | 2.5 hours | Configured the account alias/IAM sign-in flow, created `thien-admin`, and prepared the `FCAJ-Admins` group | Daily administration can be separated from the root user | Administration should use an IAM identity instead of shared root credentials | Design role-based IAM groups for the team |
+| Day 3 | 19/04/2026 | 2 hours | Designed IAM groups, created role builder groups, and configured the account password policy | A group-based access model was prepared for cloud, backend, AI, and frontend responsibilities | Forced-MFA and self-service MFA custom policies were deferred to keep Week 1 practical | Add common learning-stage permissions |
+| Day 4 | 20/04/2026 | 1.5 hours | Created `FCAJ-Base-Users` and attached AWS-managed `ViewOnlyAccess` | Members can inspect AWS resources during the learning stage without deployment permissions | `ViewOnlyAccess` is broad view-only learning access, not the final least-privilege model | Create individual member users and assign groups |
+| Day 5 | 21/04/2026 | 2 hours | Created member IAM users, assigned group memberships, and avoided access keys for Console-only users | Team access was prepared through individual identities rather than shared credentials | Console access was sufficient for the learning stage, so no long-term access keys were created for member users | Move to Week 2 VPC foundation |
 
 ## Image Placement
 
@@ -226,13 +228,13 @@ If these are not performed, do not mention them in the Hugo page.
 | Forced-MFA policy adds complexity during first onboarding | Deferred forced-MFA JSON and self-service MFA custom policy; active users manually enroll MFA during onboarding |
 | `ViewOnlyAccess` is broader than a final production least-privilege policy | Used it only as learning-stage read access and documented that it can be narrowed later |
 | Builder groups could accidentally imply deployment access | Created the groups for role structure but did not attach deployment permissions in Week 1 |
-| Evidence may expose sensitive AWS information | Kept raw screenshots private and only publish selected cropped evidence |
+| Evidence may expose sensitive AWS information | Keep raw screenshots private and publish only selected cropped evidence |
 
 ## Publication Checklist
 
 Before changing the Hugo page to `draft: false`, confirm:
 
-- Daily worklog dates are explicit and correct.
+- Daily worklog dates and time-spent values are explicit and correct.
 - The Week 1 page has no placeholder text.
 - Four to six public-safe cropped screenshots are placed under `static/images/worklog/week1/`.
 - Raw screenshots from `static/images/week1/` are not embedded.

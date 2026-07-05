@@ -226,3 +226,27 @@ div.notices.info p {
   border-top: 30px solid #fd9827;
   background: #fff2db;
 }
+
+.worklog-evidence {
+  margin: 1.4rem 0 1.8rem;
+}
+
+.worklog-evidence img {
+  display: block;
+  width: 100%;
+  max-width: 1050px;
+  height: auto;
+  margin: 0 auto;
+  border: 1px solid #d9dee7;
+  box-shadow: 0 2px 12px rgba(24, 36, 54, 0.12);
+  background: #fff;
+}
+
+.worklog-evidence figcaption {
+  max-width: 1050px;
+  margin: 0.45rem auto 0;
+  color: #555;
+  font-size: 0.95rem;
+  font-style: italic;
+  line-height: 1.45;
+}

@@ -1,31 +1,18 @@
 ---
 title: "Translated Blogs"
-date: 2024-01-01
+date: 2026-06-04
 weight: 3
 chapter: false
 pre: " <b> 3. </b> "
 ---
 
-{{% notice warning %}}
-⚠️ **Note:** The information below is for reference purposes only. Please **do not copy verbatim** for your own report, including this warning.
-{{% /notice %}}
+This section lists and introduces the translated and updated blogs:
 
-This section will list and introduce the blogs you have translated. For example:
+### [Blog 1 - Automating AWS Cost Management with FinOps Agent on Amazon Bedrock AgentCore](3.1-Blog1/)
+This blog introduces using the FinOps Agent built on Amazon Bedrock AgentCore to help enterprises automatically manage and optimize AWS costs. Users can ask about costs in natural language, receive analysis on cost drivers, budgets, anomalies, and resource optimization recommendations. The solution integrates with tools like Cost Explorer, Budgets, and Compute Optimizer to support coordination between the Finance and DevOps teams.
 
-###  [Blog 1 - Getting started with healthcare data lakes: Using microservices](3.1-Blog1/)
-This blog introduces how to start building a data lake in the healthcare sector by applying a microservices architecture. You will learn why data lakes are important for storing and analyzing diverse healthcare data (electronic medical records, lab test data, medical IoT devices…), how microservices help make the system more flexible, scalable, and easier to maintain. The article also guides you through the steps to set up the environment, organize the data processing pipeline, and ensure compliance with security & privacy standards such as HIPAA.
+### [Blog 2 - CLICKFORCE Accelerates Ad Analytics with Amazon Bedrock Agents](3.2-Blog2/)
+This blog shares how CLICKFORCE built the Lumos system to automate the ad analysis process using Amazon Bedrock Agents, Knowledge Bases, SageMaker AI, and other AWS services. The solution helps reduce report creation time from 2–6 weeks to less than 1 hour, cuts operating costs by 47%, and allows users to query data in natural language with Text-to-SQL.
 
-###  [Blog 2 - ...](3.2-Blog2/)
-This blog introduces how to start building a data lake in the healthcare sector by applying a microservices architecture. You will learn why data lakes are important for storing and analyzing diverse healthcare data (electronic medical records, lab test data, medical IoT devices…), how microservices help make the system more flexible, scalable, and easier to maintain. The article also guides you through the steps to set up the environment, organize the data processing pipeline, and ensure compliance with security & privacy standards such as HIPAA.
-
-###  [Blog 3 - ...](3.3-Blog3/)
-This blog introduces how to start building a data lake in the healthcare sector by applying a microservices architecture. You will learn why data lakes are important for storing and analyzing diverse healthcare data (electronic medical records, lab test data, medical IoT devices…), how microservices help make the system more flexible, scalable, and easier to maintain. The article also guides you through the steps to set up the environment, organize the data processing pipeline, and ensure compliance with security & privacy standards such as HIPAA.
-
-###  [Blog 4 - ...](3.4-Blog4/)
-This blog introduces how to start building a data lake in the healthcare sector by applying a microservices architecture. You will learn why data lakes are important for storing and analyzing diverse healthcare data (electronic medical records, lab test data, medical IoT devices…), how microservices help make the system more flexible, scalable, and easier to maintain. The article also guides you through the steps to set up the environment, organize the data processing pipeline, and ensure compliance with security & privacy standards such as HIPAA.
-
-###  [Blog 5 - ...](3.5-Blog5/)
-This blog introduces how to start building a data lake in the healthcare sector by applying a microservices architecture. You will learn why data lakes are important for storing and analyzing diverse healthcare data (electronic medical records, lab test data, medical IoT devices…), how microservices help make the system more flexible, scalable, and easier to maintain. The article also guides you through the steps to set up the environment, organize the data processing pipeline, and ensure compliance with security & privacy standards such as HIPAA.
-
-###  [Blog 6 - ...](3.6-Blog6/)
-This blog introduces how to start building a data lake in the healthcare sector by applying a microservices architecture. You will learn why data lakes are important for storing and analyzing diverse healthcare data (electronic medical records, lab test data, medical IoT devices…), how microservices help make the system more flexible, scalable, and easier to maintain. The article also guides you through the steps to set up the environment, organize the data processing pipeline, and ensure compliance with security & privacy standards such as HIPAA.
+### [Blog 3 - Internal AI for Enterprises: When Employees Don't Need to Search Every Folder for Information](3.3-Blog3/)
+This blog guides how to build an internal AI Assistant for enterprises using Amazon Bedrock Knowledge Bases and other AWS services. The solution helps employees search information from internal documents (HR policies, processes, onboarding...) in natural language, get answers with clear source citations, starting with a small scope for easy testing and gradual expansion.

@@ -1,0 +1,123 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="920" viewBox="0 0 1400 920" role="img" aria-labelledby="title desc">
+  <title id="title">Week 5 RDS PostgreSQL Architecture</title>
+  <desc id="desc">RDS PostgreSQL private data layer with public EC2 client access path for SOC alert data.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#2f4f6f"/>
+    </marker>
+    <style>
+      .bg        { fill: #f7f9fb; }
+      .vpc-box   { fill: #ffffff; stroke: #2f6fa8; stroke-width: 3; }
+      .pub-sub   { fill: #eef8f1; stroke: #45a66d; stroke-width: 2; }
+      .priv-sub  { fill: #eef4ff; stroke: #4f8edc; stroke-width: 2; }
+      .dbgroup   { fill: #f5faff; stroke: #6f7f92; stroke-width: 3; stroke-dasharray: 10 8; }
+      .rds-box   { fill: #dbeeff; stroke: #2f6fa8; stroke-width: 2.5; }
+      .laptop    { fill: #fff6e8; stroke: #f0a23a; stroke-width: 2; }
+      .note-box  { fill: #ffffff; stroke: #9fb0c3; stroke-width: 2; }
+      .sec-box   { fill: #f5f0ff; stroke: #8a68d5; stroke-width: 2; }
+      .title     { font: 700 30px Arial, sans-serif; fill: #24364b; }
+      .subtitle  { font: 400 18px Arial, sans-serif; fill: #607083; }
+      .label     { font: 700 17px Arial, sans-serif; fill: #24364b; }
+      .small     { font: 400 14px Arial, sans-serif; fill: #5a6878; }
+      .az-label  { font: 600 16px Arial, sans-serif; fill: #4f7099; }
+      .flow      { fill: none; stroke: #2f4f6f; stroke-width: 3; marker-end: url(#arrow); }
+      .secure    { fill: none; stroke: #2f9e5a; stroke-width: 3; stroke-dasharray: 8 4; marker-end: url(#arrow); }
+    </style>
+  </defs>
+
+  <!-- Background -->
+  <rect class="bg" width="1400" height="920"/>
+
+  <!-- Title -->
+  <text x="70" y="66" class="title">Week 5 - RDS PostgreSQL Data Layer</text>
+  <text x="70" y="98" class="subtitle">Private managed database for SOC alerts, anomaly scores, and dashboard queries</text>
+
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <!-- VPC outer border  y=120 → y=720  (height=600) -->
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <rect x="220" y="120" width="1140" height="600" rx="18" class="vpc-box"/>
+  <text x="248" y="158" class="label">VPC 10.20.0.0/16</text>
+
+  <!-- ── AZ zone labels (text only, no border boxes) ───────────── -->
+  <text x="310" y="193" class="az-label">ap-southeast-1a</text>
+  <text x="840" y="193" class="az-label">ap-southeast-1b</text>
+
+  <!-- ── Row 1: Public subnets  y=205 → y=305 ─────────────────── -->
+  <rect x="270" y="205" width="440" height="100" rx="12" class="pub-sub"/>
+  <text x="298" y="240" class="label">EC2 Client</text>
+  <text x="298" y="262" class="small">Public subnet · psql test client</text>
+  <text x="298" y="282" class="small">SSH entry point for database testing</text>
+
+  <rect x="790" y="205" width="440" height="100" rx="12" class="pub-sub"/>
+  <text x="818" y="240" class="label">Public Subnet B</text>
+  <text x="818" y="262" class="small">Spare public subnet in ap-southeast-1b</text>
+  <text x="818" y="282" class="small">Reserved for lab design symmetry</text>
+
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <!-- DB Subnet Group  y=355 → y=690  (height=335) -->
+  <!-- Contains: private subnets (y=395→515) and RDS (y=555→645) -->
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <rect x="240" y="355" width="1090" height="335" rx="16" class="dbgroup"/>
+  <text x="620" y="380" class="small">DB Subnet Group — private subnets eligible for RDS placement across two AZs</text>
+
+  <!-- ── Private subnets  y=395 → y=515 ───────────────────────── -->
+  <rect x="265" y="395" width="440" height="120" rx="12" class="priv-sub"/>
+  <text x="293" y="430" class="label">Private Subnet A</text>
+  <text x="293" y="452" class="small">10.20.128.0/20 · ap-southeast-1a</text>
+  <text x="293" y="473" class="small">RDS subnet group candidate</text>
+
+  <rect x="795" y="395" width="440" height="120" rx="12" class="priv-sub"/>
+  <text x="823" y="430" class="label">Private Subnet B</text>
+  <text x="823" y="452" class="small">10.20.144.0/20 · ap-southeast-1b</text>
+  <text x="823" y="473" class="small">RDS subnet group / standby candidate</text>
+
+  <!-- ── Divider line between subnets and RDS ──────────────────── -->
+  <line x1="260" y1="535" x2="1320" y2="535" stroke="#b0c4d8" stroke-width="1.5" stroke-dasharray="6 4"/>
+
+  <!-- ── Amazon RDS PostgreSQL  y=555 → y=645  ─────────────────── -->
+  <rect x="490" y="555" width="500" height="90" rx="14" class="rds-box"/>
+  <text x="530" y="588" class="label">Amazon RDS PostgreSQL</text>
+  <text x="530" y="610" class="small">Private endpoint · port 5432 · SSL required</text>
+  <text x="530" y="630" class="small">Publicly accessible: No</text>
+
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <!-- Laptop  (outside VPC, left)  y=230 → y=310 -->
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <rect x="45" y="230" width="150" height="90" rx="12" class="laptop"/>
+  <text x="78" y="264" class="label">Laptop</text>
+  <text x="78" y="286" class="small">SSH client</text>
+
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <!-- Arrows -->
+  <!-- ═══════════════════════════════════════════════════════════ -->
+
+  <!-- Laptop → EC2 (horizontal) -->
+  <path class="flow" d="M 195 275 L 265 275"/>
+
+  <!-- EC2 → RDS (dashed green = SSL encrypted path) -->
+  <!-- EC2 bottom-center ≈ (490, 305) → RDS top-center ≈ (740, 555) -->
+  <path class="secure" d="M 490 305 C 490 430 740 430 740 550"/>
+
+  <!-- SSL label on arrow -->
+  <rect x="520" y="395" width="140" height="28" rx="6" fill="#e8f8ef" stroke="#2f9e5a" stroke-width="1.5"/>
+  <text x="590" y="414" class="small" text-anchor="middle" fill="#1a6b3c">SSL · port 5432</text>
+
+  <!-- RDS → Security Rule (below VPC) -->
+  <path class="flow" d="M 990 600 C 1090 600 1130 700 1170 748"/>
+
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <!-- Below VPC annotations  y=750 → y=820 -->
+  <!-- VPC bottom = y=120+600=720  → gap=30px before annotations -->
+  <!-- ═══════════════════════════════════════════════════════════ -->
+
+  <!-- SOC Project Data -->
+  <rect x="45" y="750" width="580" height="72" rx="12" class="note-box"/>
+  <text x="75" y="780" class="label">SOC Project Data</text>
+  <text x="75" y="802" class="small">alerts table: event_type, severity, src/dst IP, message, anomaly_score, created_at</text>
+
+  <!-- Security Rule -->
+  <rect x="1080" y="750" width="290" height="72" rx="12" class="sec-box"/>
+  <text x="1110" y="780" class="label">Security Rule</text>
+  <text x="1110" y="802" class="small">RDS-SG allows 5432 from EC2-SG</text>
+
+</svg>

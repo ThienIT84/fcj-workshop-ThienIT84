@@ -1,126 +1,48 @@
 ---
 title: "Blog 1"
-date: 2024-01-01
+date: 2026-06-04
 weight: 1
 chapter: false
 pre: " <b> 3.1. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Note:** The information below is for reference purposes only. Please **do not copy verbatim** for your report, including this warning.
-{{% /notice %}}
 
-# Getting Started with Healthcare Data Lakes: Using Microservices
+# AUTOMATING AWS COST MANAGEMENT WITH FINOPS AGENT ON AMAZON BEDROCK AGENTCORE
 
-Data lakes can help hospitals and healthcare facilities turn data into business insights, maintain business continuity, and protect patient privacy. A **data lake** is a centralized, managed, and secure repository to store all your data, both in its raw and processed forms for analysis. Data lakes allow you to break down data silos and combine different types of analytics to gain insights and make better business decisions.
+When enterprises use multiple AWS accounts and many cloud services, cost control is no longer as simple as just looking at end-of-month reports. To solve this problem, AWS introduces the FinOps Agent built on Amazon Bedrock AgentCore, helping users query AWS cost data in natural language, receive analysis on cost drivers, budgets, anomalies, and resource optimization recommendations. In my opinion, the strength of this solution is that the Agent does not replace tools like Cost Explorer or Compute Optimizer, but instead plays the role of aggregating data, interpreting results, and supporting faster cost optimization actions.
 
-This blog post is part of a larger series on getting started with setting up a healthcare data lake. In my final post of the series, *“Getting Started with Healthcare Data Lakes: Diving into Amazon Cognito”*, I focused on the specifics of using Amazon Cognito and Attribute Based Access Control (ABAC) to authenticate and authorize users in the healthcare data lake solution. In this blog, I detail how the solution evolved at a foundational level, including the design decisions I made and the additional features used. You can access the code samples for the solution in this Git repo for reference.
+![FinOps Agent Architecture on Amazon Bedrock AgentCore](/images/3-BlogsTranslated/blog1.png)
 
 ---
 
-## Architecture Guidance
+## SOME HIGHLIGHTS
 
-The main change since the last presentation of the overall architecture is the decomposition of a single service into a set of smaller services to improve maintainability and flexibility. Integrating a large volume of diverse healthcare data often requires specialized connectors for each format; by keeping them encapsulated separately as microservices, we can add, remove, and modify each connector without affecting the others. The microservices are loosely coupled via publish/subscribe messaging centered in what I call the “pub/sub hub.”
-
-This solution represents what I would consider another reasonable sprint iteration from my last post. The scope is still limited to the ingestion and basic parsing of **HL7v2 messages** formatted in **Encoding Rules 7 (ER7)** through a REST interface.
-
-**The solution architecture is now as follows:**
-
-> *Figure 1. Overall architecture; colored boxes represent distinct services.*
-
----
-
-While the term *microservices* has some inherent ambiguity, certain traits are common:  
-- Small, autonomous, loosely coupled  
-- Reusable, communicating through well-defined interfaces  
-- Specialized to do one thing well  
-- Often implemented in an **event-driven architecture**
-
-When determining where to draw boundaries between microservices, consider:  
-- **Intrinsic**: technology used, performance, reliability, scalability  
-- **Extrinsic**: dependent functionality, rate of change, reusability  
-- **Human**: team ownership, managing *cognitive load*
+- **Using Amazon Bedrock AgentCore**: AgentCore is used to run the FinOps Agent, process questions, call the right AWS tools, and return cost analysis results in easy-to-understand language.
+- **Leveraging AWS Cost Explorer**: The Agent can identify which service, account, region, or usage type is contributing the most to costs. For example, when costs increase abnormally, the Agent can analyze whether the cause comes from EC2, S3, NAT Gateway, RDS, or data transfer.
+- **Leveraging AWS Budgets**: The Agent can compare current usage with budgets, warn about budget overrun risks, and suggest which teams need to check.
+- **Leveraging AWS Compute Optimizer**: The Agent can get recommendations to detect over-provisioned resources, for example EC2 instances with configurations too high compared to actual needs, thereby suggesting resizing instances or adjusting workloads more appropriately.
+- **Query costs in natural language**: Users can ask: "Which service is costing the most this month?", "Which account has abnormal cost increases?" or "Are there any EC2 resources being used inefficiently?".
+- **Supports coordination between Finance and DevOps**: Finance can ask about budgets, while DevOps can dive deeper into resources, workloads, and technical recommendations. This helps teams understand cost issues in a more accessible way together.
 
 ---
 
-## Technology Choices and Communication Scope
+## PERSONAL PERSPECTIVE
 
-| Communication scope                       | Technologies / patterns to consider                                                        |
-| ----------------------------------------- | ------------------------------------------------------------------------------------------ |
-| Within a single microservice              | Amazon Simple Queue Service (Amazon SQS), AWS Step Functions                               |
-| Between microservices in a single service | AWS CloudFormation cross-stack references, Amazon Simple Notification Service (Amazon SNS) |
-| Between services                          | Amazon EventBridge, AWS Cloud Map, Amazon API Gateway                                      |
+In my opinion, the FinOps Agent has the most practical value when an enterprise already uses many AWS services and cloud costs are no longer easy to control manually. At that point, the issue is not just "how much does it cost", but "why did it increase", "where did it increase", "who is responsible", and "what actions can optimize it".
+
+For example, if Cost Explorer shows EC2 costs have increased, that number alone is not enough to make a decision. The enterprise needs to know which instances increased, if they're running the right workloads, if they've been forgotten, if rightsizing is possible, or if Savings Plans should be considered. This is when the FinOps Agent can aggregate many signals to provide easier-to-understand analysis.
 
 ---
 
-## The Pub/Sub Hub
+## SOME LIMITATIONS TO NOTE
 
-Using a **hub-and-spoke** architecture (or message broker) works well with a small number of tightly related microservices.  
-- Each microservice depends only on the *hub*  
-- Inter-microservice connections are limited to the contents of the published message  
-- Reduces the number of synchronous calls since pub/sub is a one-way asynchronous *push*
-
-Drawback: **coordination and monitoring** are needed to avoid microservices processing the wrong message.
-
----
-
-## Core Microservice
-
-Provides foundational data and communication layer, including:  
-- **Amazon S3** bucket for data  
-- **Amazon DynamoDB** for data catalog  
-- **AWS Lambda** to write messages into the data lake and catalog  
-- **Amazon SNS** topic as the *hub*  
-- **Amazon S3** bucket for artifacts such as Lambda code
-
-> Only allow indirect write access to the data lake through a Lambda function → ensures consistency.
+- AI Agent does not completely replace FinOps experts, especially with production workloads.
+- Analysis quality depends heavily on input data such as tagging, account structure, and cost allocation.
+- Rightsizing should not be applied mechanically, as some workloads still need headroom for peak hours.
+- Access control needs to be managed because the Agent can query sensitive cost data.
+- The Agent itself also incurs inference costs, so usage still needs to be monitored.
 
 ---
 
-## Front Door Microservice
+## CONCLUSION
 
-- Provides an API Gateway for external REST interaction  
-- Authentication & authorization based on **OIDC** via **Amazon Cognito**  
-- Self-managed *deduplication* mechanism using DynamoDB instead of SNS FIFO because:  
-  1. SNS deduplication TTL is only 5 minutes  
-  2. SNS FIFO requires SQS FIFO  
-  3. Ability to proactively notify the sender that the message is a duplicate  
-
----
-
-## Staging ER7 Microservice
-
-- Lambda “trigger” subscribed to the pub/sub hub, filtering messages by attribute  
-- Step Functions Express Workflow to convert ER7 → JSON  
-- Two Lambdas:  
-  1. Fix ER7 formatting (newline, carriage return)  
-  2. Parsing logic  
-- Result or error is pushed back into the pub/sub hub  
-
----
-
-## New Features in the Solution
-
-### 1. AWS CloudFormation Cross-Stack References
-Example *outputs* in the core microservice:
-```yaml
-Outputs:
-  Bucket:
-    Value: !Ref Bucket
-    Export:
-      Name: !Sub ${AWS::StackName}-Bucket
-  ArtifactBucket:
-    Value: !Ref ArtifactBucket
-    Export:
-      Name: !Sub ${AWS::StackName}-ArtifactBucket
-  Topic:
-    Value: !Ref Topic
-    Export:
-      Name: !Sub ${AWS::StackName}-Topic
-  Catalog:
-    Value: !Ref Catalog
-    Export:
-      Name: !Sub ${AWS::StackName}-Catalog
-  CatalogArn:
-    Value: !GetAtt Catalog.Arn
-    Export:
-      Name: !Sub ${AWS::StackName}-CatalogArn
+Amazon Bedrock AgentCore is not just for building chatbots, but can be directly applied to cloud cost management and optimization problems. When combined with Cost Explorer, Budgets, Compute Optimizer, and Pricing, the FinOps Agent helps enterprises control costs more proactively, detect waste earlier, and make resource optimization decisions faster. However, for the solution to be effective, enterprises still need a good data foundation such as clear tagging, proper account segregation, correctly configured budgets, and a process to review recommendations before applying them.

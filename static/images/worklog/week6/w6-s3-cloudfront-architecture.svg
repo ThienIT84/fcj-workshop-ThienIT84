@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1160" height="620" viewBox="0 0 1160 620" role="img" aria-labelledby="title desc">
+  <title id="title">Week 6 S3 and CloudFront Architecture</title>
+  <desc id="desc">Architecture showing private raw data in S3, selected public website files, CloudFront delivery, versioning, and lifecycle cleanup.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#354052"/>
+    </marker>
+    <style>
+      .bg { fill: #f6f8fb; }
+      .band { fill: #ffffff; stroke: #d6dde8; stroke-width: 2; }
+      .storage { fill: #eef6ff; stroke: #2f6fbb; stroke-width: 2; }
+      .delivery { fill: #fff6e8; stroke: #d78919; stroke-width: 2; }
+      .control { fill: #edf8f1; stroke: #29845a; stroke-width: 2; }
+      .private { fill: #f9ecec; stroke: #b44949; stroke-width: 2; }
+      .title { font: 700 24px Arial, sans-serif; fill: #1f2937; }
+      .label { font: 700 17px Arial, sans-serif; fill: #1f2937; }
+      .text { font: 14px Arial, sans-serif; fill: #354052; }
+      .note { font: 13px Arial, sans-serif; fill: #5c687a; }
+      .arrow { stroke: #354052; stroke-width: 2.5; marker-end: url(#arrow); fill: none; }
+      .dash { stroke: #7d8797; stroke-width: 2; stroke-dasharray: 8 8; marker-end: url(#arrow); fill: none; }
+    </style>
+  </defs>
+
+  <rect class="bg" x="0" y="0" width="1160" height="620" rx="0"/>
+  <text class="title" x="42" y="48">Week 6 - S3 Static Website, CloudFront Delivery and Object Lifecycle</text>
+  <text class="note" x="42" y="76">Lab pattern: S3 website endpoint + selective bucket policy + CloudFront. Private-origin hardening is a future improvement.</text>
+
+  <rect class="band" x="40" y="110" width="1080" height="440" rx="8"/>
+
+  <rect class="private" x="80" y="170" width="250" height="140" rx="8"/>
+  <text class="label" x="105" y="205">Private Project Data</text>
+  <text class="text" x="105" y="235">raw/zeek/conn_dataset.csv</text>
+  <text class="text" x="105" y="260">Direct URL: AccessDenied</text>
+  <text class="note" x="105" y="286">Raw logs and datasets stay private</text>
+
+  <rect class="storage" x="455" y="150" width="260" height="190" rx="8"/>
+  <text class="label" x="485" y="185">Amazon S3 Bucket</text>
+  <text class="text" x="485" y="215">fcaj-s3-lab-thienit-20260529</text>
+  <text class="text" x="485" y="242">index.html</text>
+  <text class="text" x="485" y="267">error.html</text>
+  <text class="text" x="485" y="292">raw/zeek/ objects</text>
+  <text class="note" x="485" y="318">Object storage baseline</text>
+
+  <rect class="delivery" x="820" y="155" width="250" height="160" rx="8"/>
+  <text class="label" x="850" y="190">CloudFront</text>
+  <text class="text" x="850" y="220">Viewer HTTPS endpoint</text>
+  <text class="text" x="850" y="245">Origin: S3 website endpoint</text>
+  <text class="note" x="850" y="274">Default CloudFront domain</text>
+
+  <rect class="control" x="455" y="390" width="260" height="120" rx="8"/>
+  <text class="label" x="485" y="425">Versioning + Lifecycle</text>
+  <text class="text" x="485" y="455">versioning-demo/</text>
+  <text class="text" x="485" y="480">cleanup-versioning-demo</text>
+
+  <rect class="delivery" x="820" y="390" width="250" height="120" rx="8"/>
+  <text class="label" x="850" y="425">Browser</text>
+  <text class="text" x="850" y="455">FCAJ static website</text>
+  <text class="text" x="850" y="480">CloudFront URL success</text>
+
+  <path class="arrow" d="M 330 240 L 445 240"/>
+  <path class="arrow" d="M 715 235 L 810 235"/>
+  <path class="arrow" d="M 945 315 L 945 380"/>
+  <path class="dash" d="M 585 340 L 585 380"/>
+
+  <text class="note" x="360" y="222">Upload private telemetry</text>
+  <text class="note" x="735" y="214">Serve selected website files</text>
+  <text class="note" x="970" y="352">Viewer request</text>
+  <text class="note" x="610" y="362">Manage object history</text>
+
+  <rect class="band" x="80" y="565" width="990" height="34" rx="6"/>
+  <text class="note" x="105" y="587">Key security decision: selected website files can be public for the lab; raw security datasets remain private and are not part of the website policy.</text>
+</svg>

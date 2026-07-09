@@ -3,4 +3,10 @@ static/images/week1/
 static/images/week_02/
 static/images/worklog/week8/docs/
 static/images/worklog/week9/docs/
+static/images/worklog/week10/docs/
 private-evidence/
+
+# Hugo build output
+public/
+resources/_gen/
+.hugo_build.lock

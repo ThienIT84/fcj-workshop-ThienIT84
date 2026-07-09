@@ -3,7 +3,7 @@ title: "Tuần 8 - Workspace Dataset AI & Phủ sóng Attack Profile"
 date: 2026-06-07
 weight: 8
 chapter: false
-draft: true
+draft: false
 pre: " <b> 1.8. </b> "
 ---
 

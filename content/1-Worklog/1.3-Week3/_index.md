@@ -3,7 +3,7 @@ title: "Week 3 - EC2, Bastion Access & NAT Private Egress"
 date: 2026-05-25
 weight: 3
 chapter: false
-draft: true
+draft: false
 pre: " <b> 1.3. </b> "
 ---
 

@@ -3,7 +3,7 @@ title: "Tuần 3 - EC2, Truy cập Bastion & NAT Private Egress"
 date: 2026-05-25
 weight: 3
 chapter: false
-draft: true
+draft: false
 pre: " <b> 1.3. </b> "
 ---
 

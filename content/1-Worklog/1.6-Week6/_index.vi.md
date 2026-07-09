@@ -3,7 +3,7 @@ title: "Tuần 6 - Website Tĩnh S3, CloudFront & Vòng đời Đối tượng"
 date: 2026-05-29
 weight: 6
 chapter: false
-draft: true
+draft: false
 pre: " <b> 1.6. </b> "
 ---
 

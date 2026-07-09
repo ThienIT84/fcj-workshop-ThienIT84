@@ -3,7 +3,7 @@ title: "Week 10 - AI Model Handoff, Backend API & Fusion Layer"
 date: 2026-06-19
 weight: 10
 chapter: false
-draft: true
+draft: false
 pre: " <b> 1.10. </b> "
 ---
 

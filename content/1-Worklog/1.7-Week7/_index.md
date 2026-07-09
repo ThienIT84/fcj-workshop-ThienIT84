@@ -3,7 +3,7 @@ title: "Week 7 - Local IDS Network Segmentation & Zeek Telemetry Validation"
 date: 2026-06-03
 weight: 7
 chapter: false
-draft: true
+draft: false
 pre: " <b> 1.7. </b> "
 ---
 

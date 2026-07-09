@@ -3,7 +3,7 @@ title: "Week 9 - AI Dataset QA, Model Readiness & Validation Boundaries"
 date: 2026-06-13
 weight: 9
 chapter: false
-draft: true
+draft: false
 pre: " <b> 1.9. </b> "
 ---
 

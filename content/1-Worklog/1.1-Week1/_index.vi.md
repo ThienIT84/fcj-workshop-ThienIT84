@@ -3,7 +3,7 @@ title: "Tuần 1 - Bảo mật Tài khoản AWS & Đường cơ sở Truy cập 
 date: 2026-04-17
 weight: 1
 chapter: false
-draft: true
+draft: false
 pre: " <b> 1.1. </b> "
 ---
 

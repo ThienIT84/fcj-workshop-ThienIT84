@@ -3,7 +3,7 @@ title: "Week 4 - Secure Operations & Observability"
 date: 2026-05-26
 weight: 4
 chapter: false
-draft: true
+draft: false
 pre: " <b> 1.4. </b> "
 ---
 

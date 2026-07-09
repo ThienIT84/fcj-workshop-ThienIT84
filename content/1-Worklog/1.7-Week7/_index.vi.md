@@ -3,7 +3,7 @@ title: "Tuần 7 - Phân đoạn Mạng IDS Cục bộ & Xác minh Zeek Telemetr
 date: 2026-06-03
 weight: 7
 chapter: false
-draft: true
+draft: false
 pre: " <b> 1.7. </b> "
 ---
 

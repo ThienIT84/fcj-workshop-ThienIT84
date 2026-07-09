@@ -3,7 +3,7 @@ title: "Tuần 2 - Nền tảng & Phân đoạn Mạng VPC"
 date: 2026-05-24
 weight: 2
 chapter: false
-draft: true
+draft: false
 pre: " <b> 1.2. </b> "
 ---
 

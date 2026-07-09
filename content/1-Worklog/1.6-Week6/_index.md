@@ -3,7 +3,7 @@ title: "Week 6 - S3 Static Website, CloudFront Delivery & Object Lifecycle"
 date: 2026-05-29
 weight: 6
 chapter: false
-draft: true
+draft: false
 pre: " <b> 1.6. </b> "
 ---
 

@@ -3,7 +3,7 @@ title: "Week 1 - AWS Account Security & IAM Access Baseline"
 date: 2026-04-17
 weight: 1
 chapter: false
-draft: true
+draft: false
 pre: " <b> 1.1. </b> "
 ---
 

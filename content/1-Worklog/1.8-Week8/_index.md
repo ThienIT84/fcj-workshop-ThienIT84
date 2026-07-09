@@ -3,7 +3,7 @@ title: "Week 8 - AI Dataset Workspace & Attack Profile Coverage"
 date: 2026-06-07
 weight: 8
 chapter: false
-draft: true
+draft: false
 pre: " <b> 1.8. </b> "
 ---
 

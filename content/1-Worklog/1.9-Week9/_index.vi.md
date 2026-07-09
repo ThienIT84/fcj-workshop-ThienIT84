@@ -3,7 +3,7 @@ title: "Tuần 9 - Dataset QA AI, Model Readiness & Ranh giới Xác minh"
 date: 2026-06-13
 weight: 9
 chapter: false
-draft: true
+draft: false
 pre: " <b> 1.9. </b> "
 ---
 

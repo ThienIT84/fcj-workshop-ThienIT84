@@ -1,6 +1,6 @@
 ---
 title: "Week 7 - Local IDS Network Segmentation & Zeek Telemetry Validation"
-date: 2026-06-03
+date: 2026-05-31
 weight: 7
 chapter: false
 draft: false
@@ -19,7 +19,7 @@ pre: " <b> 1.7. </b> "
 | Telemetry host | Zeek sensor on LAN |
 | Main evidence | pfSense rules/logs, Kali-to-Victim tests, Zeek packet visibility, `conn.log`, `http.log`, dataset export |
 | Kibana visualization | Deferred |
-| Week status | Implemented from local lab notes; evidence re-validation completed; time estimates require owner confirmation |
+| Week status | Implemented from local lab notes; evidence re-validation completed |
 
 ## Evidence Re-validation Note
 
@@ -98,13 +98,13 @@ Kali 10.10.10.10
 
 ## Daily Worklog
 
-| Activity | Date | Time spent | Work completed | Result | Issue / decision | Next step |
-| --- | --- | --- | --- | --- | --- | --- |
-| Local IDS topology review | 03/06/2026 | Estimated 3 hours | Reviewed the pfSense, Kali, Victim, and Zeek VM topology and documented the DMZ/LAN addressing model | The lab segmentation model was defined around Kali in OPT1 and Victim/Zeek in LAN | Keep private lab IPs visible because they explain the evidence | Validate pfSense interfaces |
-| pfSense access and rule review | 04/06/2026 | Estimated 4 hours | Recovered pfSense WebGUI access, confirmed interfaces, identified that the troubleshooting rule `OPT1 net -> Any` was too broad, and replaced it with a host-to-host rule | Kali was limited to the Victim target instead of unrestricted LAN access | WebGUI used HTTP port 80 during the lab; public screenshots were cropped to remove browser warning bars | Validate allowed and blocked traffic paths |
-| Victim and Kali connectivity validation | 05/06/2026 | Estimated 4 hours | Confirmed Victim IP/gateway, Apache and SSH status, Kali route to Victim, ICMP, HTTP response, and Nmap service results | Kali could reach Victim HTTP and SSH through pfSense | Victim services are lab targets, not production exposure | Validate Zeek visibility |
-| Zeek visibility and log validation | 06/06/2026 | Estimated 4 hours | Used `tcpdump` on the Zeek VM while Kali generated traffic, checked Zeek runtime, inspected `conn.log`, inspected `http.log`, and correlated records using Zeek UID | Zeek saw Kali-to-Victim traffic and produced connection/application metadata | Running Zeek is not enough; packet visibility and log content must be checked | Export telemetry to a structured dataset |
-| Evidence re-validation and dataset export | 01/07/2026 | Estimated 4.5 hours | Re-captured Week 7 screenshots, reviewed pfSense pass/default-deny evidence, exported a structured CSV dataset, checked dataset shape, columns, and label distribution | Week 7 evidence was consolidated into public-safe screenshots | Kibana was not restored for screenshot collection and remains deferred | Use Week 8 for traffic campaigns and event diary |
+| Activity | Date | Work completed | Result | Issue / decision | Next step |
+| --- | --- | --- | --- | --- | --- |
+| Local IDS topology review | 31/05/2026 | Reviewed the pfSense, Kali, Victim, and Zeek VM topology and documented the DMZ/LAN addressing model | The lab segmentation model was defined around Kali in OPT1 and Victim/Zeek in LAN | Keep private lab IPs visible because they explain the evidence | Validate pfSense interfaces |
+| pfSense access and rule review | 02/06/2026 | Recovered pfSense WebGUI access, confirmed interfaces, identified that the troubleshooting rule `OPT1 net -> Any` was too broad, and replaced it with a host-to-host rule | Kali was limited to the Victim target instead of unrestricted LAN access | WebGUI used HTTP port 80 during the lab; public screenshots were cropped to remove browser warning bars | Validate allowed and blocked traffic paths |
+| Victim and Kali connectivity validation | 03/06/2026 | Confirmed Victim IP/gateway, Apache and SSH status, Kali route to Victim, ICMP, HTTP response, and Nmap service results | Kali could reach Victim HTTP and SSH through pfSense | Victim services are lab targets, not production exposure | Validate Zeek visibility |
+| Zeek visibility and log validation | 05/06/2026 | Used `tcpdump` on the Zeek VM while Kali generated traffic, checked Zeek runtime, inspected `conn.log`, inspected `http.log`, and correlated records using Zeek UID | Zeek saw Kali-to-Victim traffic and produced connection/application metadata | Running Zeek is not enough; packet visibility and log content must be checked | Export telemetry to a structured dataset |
+| Evidence re-validation and dataset export | 07/06/2026 | Re-captured Week 7 screenshots, reviewed pfSense pass/default-deny evidence, exported a structured CSV dataset, checked dataset shape, columns, and label distribution | Week 7 evidence was consolidated into public-safe screenshots | Kibana was not restored for screenshot collection and remains deferred | Use Week 8 for traffic campaigns and event diary |
 
 ## Technical Implementation Summary
 

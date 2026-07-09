@@ -19,7 +19,7 @@ pre: " <b> 1.8. </b> "
 | Main attack coverage | A01–A06 and A08–A10 artifact-backed; A07 aggregate-only; A12 HTTP semantic evidence reviewed |
 | Known evidence gap | A11 not found in the current workspace scan |
 | Not claimed | A11 completion, production readiness, model training completion |
-| Week status | Implemented as docs-first draft; screenshots and exact time log require owner confirmation |
+| Week status | Implemented as docs-first draft; optional screenshots can be added later |
 
 ## Evidence Source Note
 
@@ -101,16 +101,14 @@ AI2B focused on normalized URI/query and request-line evidence derived from Zeek
 
 ## Evidence Review Sequence
 
-The dates and durations below are estimated and must be confirmed before this page is published.
-
-| Activity | Date | Time spent | Work completed | Result | Issue / decision | Next step |
-| --- | --- | --- | --- | --- | --- | --- |
-| Dataset workspace review | 07/06/2026 | Estimated 4 hours | Reviewed the local dataset workspace and separated normal data, attack profiles, and AI-specific modeling folders | The dataset workspace was mapped around AI1, AI2A, and AI2B responsibilities | Avoided writing Week 8 as only a raw traffic collection page | Build the attack profile coverage matrix |
-| Normal and AI2A baseline review | 08/06/2026 | Estimated 4 hours | Reviewed the P01-P12 normal dataset summary and AI2A classifier dataset contract | Normal baseline and AI2A schema policy were identified | Keep row counts as evidence, but defer deeper QA interpretation to Week 9 | Review attack profile evidence |
-| Attack profile coverage review | 09/06/2026 | Estimated 5 hours | Checked A01-A10 attack profile folders, summaries, merged datasets, and QA/report artifacts | A01-A06 and A08-A10 had validated evidence; A07 was available through aggregate dataset evidence; A11 was not found | Do not claim A11 or overstate A07 profile-level status | Review AI2B/A12 artifacts |
-| HTTP semantic evidence review | 10/06/2026 | Estimated 5 hours | Reviewed A12 SQLi/XSS raw HTTP logs and AI2B dataset/report artifacts | A12 was confirmed as the HTTP semantic source for AI2B | Keep A12 separate from AI2A flow profile coverage | Review AI1 context |
-| AI1 and claim-boundary review | 11/06/2026 | Estimated 3.5 hours | Reviewed AI1 handoff, model card, feature manifest context, and known limitation | AI1 was documented as anomaly-detection context rather than Week 8 training output | Backend live/replay feature extraction remains a later integration item | Prepare Week 8 docs |
-| Evidence consolidation | 12/06/2026 | Estimated 4 hours | Built the Week 8 evidence index, source inventory, AI mapping, and claim boundary | Week 8 could be explained from docs and tables without screenshot placeholders | Public page remains draft until time log and optional screenshots are confirmed | Use Week 9 for deeper QA and model-readiness validation |
+| Activity | Date | Work completed | Result | Issue / decision | Next step |
+| --- | --- | --- | --- | --- | --- |
+| Dataset workspace review | 07/06/2026 | Reviewed the local dataset workspace and separated normal data, attack profiles, and AI-specific modeling folders | The dataset workspace was mapped around AI1, AI2A, and AI2B responsibilities | Avoided writing Week 8 as only a raw traffic collection page | Build the attack profile coverage matrix |
+| Normal and AI2A baseline review | 08/06/2026 | Reviewed the P01-P12 normal dataset summary and AI2A classifier dataset contract | Normal baseline and AI2A schema policy were identified | Keep row counts as evidence, but defer deeper QA interpretation to Week 9 | Review attack profile evidence |
+| Attack profile coverage review | 10/06/2026 | Checked A01-A10 attack profile folders, summaries, merged datasets, and QA/report artifacts | A01-A06 and A08-A10 had validated evidence; A07 was available through aggregate dataset evidence; A11 was not found | Do not claim A11 or overstate A07 profile-level status | Review AI2B/A12 artifacts |
+| HTTP semantic evidence review | 12/06/2026 | Reviewed A12 SQLi/XSS raw HTTP logs and AI2B dataset/report artifacts | A12 was confirmed as the HTTP semantic source for AI2B | Keep A12 separate from AI2A flow profile coverage | Review AI1 context |
+| AI1 and claim-boundary review | 13/06/2026 | Reviewed AI1 handoff, model card, feature manifest context, and known limitation | AI1 was documented as anomaly-detection context rather than Week 8 training output | Backend live/replay feature extraction remains a later integration item | Prepare Week 8 docs |
+| Evidence consolidation | 13/06/2026 | Built the Week 8 evidence index, source inventory, AI mapping, and claim boundary | Week 8 could be explained from docs and tables without screenshot placeholders | Optional screenshots can be added later if needed | Use Week 9 for deeper QA and model-readiness validation |
 
 ## Dataset Workspace Layout
 

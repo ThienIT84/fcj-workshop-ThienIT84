@@ -1,6 +1,6 @@
 ---
 title: "Week 2 - VPC Network Foundation & Segmentation"
-date: 2026-05-24
+date: 2026-04-27
 weight: 2
 chapter: false
 draft: false
@@ -21,7 +21,7 @@ pre: " <b> 1.2. </b> "
 | Internet access | Internet Gateway for public subnet routing |
 | Compute deployment | Deferred to Week 3 |
 | Operations tooling | Deferred to Week 4 |
-| Week status | VPC foundation implemented; time log and one route-association screenshot remain to be finalized |
+| Week status | VPC foundation implemented; one route-association screenshot remains to be finalized |
 
 ## Objective
 
@@ -37,12 +37,14 @@ The Week 2 VPC lab established the segmentation model that can later place publi
 
 ## Daily Worklog
 
-| Day | Date | Time spent | Work completed | Result | Issue / decision | Next step |
-| --- | --- | --- | --- | --- | --- | --- |
-| Day 1 | 24/05/2026 | Confirm before publishing | Reviewed the VPC requirements and planned the IPv4 CIDR layout | VPC address range and subnet ranges were defined | CIDR ranges needed to remain non-overlapping and easy to identify | Create the VPC and subnets |
-| Day 2 | 24/05/2026 | Confirm before publishing | Created the VPC and four subnets across two Availability Zones | Public/private subnet layout was established | Subnet names alone do not determine network behavior | Configure the Internet Gateway and public route table |
-| Day 3 | 24/05/2026 | Confirm before publishing | Attached the Internet Gateway and configured public routing | Public subnet routing through the Internet Gateway was validated | Internet Gateway attachment alone is not enough without route-table configuration | Review route-table associations |
-| Day 4 | 24/05/2026 | Confirm before publishing | Reviewed private routing and Security Group boundaries | Private network zones were separated from direct Internet Gateway routing | Security Groups control traffic permissions but do not make a subnet public or private | Continue with EC2 public/private compute in Week 3 |
+| Day | Date | Work completed | Result | Issue / decision | Next step |
+| --- | --- | --- | --- | --- | --- |
+| Day 1 | 27/04/2026 | Reviewed the VPC requirements and planned the IPv4 CIDR layout | VPC address range and subnet ranges were defined before resource creation | CIDR ranges needed to remain non-overlapping, readable, and easy to map to each network zone | Create the VPC and subnets |
+| Day 2 | 29/04/2026 | Created the VPC and subnets across two Availability Zones for public and private network zones | Public and private subnet layout was established across multiple Availability Zones | Subnet names alone do not determine whether a subnet is public or private | Configure the Internet Gateway and public route table |
+| Day 3 | 30/04/2026 | Attached the Internet Gateway and configured the public route table with an Internet route | Public subnet routing through the Internet Gateway was prepared and reviewed | Internet Gateway attachment alone is not enough; the subnet also needs the correct route-table association | Review route-table associations |
+| Day 4 | 02/05/2026 | Reviewed route-table associations, private routing behavior, and Security Group boundaries | Private network zones were separated from direct Internet Gateway routing | Security Groups control traffic permissions, but route tables determine whether a subnet has direct Internet access | Prepare EC2 public/private compute setup |
+| Day 5 | 02/05/2026 | Reviewed the final VPC foundation, captured selected evidence, and documented the public/private network design | Week 2 network foundation was ready for EC2, bastion, backend, and later database workloads | The Week 2 scope focused on network foundation only; compute deployment was deferred to Week 3 | Continue with EC2 public/private compute in Week 3 |
+
 
 ## Network Architecture Overview
 

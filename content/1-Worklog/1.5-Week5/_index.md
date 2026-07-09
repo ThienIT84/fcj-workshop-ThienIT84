@@ -1,6 +1,6 @@
 ---
 title: "Week 5 - RDS PostgreSQL Data Layer"
-date: 2026-05-28
+date: 2026-05-17
 weight: 5
 chapter: false
 draft: false
@@ -19,7 +19,7 @@ pre: " <b> 1.5. </b> "
 | Network model | Public EC2 client to private RDS PostgreSQL |
 | Database access model | RDS Security Group allows PostgreSQL `5432` from the EC2 Security Group |
 | Project output | `alerts` table with severity, message, and anomaly-score fields |
-| Week status | Implemented with selected public evidence; time estimate requires owner confirmation |
+| Week status | Implemented with selected public evidence |
 
 ## Evidence Source Note
 
@@ -79,13 +79,13 @@ The database is placed behind the VPC boundary and accessed through a controlled
 
 ## Daily Worklog
 
-| Activity | Date | Time spent | Work completed | Result | Issue / decision | Next step |
-| --- | --- | --- | --- | --- | --- | --- |
-| RDS architecture and network planning | 28/05/2026 | Estimated 3 hours | Reviewed RDS PostgreSQL use cases, planned a dedicated VPC, public/private subnet layout, DB subnet group, and EC2 client access path | RDS lab architecture was defined around private database placement | RDS should not be public; EC2 client can stay public for controlled lab access | Build network prerequisites |
-| VPC, subnet, and Security Group preparation | 29/05/2026 | Estimated 4 hours | Created the RDS lab VPC, prepared public/private subnets, created EC2 and RDS Security Groups, and configured PostgreSQL `5432` access from EC2-SG to RDS-SG | Network and access-control baseline was ready for RDS | Security Group references only work correctly within the same VPC | Create DB subnet group and RDS instance |
-| DB subnet group and RDS PostgreSQL deployment | 30/05/2026 | Estimated 4 hours | Created the DB subnet group with private subnets across two Availability Zones and deployed a cost-aware RDS PostgreSQL instance | RDS PostgreSQL became available with public access disabled | Disabled production-cost features that were not required for the lab | Prepare EC2 client and test database access |
-| EC2 client setup and connection troubleshooting | 31/05/2026 | Estimated 4.5 hours | SSHed into EC2, installed PostgreSQL client tools, tested `psql`, fixed timeout/authentication issues, and added `sslmode=require` | EC2 connected to RDS PostgreSQL over SSL | Timeout pointed to network/Security Group issues; no-encryption errors required SSL mode | Create SOC alert schema and run queries |
-| SOC alert schema, query validation, and documentation | 01/06/2026 | Estimated 4 hours | Created the `alerts` table, inserted sample SOC events, queried records by severity and anomaly score, captured final evidence, and documented lessons learned | RDS stored and returned SOC-style alert data successfully | FastAPI integration needs separate evidence before it can be claimed | Use S3/CloudFront next for static delivery and artifact storage |
+| Activity | Date | Work completed | Result | Issue / decision | Next step |
+| --- | --- | --- | --- | --- | --- |
+| RDS architecture and network planning | 17/05/2026 | Reviewed RDS PostgreSQL use cases, planned a dedicated VPC, public/private subnet layout, DB subnet group, and EC2 client access path | RDS lab architecture was defined around private database placement | RDS should not be public; EC2 client can stay public for controlled lab access | Build network prerequisites |
+| VPC, subnet, and Security Group preparation | 18/05/2026 | Created the RDS lab VPC, prepared public/private subnets, created EC2 and RDS Security Groups, and configured PostgreSQL `5432` access from EC2-SG to RDS-SG | Network and access-control baseline was ready for RDS | Security Group references only work correctly within the same VPC | Create DB subnet group and RDS instance |
+| DB subnet group and RDS PostgreSQL deployment | 20/05/2026 | Created the DB subnet group with private subnets across two Availability Zones and deployed a cost-aware RDS PostgreSQL instance | RDS PostgreSQL became available with public access disabled | Disabled production-cost features that were not required for the lab | Prepare EC2 client and test database access |
+| EC2 client setup and connection troubleshooting | 22/05/2026 | SSHed into EC2, installed PostgreSQL client tools, tested `psql`, fixed timeout/authentication issues, and added `sslmode=require` | EC2 connected to RDS PostgreSQL over SSL | Timeout pointed to network/Security Group issues; no-encryption errors required SSL mode | Create SOC alert schema and run queries |
+| SOC alert schema, query validation, and documentation | 23/05/2026 | Created the `alerts` table, inserted sample SOC events, queried records by severity and anomaly score, captured final evidence, and documented lessons learned | RDS stored and returned SOC-style alert data successfully | FastAPI integration needs separate evidence before it can be claimed | Use S3/CloudFront next for static delivery and artifact storage |
 
 ## Technical Implementation Summary
 

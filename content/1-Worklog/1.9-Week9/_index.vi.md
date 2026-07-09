@@ -1,6 +1,6 @@
 ---
 title: "Tuần 9 - Dataset QA AI, Model Readiness & Ranh giới Xác minh"
-date: 2026-06-13
+date: 2026-06-14
 weight: 9
 chapter: false
 draft: false
@@ -17,7 +17,7 @@ pre: " <b> 1.9. </b> "
 | Trạng thái AI2A | Reviewed classifier dataset QA và release-candidate evidence |
 | Trạng thái AI2B | Reviewed HTTP semantic dataset, freeze review và holdout boundary |
 | Đầu ra chính | QA matrix, readiness summary và validation boundary |
-| Trạng thái trong tuần | Triển khai dạng docs-first draft; ảnh chụp màn hình và time log chính xác cần chủ nhân xác nhận |
+| Trạng thái trong tuần | Triển khai dạng docs-first draft; ảnh chụp màn hình có thể được bổ sung sau nếu cần |
 
 ## Lưu ý về Nguồn Bằng chứng
 
@@ -68,14 +68,14 @@ AI1 artifact contract
 
 ## Nhật ký công việc hàng ngày
 
-| Hoạt động | Ngày | Thời lượng | Công việc đã hoàn thành | Kết quả | Vấn đề / Quyết định | Bước tiếp theo |
-| --- | --- | --- | --- | --- | --- | --- |
-| Review mức độ sẵn sàng AI1 | 13/06/2026 | Ước tính 3.5 giờ | Review AI1 handoff, model card, feature list, threshold policy, smoke artifact và giới hạn đã biết | AI1 có artifact contract phát hiện anomaly được ghi lại | Backend vẫn cần raw `conn.log` để AI1 feature extraction cho live/replay | Review AI2A dataset QA |
-| Review AI2A dataset QA | 14/06/2026 | Ước tính 5 giờ | Review classifier dataset report AI2A, QA report, class count, source row, run count, model feature và metadata bị loại trừ | AI2A dataset có 207,881 rows, 77 columns, 281 run, 53 model feature và duplicate UID 0 | Chất lượng dataset có thể giải thích được, nhưng giới hạn rare-class phải vẫn hiển thị | Review AI2A release candidate |
-| Review AI2A release candidate | 15/06/2026 | Ước tính 5 giờ | Review selected candidate, validation metric, threshold freeze, release gate check, per-class metric và no-collapse watch table | AI2A release candidate được chấp nhận với validation macro F1 0.835883 và weighted F1 0.985125 | Holdout và rare-class drop cần diễn giải cẩn thận | Review AI2B HTTP semantic evidence |
-| Review dataset và baseline AI2B | 16/06/2026 | Ước tính 5 giờ | Review AI2B HTTP semantic dataset summary, baseline report, shortcut sanity, endpoint-only baseline, parameter-only baseline và label-shuffle sanity | AI2B HTTP semantic dataset và baseline evidence có sẵn cho `NONE`, `SQLI` và `XSS` | Strong validation metric phải được trình bày với shortcut và holdout discipline | Review AI2B freeze/holdout boundary |
-| AI2B freeze và holdout boundary | 17/06/2026 | Ước tính 4.5 giờ | Review V1.4.9 freeze review và incomplete holdout summary | AI2B candidate được freeze, nhưng holdout attempt không được tính điểm vì protocol guard phát hiện contamination hoặc inventory mismatch trước khi prediction | Trình bày đây là validation discipline, không phải model prediction failure | Hợp nhất readiness matrix |
-| Hợp nhất bằng chứng | 18/06/2026 | Ước tính 3.5 giờ | Xây dựng QA summary nội bộ Tuần 9, screenshot checklist và validation boundary note | Tuần 9 sẵn sàng cho trang docs-first draft | Có thể thêm ảnh chụp màn hình công khai sau nếu cần | Chuyển Tuần 10 sang thiết kế API/backend/fusion |
+| Hoạt động | Ngày tháng | Công việc đã hoàn thành | Kết quả | Vấn đề / Quyết định | Bước tiếp theo |
+| --- | --- | --- | --- | --- | --- |
+| Review mức độ sẵn sàng AI1 | 14/06/2026 | Review AI1 handoff, model card, feature list, threshold policy, smoke artifact và giới hạn đã biết | AI1 có artifact contract phát hiện anomaly được ghi lại | Backend vẫn cần raw `conn.log` để AI1 feature extraction cho live/replay | Review AI2A dataset QA |
+| Review AI2A dataset QA | 15/06/2026 | Review classifier dataset report AI2A, QA report, class count, source row, run count, model feature và metadata bị loại trừ | AI2A dataset có 207,881 rows, 77 columns, 281 run, 53 model feature và duplicate UID 0 | Chất lượng dataset có thể giải thích được, nhưng giới hạn rare-class phải vẫn hiển thị | Review AI2A release candidate |
+| Review AI2A release candidate | 16/06/2026 | Review selected candidate, validation metric, threshold freeze, release gate check, per-class metric và no-collapse watch table | AI2A release candidate được chấp nhận với validation macro F1 0.835883 và weighted F1 0.985125 | Holdout và rare-class drop cần diễn giải cẩn thận | Review AI2B HTTP semantic evidence |
+| Review dataset và baseline AI2B | 18/06/2026 | Review AI2B HTTP semantic dataset summary, baseline report, shortcut sanity, endpoint-only baseline, parameter-only baseline và label-shuffle sanity | AI2B HTTP semantic dataset và baseline evidence có sẵn cho `NONE`, `SQLI` và `XSS` | Strong validation metric phải được trình bày với shortcut và holdout discipline | Review AI2B freeze/holdout boundary |
+| AI2B freeze và holdout boundary | 19/06/2026 | Review V1.4.9 freeze review và incomplete holdout summary | AI2B candidate được freeze, nhưng holdout attempt không được tính điểm vì protocol guard phát hiện contamination hoặc inventory mismatch trước khi prediction | Trình bày đây là validation discipline, không phải model prediction failure | Hợp nhất readiness matrix |
+| Hợp nhất bằng chứng | 21/06/2026 | Xây dựng QA summary nội bộ Tuần 9, screenshot checklist và validation boundary note | Tuần 9 sẵn sàng cho trang docs-first draft | Có thể thêm ảnh chụp màn hình công khai sau nếu cần | Chuyển Tuần 10 sang thiết kế API/backend/fusion |
 
 ## Tổng quan QA Dataset AI
 

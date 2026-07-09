@@ -1,6 +1,6 @@
 ---
 title: "Tuần 6 - Website Tĩnh S3, CloudFront & Vòng đời Đối tượng"
-date: 2026-05-29
+date: 2026-05-24
 weight: 6
 chapter: false
 draft: false
@@ -18,7 +18,7 @@ pre: " <b> 1.6. </b> "
 | Mô hình lưu trữ | Đối tượng thô riêng tư (private raw objects) cộng với các file website tĩnh được chọn lọc công khai |
 | Mô hình phân phối | CloudFront distribution sử dụng S3 static website endpoint làm origin |
 | Trọng tâm dữ liệu | Tập dữ liệu Zeek-style thô, file website tĩnh, các đối tượng demo versioning |
-| Trạng thái trong tuần | Đã triển khai với bằng chứng công khai được chọn lọc; ước tính thời gian cần chủ nhân xác nhận |
+| Trạng thái trong tuần | Đã triển khai với bằng chứng công khai được chọn lọc |
 
 ## Lưu ý về Nguồn Bằng chứng
 
@@ -76,13 +76,13 @@ Kiến trúc này chủ động tách biệt các project artifacts riêng tư k
 
 ## Nhật ký công việc hàng ngày
 
-| Hoạt động | Ngày | Thời lượng | Công việc đã hoàn thành | Kết quả | Vấn đề / Quyết định | Bước tiếp theo |
-| --- | --- | --- | --- | --- | --- | --- |
-| Chuẩn bị đường cơ sở S3 bucket | 29/05/2026 | Ước tính 3 giờ | Tạo S3 lab bucket trong `ap-southeast-1`, xem xét đặt tên bucket, object ownership, Block Public Access, trạng thái mặc định versioning, tags và mã hóa SSE-S3 mặc định | Đường cơ sở S3 bucket riêng tư đã được chuẩn bị cho project artifacts | Giữ bucket riêng tư theo mặc định trước khi công khai bất kỳ file website nào | Tải lên các đối tượng theo phong cách dự án |
-| Tải lên đối tượng thô và kiểm tra truy cập riêng tư | 30/05/2026 | Ước tính 3.5 giờ | Tạo prefix logic `raw/zeek/`, tải lên `conn_dataset.csv`, và mở URL đối tượng từ trình duyệt | Đối tượng dataset thô tồn tại trên S3 và truy cập trực tiếp qua trình duyệt trả về `AccessDenied` | Log bảo mật và dataset không nên là public web asset | Chỉ bật website hosting cho các file được chọn lọc |
-| Hosting website tĩnh và bucket policy | 31/05/2026 | Ước tính 4 giờ | Tạo `index.html` và `error.html`, bật S3 static website hosting, tắt Block Public Access cấp bucket cho lab, và thêm selective bucket policy | S3 website endpoint phục vụ trang FCAJ tĩnh thành công | Policy chỉ cho phép truy cập file website, không phải toàn bộ bucket prefix | Thêm CloudFront trước website endpoint |
-| Xác minh phân phối CloudFront | 01/06/2026 | Ước tính 4 giờ | Tạo CloudFront distribution, cấu hình S3 static website endpoint làm origin, sử dụng chứng chỉ CloudFront mặc định, và kiểm thử CloudFront domain | Website truy cập được qua CloudFront URL | Origin dùng HTTP vì S3 website endpoints không hỗ trợ HTTPS đến origin | Thêm versioning và lifecycle management |
-| Versioning, lifecycle và tổ chức đối tượng | 02/06/2026 | Ước tính 4 giờ | Bật S3 Versioning, tải lên nhiều phiên bản của đối tượng demo, xem xét hành vi delete-marker, tạo lifecycle rule cho `versioning-demo/`, và ghi lại hành vi dọn dẹp | Lịch sử đối tượng và lifecycle cleanup đã được xác minh cho lab prefix | Lifecycle rules không thực thi ngay lập tức; chúng chạy bất đồng bộ dựa trên tuổi đời và điều kiện | Dùng Tuần 7 để chuyển từ cloud storage sang kiến trúc IDS telemetry cục bộ |
+| Hoạt động | Ngày tháng | Công việc đã hoàn thành | Kết quả | Vấn đề / Quyết định | Bước tiếp theo |
+| --- | --- | --- | --- | --- | --- |
+| Chuẩn bị đường cơ sở S3 bucket | 24/05/2026 | Tạo S3 lab bucket trong `ap-southeast-1`, xem xét đặt tên bucket, object ownership, Block Public Access, trạng thái mặc định versioning, tags và mã hóa SSE-S3 mặc định | Đường cơ sở S3 bucket riêng tư đã được chuẩn bị cho project artifacts | Giữ bucket riêng tư theo mặc định trước khi công khai bất kỳ file website nào | Tải lên các đối tượng theo phong cách dự án |
+| Tải lên đối tượng thô và kiểm tra truy cập riêng tư | 25/05/2026 | Tạo prefix logic `raw/zeek/`, tải lên `conn_dataset.csv`, và mở URL đối tượng từ trình duyệt | Đối tượng dataset thô tồn tại trên S3 và truy cập trực tiếp qua trình duyệt trả về `AccessDenied` | Log bảo mật và dataset không nên là public web asset | Chỉ bật website hosting cho các file được chọn lọc |
+| Hosting website tĩnh và bucket policy | 27/05/2026 | Tạo `index.html` và `error.html`, bật S3 static website hosting, tắt Block Public Access cấp bucket cho lab, và thêm selective bucket policy | S3 website endpoint phục vụ trang FCAJ tĩnh thành công | Policy chỉ cho phép truy cập file website, không phải toàn bộ bucket prefix | Thêm CloudFront trước website endpoint |
+| Xác minh phân phối CloudFront | 29/05/2026 | Tạo CloudFront distribution, cấu hình S3 static website endpoint làm origin, sử dụng chứng chỉ CloudFront mặc định, và kiểm thử CloudFront domain | Website truy cập được qua CloudFront URL | Origin dùng HTTP vì S3 website endpoints không hỗ trợ HTTPS đến origin | Thêm versioning và lifecycle management |
+| Versioning, lifecycle và tổ chức đối tượng | 31/05/2026 | Bật S3 Versioning, tải lên nhiều phiên bản của đối tượng demo, xem xét hành vi delete-marker, tạo lifecycle rule cho `versioning-demo/`, và ghi lại hành vi dọn dẹp | Lịch sử đối tượng và lifecycle cleanup đã được xác minh cho lab prefix | Lifecycle rules không thực thi ngay lập tức; chúng chạy bất đồng bộ dựa trên tuổi đời và điều kiện | Dùng Tuần 7 để chuyển từ cloud storage sang kiến trúc IDS telemetry cục bộ |
 
 ## Tóm tắt Triển khai Kỹ thuật
 

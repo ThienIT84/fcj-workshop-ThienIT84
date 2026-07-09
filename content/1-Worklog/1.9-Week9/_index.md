@@ -1,6 +1,6 @@
 ---
 title: "Week 9 - AI Dataset QA, Model Readiness & Validation Boundaries"
-date: 2026-06-13
+date: 2026-06-14
 weight: 9
 chapter: false
 draft: false
@@ -17,7 +17,7 @@ pre: " <b> 1.9. </b> "
 | AI2A status | Classifier dataset QA and release-candidate evidence reviewed |
 | AI2B status | HTTP semantic dataset, freeze review, and holdout boundary reviewed |
 | Main output | QA matrix, readiness summary, and validation boundary |
-| Week status | Implemented as docs-first draft; screenshots and exact time log require owner confirmation |
+| Week status | Implemented as docs-first draft; optional screenshots can be added later |
 
 ## Evidence Source Note
 
@@ -68,14 +68,14 @@ AI1 artifact contract
 
 ## Daily Worklog
 
-| Activity | Date | Time spent | Work completed | Result | Issue / decision | Next step |
-| --- | --- | --- | --- | --- | --- | --- |
-| AI1 readiness review | 13/06/2026 | Estimated 3.5 hours | Reviewed AI1 handoff, model card, feature list, threshold policy, smoke artifacts, and known limitation | AI1 has a documented anomaly-detection artifact contract | Backend still needs raw `conn.log` to AI1 feature extraction for live/replay use | Review AI2A dataset QA |
-| AI2A dataset QA review | 14/06/2026 | Estimated 5 hours | Reviewed AI2A classifier dataset report, QA report, class counts, source rows, run count, model features, and excluded metadata | AI2A dataset has 207,881 rows, 77 columns, 281 runs, 53 model features, and duplicate UID 0 | Dataset quality can be explained, but rare-class limitations must remain visible | Review AI2A release candidate |
-| AI2A release-candidate review | 15/06/2026 | Estimated 5 hours | Reviewed selected candidate, validation metrics, threshold freeze, release gate checks, per-class metrics, and no-collapse watch table | AI2A release candidate was accepted with validation macro F1 0.835883 and weighted F1 0.985125 | Holdout and rare-class drops require careful interpretation | Review AI2B HTTP semantic evidence |
-| AI2B dataset and baseline review | 16/06/2026 | Estimated 5 hours | Reviewed AI2B HTTP semantic dataset summary, baseline report, shortcut sanity, endpoint-only baseline, parameter-only baseline, and label-shuffle sanity | AI2B HTTP semantic dataset and baseline evidence were available for `NONE`, `SQLI`, and `XSS` | Strong validation metrics must be presented with shortcut and holdout discipline | Review AI2B freeze/holdout boundary |
-| AI2B freeze and holdout boundary | 17/06/2026 | Estimated 4.5 hours | Reviewed V1.4.9 freeze review and incomplete holdout summary | AI2B candidate was frozen, but holdout attempts were not scored because protocol guards found contamination or inventory mismatch before prediction | Present this as validation discipline, not as a model prediction failure | Consolidate readiness matrix |
-| Evidence consolidation | 18/06/2026 | Estimated 3.5 hours | Built Week 9 internal QA summaries, screenshot checklist, and validation boundary notes | Week 9 was ready for a docs-first draft page | Public screenshots can be added later if needed | Move Week 10 toward API/backend/fusion design |
+| Activity | Date | Work completed | Result | Issue / decision | Next step |
+| --- | --- | --- | --- | --- | --- |
+| AI1 readiness review | 14/06/2026 | Reviewed AI1 handoff, model card, feature list, threshold policy, smoke artifacts, and known limitation | AI1 has a documented anomaly-detection artifact contract | Backend still needs raw `conn.log` to AI1 feature extraction for live/replay use | Review AI2A dataset QA |
+| AI2A dataset QA review | 15/06/2026 | Reviewed AI2A classifier dataset report, QA report, class counts, source rows, run count, model features, and excluded metadata | AI2A dataset has 207,881 rows, 77 columns, 281 runs, 53 model features, and duplicate UID 0 | Dataset quality can be explained, but rare-class limitations must remain visible | Review AI2A release candidate |
+| AI2A release-candidate review | 16/06/2026 | Reviewed selected candidate, validation metrics, threshold freeze, release gate checks, per-class metrics, and no-collapse watch table | AI2A release candidate was accepted with validation macro F1 0.835883 and weighted F1 0.985125 | Holdout and rare-class drops require careful interpretation | Review AI2B HTTP semantic evidence |
+| AI2B dataset and baseline review | 18/06/2026 | Reviewed AI2B HTTP semantic dataset summary, baseline report, shortcut sanity, endpoint-only baseline, parameter-only baseline, and label-shuffle sanity | AI2B HTTP semantic dataset and baseline evidence were available for `NONE`, `SQLI`, and `XSS` | Strong validation metrics must be presented with shortcut and holdout discipline | Review AI2B freeze/holdout boundary |
+| AI2B freeze and holdout boundary | 19/06/2026 | Reviewed V1.4.9 freeze review and incomplete holdout summary | AI2B candidate was frozen, but holdout attempts were not scored because protocol guards found contamination or inventory mismatch before prediction | Present this as validation discipline, not as a model prediction failure | Consolidate readiness matrix |
+| Evidence consolidation | 21/06/2026 | Built Week 9 internal QA summaries, screenshot checklist, and validation boundary notes | Week 9 was ready for a docs-first draft page | Public screenshots can be added later if needed | Move Week 10 toward API/backend/fusion design |
 
 ## AI Dataset QA Overview
 

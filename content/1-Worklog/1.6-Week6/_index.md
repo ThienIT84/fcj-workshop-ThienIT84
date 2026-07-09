@@ -1,6 +1,6 @@
 ---
 title: "Week 6 - S3 Static Website, CloudFront Delivery & Object Lifecycle"
-date: 2026-05-29
+date: 2026-05-24
 weight: 6
 chapter: false
 draft: false
@@ -18,7 +18,7 @@ pre: " <b> 1.6. </b> "
 | Storage model | Private raw objects plus selected public website files |
 | Delivery model | CloudFront distribution using the S3 static website endpoint as origin |
 | Data focus | Zeek-style raw dataset, static website files, versioning demo objects |
-| Week status | Implemented with selected public evidence; time estimates require owner confirmation |
+| Week status | Implemented with selected public evidence |
 
 ## Evidence Source Note
 
@@ -76,13 +76,13 @@ The architecture intentionally separates private project artifacts from static w
 
 ## Daily Worklog
 
-| Activity | Date | Time spent | Work completed | Result | Issue / decision | Next step |
-| --- | --- | --- | --- | --- | --- | --- |
-| S3 bucket baseline | 29/05/2026 | Estimated 3 hours | Created the S3 lab bucket in `ap-southeast-1`, reviewed bucket naming, object ownership, Block Public Access, versioning default state, tags, and default SSE-S3 encryption | A private S3 bucket baseline was prepared for project artifacts | Keep the bucket private by default before publishing any website file | Upload project-style objects |
-| Raw object upload and private access test | 30/05/2026 | Estimated 3.5 hours | Created the logical prefix `raw/zeek/`, uploaded `conn_dataset.csv`, and opened the object URL from the browser | The raw dataset object existed in S3 and direct browser access returned `AccessDenied` | Security logs and datasets should not be public website assets | Enable website hosting for selected files only |
-| Static website hosting and bucket policy | 31/05/2026 | Estimated 4 hours | Created `index.html` and `error.html`, enabled S3 static website hosting, disabled bucket-level Block Public Access for the lab, and added a selective bucket policy | The S3 website endpoint served the static FCAJ page | The policy allowed only website files, not the entire bucket prefix | Add CloudFront in front of the website endpoint |
-| CloudFront delivery validation | 01/06/2026 | Estimated 4 hours | Created a CloudFront distribution, configured the S3 static website endpoint as the origin, used the default CloudFront certificate, and tested the CloudFront domain | The website was reachable through a CloudFront URL | The origin used HTTP because S3 website endpoints do not support HTTPS to origin | Add versioning and lifecycle management |
-| Versioning, lifecycle, and object organization | 02/06/2026 | Estimated 4 hours | Enabled S3 Versioning, uploaded multiple versions of a demo object, reviewed delete-marker behavior, created a lifecycle rule for `versioning-demo/`, and documented cleanup behavior | Object history and lifecycle cleanup were validated for the lab prefix | Lifecycle rules do not execute immediately; they run asynchronously based on age and conditions | Use Week 7 to move from cloud storage to local IDS telemetry architecture |
+| Activity | Date | Work completed | Result | Issue / decision | Next step |
+| --- | --- | --- | --- | --- | --- |
+| S3 bucket baseline | 24/05/2026 | Created the S3 lab bucket in `ap-southeast-1`, reviewed bucket naming, object ownership, Block Public Access, versioning default state, tags, and default SSE-S3 encryption | A private S3 bucket baseline was prepared for project artifacts | Keep the bucket private by default before publishing any website file | Upload project-style objects |
+| Raw object upload and private access test | 25/05/2026 | Created the logical prefix `raw/zeek/`, uploaded `conn_dataset.csv`, and opened the object URL from the browser | The raw dataset object existed in S3 and direct browser access returned `AccessDenied` | Security logs and datasets should not be public website assets | Enable website hosting for selected files only |
+| Static website hosting and bucket policy | 27/05/2026 | Created `index.html` and `error.html`, enabled S3 static website hosting, disabled bucket-level Block Public Access for the lab, and added a selective bucket policy | The S3 website endpoint served the static FCAJ page | The policy allowed only website files, not the entire bucket prefix | Add CloudFront in front of the website endpoint |
+| CloudFront delivery validation | 29/05/2026 | Created a CloudFront distribution, configured the S3 static website endpoint as the origin, used the default CloudFront certificate, and tested the CloudFront domain | The website was reachable through a CloudFront URL | The origin used HTTP because S3 website endpoints do not support HTTPS to origin | Add versioning and lifecycle management |
+| Versioning, lifecycle, and object organization | 31/05/2026 | Enabled S3 Versioning, uploaded multiple versions of a demo object, reviewed delete-marker behavior, created a lifecycle rule for `versioning-demo/`, and documented cleanup behavior | Object history and lifecycle cleanup were validated for the lab prefix | Lifecycle rules do not execute immediately; they run asynchronously based on age and conditions | Use Week 7 to move from cloud storage to local IDS telemetry architecture |
 
 ## Technical Implementation Summary
 

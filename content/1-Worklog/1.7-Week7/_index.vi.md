@@ -1,6 +1,6 @@
 ---
 title: "Tuần 7 - Phân đoạn Mạng IDS Cục bộ & Xác minh Zeek Telemetry"
-date: 2026-06-03
+date: 2026-05-31
 weight: 7
 chapter: false
 draft: false
@@ -19,7 +19,7 @@ pre: " <b> 1.7. </b> "
 | Máy telemetry | Zeek sensor trên LAN |
 | Bằng chứng chính | Quy tắc/log pfSense, kiểm thử Kali-đến-Victim, khả năng quan sát gói tin Zeek, `conn.log`, `http.log`, xuất dataset |
 | Kibana visualization | Hoãn lại |
-| Trạng thái trong tuần | Đã triển khai từ ghi chú lab cục bộ; xác minh lại bằng chứng hoàn tất; ước tính thời gian cần chủ nhân xác nhận |
+| Trạng thái trong tuần | Đã triển khai từ ghi chú lab cục bộ; xác minh lại bằng chứng hoàn tất |
 
 ## Lưu ý Xác minh lại Bằng chứng
 
@@ -98,13 +98,13 @@ Kali 10.10.10.10
 
 ## Nhật ký công việc hàng ngày
 
-| Hoạt động | Ngày | Thời lượng | Công việc đã hoàn thành | Kết quả | Vấn đề / Quyết định | Bước tiếp theo |
-| --- | --- | --- | --- | --- | --- | --- |
-| Xem xét topology lab IDS cục bộ | 03/06/2026 | Ước tính 3 giờ | Xem xét topology VM pfSense, Kali, Victim và Zeek, ghi lại mô hình địa chỉ DMZ/LAN | Mô hình phân đoạn lab được định nghĩa xung quanh Kali trong OPT1 và Victim/Zeek trong LAN | Giữ IP lab riêng tư hiển thị vì chúng giải thích bằng chứng | Xác minh các interface pfSense |
-| Truy cập pfSense và xem xét quy tắc | 04/06/2026 | Ước tính 4 giờ | Khôi phục quyền truy cập WebGUI pfSense, xác nhận interface, xác định rằng quy tắc troubleshooting `OPT1 net -> Any` quá rộng, và thay thế bằng quy tắc host-to-host | Kali bị giới hạn chỉ đến mục tiêu Victim thay vì truy cập LAN không hạn chế | WebGUI dùng HTTP port 80 trong lab; ảnh chụp màn hình công khai đã được cắt để bỏ thanh cảnh báo trình duyệt | Xác minh các đường traffic được phép và bị chặn |
-| Xác minh kết nối Victim và Kali | 05/06/2026 | Ước tính 4 giờ | Xác nhận IP/gateway của Victim, trạng thái Apache và SSH, route của Kali đến Victim, ICMP, HTTP response và kết quả Nmap service | Kali có thể đến Victim HTTP và SSH qua pfSense | Dịch vụ Victim là mục tiêu lab, không phải exposure production | Xác minh khả năng quan sát của Zeek |
-| Xác minh khả năng quan sát và log Zeek | 06/06/2026 | Ước tính 4 giờ | Dùng `tcpdump` trên Zeek VM trong khi Kali tạo traffic, kiểm tra runtime Zeek, kiểm tra `conn.log`, kiểm tra `http.log`, và tương quan bản ghi bằng Zeek UID | Zeek thấy traffic Kali-đến-Victim và tạo ra metadata kết nối/ứng dụng | Chạy Zeek chưa đủ; khả năng quan sát gói tin và nội dung log phải được kiểm tra | Xuất telemetry thành dataset có cấu trúc |
-| Xác minh lại bằng chứng và xuất dataset | 01/07/2026 | Ước tính 4.5 giờ | Thu thập lại ảnh chụp màn hình Tuần 7, xem xét bằng chứng pass/default-deny của pfSense, xuất CSV dataset có cấu trúc, kiểm tra shape, cột và phân phối nhãn của dataset | Bằng chứng Tuần 7 được hợp nhất thành ảnh chụp màn hình an toàn để công khai | Kibana không được khôi phục để chụp ảnh màn hình và vẫn được hoãn lại | Dùng Tuần 8 cho các traffic campaign và event diary |
+| Hoạt động | Ngày tháng | Công việc đã hoàn thành | Kết quả | Vấn đề / Quyết định | Bước tiếp theo |
+| --- | --- | --- | --- | --- | --- |
+| Xem xét topology lab IDS cục bộ | 31/05/2026 | Xem xét topology VM pfSense, Kali, Victim và Zeek, ghi lại mô hình địa chỉ DMZ/LAN | Mô hình phân đoạn lab được định nghĩa xung quanh Kali trong OPT1 và Victim/Zeek trong LAN | Giữ IP lab riêng tư hiển thị vì chúng giải thích bằng chứng | Xác minh các interface pfSense |
+| Truy cập pfSense và xem xét quy tắc | 02/06/2026 | Khôi phục quyền truy cập WebGUI pfSense, xác nhận interface, xác định rằng quy tắc troubleshooting `OPT1 net -> Any` quá rộng, và thay thế bằng quy tắc host-to-host | Kali bị giới hạn chỉ đến mục tiêu Victim thay vì truy cập LAN không hạn chế | WebGUI dùng HTTP port 80 trong lab; ảnh chụp màn hình công khai đã được cắt để bỏ thanh cảnh báo trình duyệt | Xác minh các đường traffic được phép và bị chặn |
+| Xác minh kết nối Victim và Kali | 03/06/2026 | Xác nhận IP/gateway của Victim, trạng thái Apache và SSH, route của Kali đến Victim, ICMP, HTTP response và kết quả Nmap service | Kali có thể đến Victim HTTP và SSH qua pfSense | Dịch vụ Victim là mục tiêu lab, không phải exposure production | Xác minh khả năng quan sát của Zeek |
+| Xác minh khả năng quan sát và log Zeek | 05/06/2026 | Dùng `tcpdump` trên Zeek VM trong khi Kali tạo traffic, kiểm tra runtime Zeek, kiểm tra `conn.log`, kiểm tra `http.log`, và tương quan bản ghi bằng Zeek UID | Zeek thấy traffic Kali-đến-Victim và tạo ra metadata kết nối/ứng dụng | Chạy Zeek chưa đủ; khả năng quan sát gói tin và nội dung log phải được kiểm tra | Xuất telemetry thành dataset có cấu trúc |
+| Xác minh lại bằng chứng và xuất dataset | 07/06/2026 | Thu thập lại ảnh chụp màn hình Tuần 7, xem xét bằng chứng pass/default-deny của pfSense, xuất CSV dataset có cấu trúc, kiểm tra shape, cột và phân phối nhãn của dataset | Bằng chứng Tuần 7 được hợp nhất thành ảnh chụp màn hình an toàn để công khai | Kibana không được khôi phục để chụp ảnh màn hình và vẫn được hoãn lại | Dùng Tuần 8 cho các traffic campaign và event diary |
 
 ## Tóm tắt Triển khai Kỹ thuật
 

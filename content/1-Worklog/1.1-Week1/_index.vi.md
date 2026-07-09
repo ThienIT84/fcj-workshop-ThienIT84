@@ -1,6 +1,6 @@
 ---
 title: "Tuần 1 - Bảo mật Tài khoản AWS & Đường cơ sở Truy cập IAM"
-date: 2026-04-17
+date: 2026-04-20
 weight: 1
 chapter: false
 draft: false
@@ -16,8 +16,8 @@ pre: " <b> 1.1. </b> "
 | Đầu ra chính | Bảo vệ Root, người dùng IAM quản trị (admin IAM user), các nhóm IAM, và người dùng cho các thành viên |
 | Region chính | `ap-southeast-1` - Asia Pacific (Singapore) |
 | Mô hình tài khoản | Tài khoản AWS độc lập (Standalone AWS account) |
-| Ngày bắt đầu | 17/04/2026 |
-| Ngày hoàn thành | 21/04/2026 |
+| Ngày bắt đầu | 20/04/2026 |
+| Ngày hoàn thành | 26/04/2026 |
 | Trạng thái Migration | Chưa bắt đầu |
 | Trạng thái trong tuần | Đã hoàn thành triển khai; đã thêm các bằng chứng công khai được chọn lọc |
 
@@ -35,13 +35,13 @@ Trong worklog này, **lightweight landing zone** (landing zone gọn nhẹ) có 
 
 ## Nhật ký công việc hàng ngày
 
-| Ngày | Thời gian | Thời lượng | Công việc đã hoàn thành | Kết quả | Vấn đề / Quyết định | Bước tiếp theo |
-| --- | --- | --- | --- | --- | --- | --- |
-| Ngày 1 | 17/04/2026 | 2 giờ | Kiểm tra bảo mật tài khoản root, trạng thái MFA của root, trạng thái access-key của root, credit tài khoản và chọn Region chính | Việc bảo vệ tài khoản root và các ràng buộc của tài khoản đã được nắm rõ trước khi tạo tài nguyên dự án | Root không nên được sử dụng cho công việc hàng ngày; `ap-southeast-1` được chọn làm Region chính | Tạo một IAM identity (định danh IAM) quản trị |
-| Ngày 2 | 18/04/2026 | 2.5 giờ | Cấu hình account alias/luồng đăng nhập IAM, tạo `thien-admin`, và chuẩn bị nhóm `FCAJ-Admins` | Công việc quản trị hàng ngày có thể được tách biệt khỏi người dùng root | Việc quản trị nên sử dụng một định danh IAM thay vì dùng chung thông tin đăng nhập root | Thiết kế các nhóm IAM dựa trên vai trò cho team |
-| Ngày 3 | 19/04/2026 | 2 giờ | Thiết kế các nhóm IAM, tạo các nhóm cho builder, và cấu hình chính sách mật khẩu tài khoản (password policy) | Một mô hình truy cập dựa trên nhóm đã được chuẩn bị cho các trách nhiệm liên quan đến cloud, backend, AI và frontend | Các chính sách bắt buộc dùng MFA (Forced-MFA) và tự phục vụ MFA (self-service MFA) được hoãn lại để giữ cho Tuần 1 mang tính thực tế và dễ dàng | Thêm các quyền truy cập chung dành cho giai đoạn học tập |
-| Ngày 4 | 20/04/2026 | 1.5 giờ | Tạo nhóm `FCAJ-Base-Users` và gán quyền `ViewOnlyAccess` được quản lý bởi AWS | Các thành viên có thể kiểm tra tài nguyên AWS trong giai đoạn học tập mà không có quyền triển khai (deployment permissions) | `ViewOnlyAccess` là quyền chỉ đọc (view-only) rộng rãi dành cho việc học tập, không phải là mô hình least-privilege (đặc quyền tối thiểu) cuối cùng | Tạo các người dùng IAM cho từng thành viên và gán vào các nhóm |
-| Ngày 5 | 21/04/2026 | 2 giờ | Tạo người dùng IAM cho thành viên, gán tư cách thành viên nhóm, và tránh tạo access keys cho những người dùng chỉ truy cập Console | Quyền truy cập của nhóm đã được chuẩn bị thông qua các định danh cá nhân thay vì chia sẻ chung thông tin đăng nhập | Truy cập Console là đủ cho giai đoạn học tập, vì vậy không có access keys dài hạn nào được tạo cho các người dùng thành viên | Chuyển sang nền tảng VPC trong Tuần 2 |
+| Ngày | Ngày tháng | Công việc đã hoàn thành | Kết quả | Vấn đề / Quyết định | Bước tiếp theo |
+| --- | --- | --- | --- | --- | --- |
+| Ngày 1 | 20/04/2026 | Kiểm tra bảo mật tài khoản root, trạng thái MFA của root, trạng thái access-key của root, credit tài khoản và chọn Region chính | Việc bảo vệ tài khoản root và các ràng buộc của tài khoản đã được nắm rõ trước khi tạo tài nguyên dự án | Root không nên được sử dụng cho công việc hàng ngày; `ap-southeast-1` được chọn làm Region chính | Tạo một IAM identity (định danh IAM) quản trị |
+| Ngày 2 | 21/04/2026 | Cấu hình account alias/luồng đăng nhập IAM, tạo `thien-admin`, và chuẩn bị nhóm `FCAJ-Admins` | Công việc quản trị hàng ngày có thể được tách biệt khỏi người dùng root | Việc quản trị nên sử dụng một định danh IAM thay vì dùng chung thông tin đăng nhập root | Thiết kế các nhóm IAM dựa trên vai trò cho team |
+| Ngày 3 | 23/04/2026 | Thiết kế các nhóm IAM, tạo các nhóm cho builder, và cấu hình chính sách mật khẩu tài khoản (password policy) | Một mô hình truy cập dựa trên nhóm đã được chuẩn bị cho các trách nhiệm liên quan đến cloud, backend, AI và frontend | Các chính sách bắt buộc dùng MFA (Forced-MFA) và tự phục vụ MFA (self-service MFA) được hoãn lại để giữ cho Tuần 1 mang tính thực tế và dễ dàng | Thêm các quyền truy cập chung dành cho giai đoạn học tập |
+| Ngày 4 | 24/04/2026 | Tạo nhóm `FCAJ-Base-Users` và gán quyền `ViewOnlyAccess` được quản lý bởi AWS | Các thành viên có thể kiểm tra tài nguyên AWS trong giai đoạn học tập mà không có quyền triển khai (deployment permissions) | `ViewOnlyAccess` là quyền chỉ đọc (view-only) rộng rãi dành cho việc học tập, không phải là mô hình least-privilege (đặc quyền tối thiểu) cuối cùng | Tạo các người dùng IAM cho từng thành viên và gán vào các nhóm |
+| Ngày 5 | 26/04/2026 | Tạo người dùng IAM cho thành viên, gán tư cách thành viên nhóm, và tránh tạo access keys cho những người dùng chỉ truy cập Console | Quyền truy cập của nhóm đã được chuẩn bị thông qua các định danh cá nhân thay vì chia sẻ chung thông tin đăng nhập | Truy cập Console là đủ cho giai đoạn học tập, vì vậy không có access keys dài hạn nào được tạo cho các người dùng thành viên | Chuyển sang nền tảng VPC trong Tuần 2 |
 
 ## Tóm tắt Triển khai Kỹ thuật
 

@@ -19,7 +19,7 @@ pre: " <b> 1.8. </b> "
 | Phủ sóng attack chính | A01–A06 và A08–A10 artifact-backed; A07 aggregate-only; A12 HTTP semantic evidence reviewed |
 | Khoảng thiếu bằng chứng | A11 không tìm thấy trong lần quét workspace hiện tại |
 | Không khẳng định | Hoàn thành A11, sẵn sàng production, hoàn thành training model |
-| Trạng thái trong tuần | Triển khai dạng docs-first draft; ảnh chụp màn hình và time log chính xác cần chủ nhân xác nhận |
+| Trạng thái trong tuần | Triển khai dạng docs-first draft; ảnh chụp màn hình có thể được bổ sung sau nếu cần |
 
 ## Lưu ý về Nguồn Bằng chứng
 
@@ -101,16 +101,14 @@ AI2B tập trung vào normalized URI/query và request-line evidence từ Zeek H
 
 ## Trình tự Xem xét Bằng chứng
 
-Các ngày và thời lượng dưới đây là ước tính và phải được xác nhận trước khi xuất bản trang này.
-
-| Hoạt động | Ngày | Thời lượng | Công việc đã hoàn thành | Kết quả | Vấn đề / Quyết định | Bước tiếp theo |
-| --- | --- | --- | --- | --- | --- | --- |
-| Review workspace dataset | 07/06/2026 | Ước tính 4 giờ | Review workspace dataset cục bộ và tách biệt dữ liệu bình thường, attack profile và các folder modeling dành riêng cho từng AI | Workspace dataset được ánh xạ xung quanh trách nhiệm của AI1, AI2A và AI2B | Tránh viết Tuần 8 chỉ như một trang thu thập raw traffic | Xây dựng attack profile coverage matrix |
-| Review baseline normal và AI2A | 08/06/2026 | Ước tính 4 giờ | Review tóm tắt dataset normal P01–P12 và contract dataset classifier AI2A | Xác định đường cơ sở normal và chính sách schema AI2A | Giữ row count làm bằng chứng, hoãn diễn giải QA sâu hơn sang Tuần 9 | Review bằng chứng attack profile |
-| Review coverage attack profile | 09/06/2026 | Ước tính 5 giờ | Kiểm tra folder, summary, merged dataset, QA/report artifact của attack profile A01–A10 | A01–A06 và A08–A10 có bằng chứng artifact-backed; A07 có trong aggregate dataset evidence; A11 không tìm thấy | Không khẳng định A11 hoặc cường điệu trạng thái profile-level của A07 | Review artifact AI2B/A12 |
-| Review bằng chứng HTTP semantic | 10/06/2026 | Ước tính 5 giờ | Review raw HTTP log SQLi/XSS của A12 và artifact dataset/report của AI2B | A12 được xác nhận là nguồn HTTP semantic cho AI2B | Giữ A12 tách biệt khỏi coverage flow profile AI2A | Review context AI1 |
-| Review AI1 và ranh giới claim | 11/06/2026 | Ước tính 3.5 giờ | Review handoff AI1, model card, feature manifest context và giới hạn đã biết | AI1 được ghi lại như anomaly-detection context thay vì training output Tuần 8 | Trích xuất feature live/replay từ backend vẫn là hạng mục tích hợp sau | Chuẩn bị docs Tuần 8 |
-| Hợp nhất bằng chứng | 12/06/2026 | Ước tính 4 giờ | Xây dựng evidence index, source inventory, AI mapping và claim boundary Tuần 8 | Tuần 8 có thể được giải thích từ docs và bảng mà không cần screenshot placeholder | Trang công khai vẫn là draft cho đến khi time log và screenshot tùy chọn được xác nhận | Dùng Tuần 9 cho QA sâu hơn và xác minh model-readiness |
+| Hoạt động | Ngày tháng | Công việc đã hoàn thành | Kết quả | Vấn đề / Quyết định | Bước tiếp theo |
+| --- | --- | --- | --- | --- | --- |
+| Review workspace dataset | 07/06/2026 | Review workspace dataset cục bộ và tách biệt dữ liệu bình thường, attack profile và các folder modeling dành riêng cho từng AI | Workspace dataset được ánh xạ xung quanh trách nhiệm của AI1, AI2A và AI2B | Tránh viết Tuần 8 chỉ như một trang thu thập raw traffic | Xây dựng attack profile coverage matrix |
+| Review baseline normal và AI2A | 08/06/2026 | Review tóm tắt dataset normal P01–P12 và contract dataset classifier AI2A | Xác định đường cơ sở normal và chính sách schema AI2A | Giữ row count làm bằng chứng, hoãn diễn giải QA sâu hơn sang Tuần 9 | Review bằng chứng attack profile |
+| Review coverage attack profile | 10/06/2026 | Kiểm tra folder, summary, merged dataset, QA/report artifact của attack profile A01–A10 | A01–A06 và A08–A10 có bằng chứng artifact-backed; A07 có trong aggregate dataset evidence; A11 không tìm thấy | Không khẳng định A11 hoặc cường điệu trạng thái profile-level của A07 | Review artifact AI2B/A12 |
+| Review bằng chứng HTTP semantic | 12/06/2026 | Review raw HTTP log SQLi/XSS của A12 và artifact dataset/report của AI2B | A12 được xác nhận là nguồn HTTP semantic cho AI2B | Giữ A12 tách biệt khỏi coverage flow profile AI2A | Review context AI1 |
+| Review AI1 và ranh giới claim | 13/06/2026 | Review handoff AI1, model card, feature manifest context và giới hạn đã biết | AI1 được ghi lại như anomaly-detection context thay vì training output Tuần 8 | Trích xuất feature live/replay từ backend vẫn là hạng mục tích hợp sau | Chuẩn bị docs Tuần 8 |
+| Hợp nhất bằng chứng | 13/06/2026 | Xây dựng evidence index, source inventory, AI mapping và claim boundary Tuần 8 | Tuần 8 có thể được giải thích từ docs và bảng mà không cần screenshot placeholder | Ảnh chụp màn hình có thể được bổ sung sau nếu cần | Dùng Tuần 9 cho QA sâu hơn và xác minh model-readiness |
 
 ## Bố cục Workspace Dataset
 

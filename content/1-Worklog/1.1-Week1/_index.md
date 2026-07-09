@@ -1,6 +1,6 @@
 ---
 title: "Week 1 - AWS Account Security & IAM Access Baseline"
-date: 2026-04-17
+date: 2026-04-20
 weight: 1
 chapter: false
 draft: false
@@ -16,8 +16,8 @@ pre: " <b> 1.1. </b> "
 | Key output | Root protection, admin IAM user, IAM groups, and team users |
 | Primary Region | `ap-southeast-1` - Asia Pacific (Singapore) |
 | Account model | Standalone AWS account |
-| Start date | 17/04/2026 |
-| Completion date | 21/04/2026 |
+| Start date | 20/04/2026 |
+| Completion date | 26/04/2026 |
 | Migration status | Not started |
 | Week status | Implementation completed; selected public evidence added |
 
@@ -35,13 +35,13 @@ In this worklog, **lightweight landing zone** means a single-account security, i
 
 ## Daily Worklog
 
-| Day | Date | Time spent | Work completed | Result | Issue / decision | Next step |
-| --- | --- | --- | --- | --- | --- | --- |
-| Day 1 | 17/04/2026 | 2 hours | Reviewed root account security, root MFA status, root access-key status, billing credits, and primary Region selection | Root protection and account constraints were understood before creating project resources | Root should not be used for daily work; `ap-southeast-1` was selected as the primary Region | Create an administrative IAM identity |
-| Day 2 | 18/04/2026 | 2.5 hours | Configured the account alias/IAM sign-in flow, created `thien-admin`, and prepared the `FCAJ-Admins` group | Daily administration can be separated from the root user | Administration should use an IAM identity instead of shared root credentials | Design role-based IAM groups for the team |
-| Day 3 | 19/04/2026 | 2 hours | Designed IAM groups, created role builder groups, and configured the account password policy | A group-based access model was prepared for cloud, backend, AI, and frontend responsibilities | Forced-MFA and self-service MFA custom policies were deferred to keep Week 1 practical | Add common learning-stage permissions |
-| Day 4 | 20/04/2026 | 1.5 hours | Created `FCAJ-Base-Users` and attached AWS-managed `ViewOnlyAccess` | Members can inspect AWS resources during the learning stage without deployment permissions | `ViewOnlyAccess` is broad view-only learning access, not the final least-privilege model | Create individual member users and assign groups |
-| Day 5 | 21/04/2026 | 2 hours | Created member IAM users, assigned group memberships, and avoided access keys for Console-only users | Team access was prepared through individual identities rather than shared credentials | Console access was sufficient for the learning stage, so no long-term access keys were created for member users | Move to Week 2 VPC foundation |
+| Day | Date | Work completed | Result | Issue / decision | Next step |
+| --- | --- | --- | --- | --- | --- |
+| Day 1 | 20/04/2026 | Reviewed root account security, root MFA status, root access-key status, billing credits, and primary Region selection | Root protection and account constraints were understood before creating project resources | Root should not be used for daily work; `ap-southeast-1` was selected as the primary Region | Create an administrative IAM identity |
+| Day 2 | 21/04/2026 | Configured the account alias/IAM sign-in flow, created `thien-admin`, and prepared the `FCAJ-Admins` group | Daily administration can be separated from the root user | Administration should use an IAM identity instead of shared root credentials | Design role-based IAM groups for the team |
+| Day 3 | 23/04/2026 | Designed IAM groups, created role builder groups, configured the account password policy, and created `FCAJ-Base-Users` with AWS-managed `ViewOnlyAccess` | A group-based access model was prepared for administration, common learning access, and project responsibilities | `ViewOnlyAccess` is broad view-only learning access, not the final least-privilege model; forced-MFA custom policy was deferred to keep Week 1 practical | Create individual member users and assign groups |
+| Day 4 | 24/04/2026 | Created member IAM users, assigned group memberships, avoided access keys for Console-only users, reviewed evidence, and prepared public-safe screenshots | Team access was prepared through individual identities rather than shared credentials | Console access was sufficient for the learning stage, so no long-term access keys were created for member users | Move to Week 2 VPC foundation |
+
 
 ## Technical Implementation Summary
 

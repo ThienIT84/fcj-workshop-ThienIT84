@@ -1,6 +1,6 @@
 ---
 title: "Week 3 - EC2, Bastion Access & NAT Private Egress"
-date: 2026-05-25
+date: 2026-05-03
 weight: 3
 chapter: false
 draft: false
@@ -19,7 +19,7 @@ pre: " <b> 1.3. </b> "
 | Public workload pattern | Bastion / jump host |
 | Private workload pattern | Backend, AI worker, or log processor |
 | Operations tooling | Deferred to Week 4 |
-| Week status | Implemented; final publication pending time log and NAT success evidence review |
+| Week status | Implemented; final publication pending NAT success evidence review |
 
 ## Objective
 
@@ -35,13 +35,13 @@ In this lab, the public EC2 instance represented a bastion or controlled entry p
 
 ## Daily Worklog
 
-| Day | Date | Time spent | Work completed | Result | Issue / decision | Next step |
-| --- | --- | --- | --- | --- | --- | --- |
-| Day 1 | 25/05/2026 | Confirm before publishing | Reviewed the Week 2 VPC, public subnets, private subnets, and Security Group model | EC2 placement plan was defined | Important workloads should remain in private subnets | Launch public and private EC2 instances |
-| Day 2 | 25/05/2026 | Confirm before publishing | Created public and private EC2 instances with key pairs and Security Groups | Public/private compute pattern was prepared | Public EC2 can act as the bastion entry point | Test private instance access |
-| Day 3 | 25/05/2026 | Confirm before publishing | Connected from the public EC2 instance to the private EC2 instance over private IP | Bastion-style SSH access was validated | Private EC2 should not require a public IPv4 address | Configure private outbound path |
-| Day 4 | 25/05/2026 | Confirm before publishing | Allocated an Elastic IP, created NAT Gateway resources, and reviewed private route tables | Private subnet route to NAT Gateway was configured | NAT Gateway has cost impact and should be cleaned up after lab use | Review private outbound result |
-| Day 5 | 25/05/2026 | Confirm before publishing | Reviewed the private outbound test result and documented the unresolved ping behavior | Troubleshooting note was recorded without overstating success | `ping amazon.com` returned packet loss in the available evidence | Capture a successful outbound test if repeated later |
+| Day | Date | Work completed | Result | Issue / decision | Next step |
+| --- | --- | --- | --- | --- | --- |
+| Day 1 | 03/05/2026 | Reviewed the Week 2 VPC, public subnets, private subnets, and Security Group model | EC2 placement plan was defined | Important workloads should remain in private subnets | Launch public and private EC2 instances |
+| Day 2 | 05/05/2026 | Created public and private EC2 instances with key pairs and Security Groups | Public/private compute pattern was prepared | Public EC2 can act as the bastion entry point | Test private instance access |
+| Day 3 | 06/05/2026 | Connected from the public EC2 instance to the private EC2 instance over private IP | Bastion-style SSH access was validated | Private EC2 should not require a public IPv4 address | Configure private outbound path |
+| Day 4 | 08/05/2026 | Allocated an Elastic IP, created NAT Gateway resources, and reviewed private route tables | Private subnet route to NAT Gateway was configured | NAT Gateway has cost impact and should be cleaned up after lab use | Review private outbound result |
+| Day 5 | 10/05/2026 | Reviewed the private outbound test result and documented the unresolved ping behavior | Troubleshooting note was recorded without overstating success | `ping amazon.com` returned packet loss in the available evidence | Capture a successful outbound test if repeated later |
 
 ## EC2 Public and Private Compute Design
 

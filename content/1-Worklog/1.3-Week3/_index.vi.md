@@ -1,6 +1,6 @@
 ---
 title: "Tuần 3 - EC2, Truy cập Bastion & NAT Private Egress"
-date: 2026-05-25
+date: 2026-05-03
 weight: 3
 chapter: false
 draft: false
@@ -19,7 +19,7 @@ pre: " <b> 1.3. </b> "
 | Mô hình workload public | Bastion / jump host |
 | Mô hình workload private | Backend, AI worker, hoặc bộ xử lý log (log processor) |
 | Công cụ vận hành | Chuyển sang Tuần 4 |
-| Trạng thái trong tuần | Đã triển khai; đang chờ hoàn thiện nhật ký thời gian và rà soát bằng chứng thành công của NAT |
+| Trạng thái trong tuần | Đã triển khai; đang chờ rà soát bằng chứng thành công của NAT |
 
 ## Mục tiêu
 
@@ -35,13 +35,13 @@ Trong bài lab này, EC2 public đóng vai trò là một bastion hoặc điểm
 
 ## Nhật ký công việc hàng ngày
 
-| Ngày | Ngày tháng | Thời lượng | Công việc đã hoàn thành | Kết quả | Vấn đề / Quyết định | Bước tiếp theo |
-| --- | --- | --- | --- | --- | --- | --- |
-| Ngày 1 | 25/05/2026 | Confirm before publishing | Rà soát VPC Tuần 2, các public subnet, private subnet và mô hình Security Group | Đã xác định kế hoạch đặt các EC2 instance | Các workload quan trọng nên được giữ trong private subnet | Khởi chạy EC2 public và private |
-| Ngày 2 | 25/05/2026 | Confirm before publishing | Tạo EC2 public và EC2 private với key pair và Security Group | Mô hình compute public/private đã được chuẩn bị | EC2 public có thể hoạt động như điểm kết nối bastion | Kiểm tra việc truy cập vào private instance |
-| Ngày 3 | 25/05/2026 | Confirm before publishing | Kết nối từ EC2 public sang EC2 private thông qua địa chỉ IP nội bộ (private IP) | Đã xác thực được mô hình truy cập SSH kiểu jump-host | EC2 private không cần địa chỉ IPv4 public | Cấu hình đường outbound cho private subnet |
-| Ngày 4 | 25/05/2026 | Confirm before publishing | Cấp phát Elastic IP, tạo tài nguyên NAT Gateway và rà soát bảng định tuyến private | Đường định tuyến từ private subnet đến NAT Gateway đã được cấu hình | NAT Gateway gây phát sinh chi phí và cần được xóa sau khi hoàn thành bài lab | Xem xét kết quả outbound từ private subnet |
-| Ngày 5 | 25/05/2026 | Confirm before publishing | Rà soát kết quả kiểm thử outbound từ private subnet và ghi chép hành vi ping chưa được giải quyết | Ghi nhận ghi chú xử lý sự cố (troubleshooting) mà không phóng đại kết quả | `ping amazon.com` trả về mất gói (packet loss) trong bằng chứng hiện có | Chụp lại bài kiểm thử outbound thành công nếu lặp lại sau này |
+| Ngày | Ngày tháng | Công việc đã hoàn thành | Kết quả | Vấn đề / Quyết định | Bước tiếp theo |
+| --- | --- | --- | --- | --- | --- |
+| Ngày 1 | 03/05/2026 | Rà soát VPC Tuần 2, các public subnet, private subnet và mô hình Security Group | Đã xác định kế hoạch đặt các EC2 instance | Các workload quan trọng nên được giữ trong private subnet | Khởi chạy EC2 public và private |
+| Ngày 2 | 05/05/2026 | Tạo EC2 public và EC2 private với key pair và Security Group | Mô hình compute public/private đã được chuẩn bị | EC2 public có thể hoạt động như điểm kết nối bastion | Kiểm tra việc truy cập vào private instance |
+| Ngày 3 | 06/05/2026 | Kết nối từ EC2 public sang EC2 private thông qua địa chỉ IP nội bộ (private IP) | Đã xác thực được mô hình truy cập SSH kiểu jump-host | EC2 private không cần địa chỉ IPv4 public | Cấu hình đường outbound cho private subnet |
+| Ngày 4 | 08/05/2026 | Cấp phát Elastic IP, tạo tài nguyên NAT Gateway và rà soát bảng định tuyến private | Đường định tuyến từ private subnet đến NAT Gateway đã được cấu hình | NAT Gateway gây phát sinh chi phí và cần được xóa sau khi hoàn thành bài lab | Xem xét kết quả outbound từ private subnet |
+| Ngày 5 | 10/05/2026 | Rà soát kết quả kiểm thử outbound từ private subnet và ghi chép hành vi ping chưa được giải quyết | Ghi nhận ghi chú xử lý sự cố (troubleshooting) mà không phóng đại kết quả | `ping amazon.com` trả về mất gói (packet loss) trong bằng chứng hiện có | Chụp lại bài kiểm thử outbound thành công nếu lặp lại sau này |
 
 ## Thiết kế Compute EC2 Public và Private
 

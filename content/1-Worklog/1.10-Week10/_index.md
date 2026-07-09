@@ -1,6 +1,6 @@
 ---
 title: "Week 10 - AI Model Handoff, Backend API & Fusion Layer"
-date: 2026-06-19
+date: 2026-06-22
 weight: 10
 chapter: false
 draft: false
@@ -18,7 +18,7 @@ pre: " <b> 1.10. </b> "
 | AI routing | Flow evidence -> AI1/AI2A; HTTP evidence -> AI2B |
 | Fusion output | `attack_type`, `risk_score`, `severity`, contributors, excluded models |
 | AWS migration | Deferred to Week 11 |
-| Week status | Implemented as docs-first draft; screenshots and exact time log require owner confirmation |
+| Week status | Implemented as docs-first draft; optional screenshots can be added later |
 
 ## Evidence Source Note
 
@@ -77,14 +77,14 @@ This week is the bridge between AI work and cloud deployment. AWS runtime migrat
 
 ## Daily Worklog
 
-| Activity | Date | Time spent | Work completed | Result | Issue / decision | Next step |
-| --- | --- | --- | --- | --- | --- | --- |
-| Backend MVP structure review | 19/06/2026 | Estimated 4 hours | Reviewed FastAPI app structure, routes, in-memory store, WebSocket manager, and backend README | Main backend entrypoints and runtime modes were identified | Keep Week 10 focused on backend/API integration, not AWS migration | Review API contract |
-| API contract review | 20/06/2026 | Estimated 4.5 hours | Reviewed event envelope, HTTP wrapper endpoint, model output contract, and final alert DTO | `POST /api/events` became the main ingestion contract | Keep one final alert DTO instead of parallel schema variants | Review adapter design |
-| Model adapter review | 21/06/2026 | Estimated 5 hours | Reviewed AI1, AI2A, AI2B, mock, unavailable, and base adapter behavior | The `supports -> build_input -> predict` pattern was documented | Adapter output must distinguish `not_applicable` from `not_available` | Review fusion behavior |
-| Fusion layer review | 22/06/2026 | Estimated 5 hours | Reviewed fusion rules, contributors, excluded models, severity, risk score, and final `attack_type` mapping | Fusion produced a consistent alert-level decision from partial or full AI outputs | Dashboard must use the final top-level `attack_type`, not raw model labels alone | Review replay and live paths |
-| Replay and tailer path review | 23/06/2026 | Estimated 4.5 hours | Reviewed local replay script, Zeek `conn.log` tailer, Zeek `http.log` tailer, and AI2A feature enrichment path | Replay/live ingestion paths were mapped for local lab telemetry | Live path needs runtime evidence before being presented as a complete operations deployment | Consolidate validation matrix |
-| Validation and evidence consolidation | 24/06/2026 | Estimated 4 hours | Reviewed backend tests and created Week 10 docs for API contract, adapters, fusion, replay, and boundaries | Week 10 was ready as a docs-first worklog | Screenshots can be added later if runtime commands are captured | Use Week 11 for AWS MVP deployment |
+| Activity | Date | Work completed | Result | Issue / decision | Next step |
+| --- | --- | --- | --- | --- | --- |
+| Backend MVP structure review | 22/06/2026 | Reviewed FastAPI app structure, routes, in-memory store, WebSocket manager, and backend README | Main backend entrypoints and runtime modes were identified | Keep Week 10 focused on backend/API integration, not AWS migration | Review API contract |
+| API contract review | 23/06/2026 | Reviewed event envelope, HTTP wrapper endpoint, model output contract, and final alert DTO | `POST /api/events` became the main ingestion contract | Keep one final alert DTO instead of parallel schema variants | Review adapter design |
+| Model adapter review | 25/06/2026 | Reviewed AI1, AI2A, AI2B, mock, unavailable, and base adapter behavior | The `supports -> build_input -> predict` pattern was documented | Adapter output must distinguish `not_applicable` from `not_available` | Review fusion behavior |
+| Fusion layer review | 27/06/2026 | Reviewed fusion rules, contributors, excluded models, severity, risk score, and final `attack_type` mapping | Fusion produced a consistent alert-level decision from partial or full AI outputs | Dashboard must use the final top-level `attack_type`, not raw model labels alone | Review replay and live paths |
+| Replay and tailer path review | 28/06/2026 | Reviewed local replay script, Zeek `conn.log` tailer, Zeek `http.log` tailer, and AI2A feature enrichment path | Replay/live ingestion paths were mapped for local lab telemetry | Live path needs runtime evidence before being presented as a complete operations deployment | Consolidate validation matrix |
+| Validation and evidence consolidation | 28/06/2026 | Reviewed backend tests and created Week 10 docs for API contract, adapters, fusion, replay, and boundaries | Week 10 was ready as a docs-first worklog | Screenshots can be added later if runtime commands are captured | Use Week 11 for AWS MVP deployment |
 
 ## Backend Architecture Overview
 

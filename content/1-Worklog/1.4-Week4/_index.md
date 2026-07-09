@@ -1,6 +1,6 @@
 ---
 title: "Week 4 - Secure Operations & Observability"
-date: 2026-05-26
+date: 2026-05-11
 weight: 4
 chapter: false
 draft: false
@@ -22,7 +22,7 @@ pre: " <b> 1.4. </b> "
 | Metric filter | Implemented for rejected network traffic |
 | CloudWatch alarm | Implemented and triggered; final state captured as `ALARM` |
 | Reachability Analyzer | Deferred |
-| Week status | Implementation completed with selected public evidence; time estimates require owner confirmation |
+| Week status | Implementation completed with selected public evidence |
 
 ## Evidence Re-validation Note
 
@@ -66,10 +66,10 @@ The access path validates how an administrator can reach the backend instance th
 
 ## Daily Worklog
 
-| Activity | Date | Time spent | Work completed | Result | Issue / decision | Next step |
-| --- | --- | --- | --- | --- | --- | --- |
-| Original operations lab and notes | 26/05/2026 | Estimated 2 hours | Reviewed EIC Endpoint, Session Manager, VPC Flow Logs, Reachability Analyzer, and CloudWatch concepts | Operations and observability scope was defined for Week 4 | Some original resources and screenshots were not sufficient for final evidence | Re-validate missing evidence if resources are available |
-| Evidence re-validation and missing implementation | 30/06/2026 | Estimated 4.5 hours | Attached an SSM IAM role, validated Session Manager, validated EIC private-IP access, configured Flow Logs delivery, set log retention, created a REJECT metric filter, created a CloudWatch alarm, and collected public-safe evidence | Secure access and network-observability controls were validated for the active SOC MVP environment | Reachability Analyzer evidence was not captured and remains deferred | Finalize screenshots, confirm time spent, review cleanup, and continue to S3/CloudFront delivery |
+| Activity | Date | Work completed | Result | Issue / decision | Next step |
+| --- | --- | --- | --- | --- | --- |
+| Original operations lab and notes | 11/05/2026 | Reviewed EIC Endpoint, Session Manager, VPC Flow Logs, Reachability Analyzer, and CloudWatch concepts | Operations and observability scope was defined for Week 4 | Some original resources and screenshots were not sufficient for final evidence | Re-validate missing evidence if resources are available |
+| Evidence re-validation and missing implementation | 12/05/2026 | Attached an SSM IAM role, validated Session Manager, validated EIC private-IP access, configured Flow Logs delivery, set log retention, created a REJECT metric filter, created a CloudWatch alarm, and collected public-safe evidence | Secure access and network-observability controls were validated for the active SOC MVP environment | Reachability Analyzer evidence was not captured and remains deferred | Finalize screenshots, review cleanup, and continue to S3/CloudFront delivery |
 
 ## Technical Implementation Summary
 

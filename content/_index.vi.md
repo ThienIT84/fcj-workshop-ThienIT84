@@ -1,17 +1,17 @@
 ---
 title: "Báo cáo thực tập"
-date: 2024-01-01
+date: 2026-07-10
 weight: 1
 chapter: false
 ---
 
 # Báo cáo thực tập
 ### Thông tin sinh viên:
-&emsp; **Họ và tên:** Nguyễn Văn A
+&emsp; **Họ và tên:** Tran Thanh Thien
 
-&emsp; **Số điện thoại:** 0989888999
+&emsp; **Số điện thoại:** 0819094054
 
-&emsp; **Email:** Anguyenvan@gmail.com
+&emsp; **Email:** thientran805954@gmail.com
 
 &emsp; **Trường:** Đại học Sư phạm Kỹ thuật TP.HCM
 
@@ -23,9 +23,7 @@ chapter: false
 
 &emsp; **Vị trí thực tập:** FCJ Cloud Intern
 
-&emsp; **Thời gian thực tập:** Từ ngày 12/08/2025 đến ngày 12/11/2025
-
-![Ảnh đại diện của bạn](/images/avatar.png)
+&emsp; **Thời gian thực tập:** 20/04/2026 - 12/07/2026
 
 
 

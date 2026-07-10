@@ -61,41 +61,48 @@ The cleanup goal was not to force every resource to disappear immediately. The g
 ## Evidence Gallery
 
 <figure class="worklog-evidence">
+  <img src="/images/worklog/week12/w12-e01-final-dashboard-alert-ui.png" alt="Final dashboard SQL Injection alert">
+  <figcaption>Figure 1 - The final dashboard showed a persisted Critical SQL Injection alert with AI2B, Fusion, MITRE, and network context.</figcaption>
+</figure>
+
+**Observation:** This validates the displayed final alert state. It is not used to claim that the worker broadcast the alert to the dashboard through a realtime WebSocket channel.
+
+<figure class="worklog-evidence">
   <img src="/images/worklog/week12/w12-e02-s3-data-bucket-deleted.png" alt="S3 data bucket object cleanup evidence">
-  <figcaption>Figure 1 - The S3 data bucket objects were deleted before bucket removal after evidence and artifact handling.</figcaption>
+  <figcaption>Figure 2 - The S3 data bucket objects were deleted before bucket removal after evidence and artifact handling.</figcaption>
 </figure>
 
 **Observation:** Data/artifact buckets must be cleaned only after evidence, model artifacts, receipts, and screenshots are archived outside the bucket.
 
 <figure class="worklog-evidence">
   <img src="/images/worklog/week12/w12-e04-rds-final-snapshot-confirmation.png" alt="RDS final snapshot confirmation evidence">
-  <figcaption>Figure 2 - The RDS delete dialog kept final snapshot creation enabled before deleting the PostgreSQL instance.</figcaption>
+  <figcaption>Figure 3 - The RDS delete dialog kept final snapshot creation enabled before deleting the PostgreSQL instance.</figcaption>
 </figure>
 
 **Observation:** RDS deletion should preserve a final snapshot unless there is a separate written approval to skip it. This protects the final alert data after the live database is removed.
 
 <figure class="worklog-evidence">
   <img src="/images/worklog/week12/w12-e05-sqs-queues-deleted.png" alt="SQS queues deleted evidence">
-  <figcaption>Figure 3 - The SQS queue list showed no queues after the main queue and DLQ were deleted.</figcaption>
+  <figcaption>Figure 4 - The SQS queue list showed no queues after the main queue and DLQ were deleted.</figcaption>
 </figure>
 
 **Observation:** Queue deletion happened after queue state and DLQ evidence decisions were handled. Purging was not required when deleting the queues themselves.
 
 <figure class="worklog-evidence">
   <img src="/images/worklog/week12/w12-e06-cloudfront-deferred-pro-plan.png" alt="CloudFront deferred cleanup due to Pro plan evidence">
-  <figcaption>Figure 4 - CloudFront distributions remained disabled under a Pro / flat-rate pricing plan, so final deletion was deferred.</figcaption>
+  <figcaption>Figure 5 - CloudFront distributions remained disabled under a Pro / flat-rate pricing plan, so final deletion was deferred.</figcaption>
 </figure>
 
 **Observation:** This is the key cleanup limitation. The distribution, Web ACL, and OAC should remain in the deferred register until AWS allows WAF disassociation and distribution deletion.
 
 <figure class="worklog-evidence">
   <img src="/images/worklog/week12/w12-e07-s3-static-bucket-deleted.png" alt="S3 static bucket deleted evidence">
-  <figcaption>Figure 5 - The frontend/static S3 bucket deletion was confirmed after public hosting was no longer needed from AWS.</figcaption>
+  <figcaption>Figure 6 - The frontend/static S3 bucket deletion was confirmed after public hosting was no longer needed from AWS.</figcaption>
 </figure>
 
 **Observation:** Static frontend cleanup was separated from report publication. The final FCAJ report was served from the Hugo/Vercel path instead of the deleted AWS S3 frontend bucket.
 
-**Evidence note:** The final dashboard UI, RDS action menu, and Vercel live-site screenshots were not present as public image files in this repository path during this pass. They should be added only after masking, then placed under `static/images/worklog/week12/` with the expected `w12-*` filenames.
+**Evidence note:** The RDS action-menu screenshot and a separate Vercel live-site screenshot were not preserved as public image files before cleanup. The RDS final-snapshot dialog above records the deletion safeguard, and the final public URL is validated through the configured Vercel deployment; this page does not present missing screenshots as evidence.
 
 ## CloudFront Deferred Cleanup Note
 

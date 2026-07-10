@@ -416,10 +416,10 @@ disassociation.
 
 | Item | Status | Evidence | Ghi chú |
 |---|---|---|---|
-| CloudFront distribution `E2FO8ADXYHNOSW` đã xóa | DEFERRED | E11 | Flat-rate pricing-plan lock; disabled nhưng không thể xóa |
-| CloudFront distribution `E1UCULAFOQB3ZB` đã xóa | DEFERRED | E11 | Đang chuyển về pay-as-you-go |
-| WAF Web ACL đã xóa | DEFERRED | E14 | Bắt buộc bởi CloudFront pricing plan; `CreatedByCloudFront-be875b92` vẫn active |
-| OAC đã xóa | DEFERRED | E13 | Distribution vẫn reference OAC |
+| Tác vụ xóa CloudFront distribution `E2FO8ADXYHNOSW` | DEFERRED | E11 | Flat-rate pricing-plan lock; disabled nhưng không thể xóa |
+| Tác vụ xóa CloudFront distribution `E1UCULAFOQB3ZB` | DEFERRED | E11 | Đang chuyển về pay-as-you-go |
+| Tác vụ xóa WAF Web ACL | DEFERRED | E14 | Bắt buộc bởi CloudFront pricing plan; `CreatedByCloudFront-be875b92` vẫn active |
+| Tác vụ xóa OAC | DEFERRED | E13 | Distribution vẫn reference OAC |
 | Default behavior đã giảm xuống tối thiểu | DONE | E12 | Chỉ còn required Default (*) behavior |
 
 #### 9. IAM Identity Center và runtime IAM
@@ -662,10 +662,10 @@ Các tài nguyên chưa thể xóa ngay cần được ghi vào bảng deferred 
 | Target group đã xóa | DONE | E04 | TG xóa sau ALB |
 | RDS DB đã xóa kèm final snapshot | DONE | E09 | Snapshot giữ lại làm evidence |
 | Secrets Manager secret đã schedule | DONE | E10 | Recovery window active |
-| CloudFront distribution `E2FO8ADXYHNOSW` đã xóa | DEFERRED | E11 | Flat-rate pricing-plan lock |
-| CloudFront distribution `E1UCULAFOQB3ZB` đã xóa | DEFERRED | E11 | Đang chuyển về pay-as-you-go |
-| WAF Web ACL đã xóa | DEFERRED | E14 | Bắt buộc bởi CloudFront pricing plan |
-| OAC đã xóa | DEFERRED | E13 | Distribution vẫn reference OAC |
+| Tác vụ xóa CloudFront distribution `E2FO8ADXYHNOSW` | DEFERRED | E11 | Flat-rate pricing-plan lock |
+| Tác vụ xóa CloudFront distribution `E1UCULAFOQB3ZB` | DEFERRED | E11 | Đang chuyển về pay-as-you-go |
+| Tác vụ xóa WAF Web ACL | DEFERRED | E14 | Bắt buộc bởi CloudFront pricing plan |
+| Tác vụ xóa OAC | DEFERRED | E13 | Distribution vẫn reference OAC |
 | IAM Identity Center đã review | REVIEWED | E15 | MFA enabled; human access qua Identity Center |
 | `AWSReservedSSO_*` roles không bị xóa thủ công | DONE | — | Managed via Identity Center only |
 | Runtime IAM roles đã xóa | DONE | — | Xóa sau khi tất cả dependency removed |
@@ -683,4 +683,3 @@ Cleanup thành công không luôn có nghĩa là mọi resource đều đã bị
 Với CloudFront/WAF, nếu AWS đang khóa bởi flat-rate pricing plan, trạng thái đúng
 là `PARTIAL / DEFERRED`. Nhóm cần ghi rõ evidence, lý do deferred và ngày
 follow-up sau khi distribution quay về pay-as-you-go.
-

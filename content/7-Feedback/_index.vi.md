@@ -1,44 +1,57 @@
 ---
 title: "Chia sẻ, đóng góp ý kiến"
-date: 2024-01-01
+date: 2026-07-10
 weight: 7
 chapter: false
 pre: " <b> 7. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
+## Tổng kết trải nghiệm
 
->Tại đây bạn có thể tự do đóng góp ý kiến cá nhân về những trải nghiệm khi tham gia chương trình First Cloud Journey, giúp team FCJ cải thiện những vấn đề còn thiếu sót dựa trên các hạng mục sau:
+Sau khi hoàn thành chương trình First Cloud Journey và các workshop, mình hiểu rõ hơn cách kiến thức cloud được áp dụng vào một dự án thực tế. Trước đó, mình thường tiếp cận các dịch vụ AWS như những thành phần riêng lẻ. Qua kỳ thực tập, mình đã thấy cách chúng kết hợp thành một hệ thống hoàn chỉnh.
 
-### Đánh giá chung
+Phần có giá trị nhất là xây dựng và triển khai **AI-Powered Multi-Model Hybrid Cloud Security Monitoring Platform**. Dự án kết nối hạ tầng cloud, backend, mô hình AI, giám sát bảo mật và quy trình vận hành/cleanup trong một luồng làm việc thống nhất.
 
-**1. Môi trường làm việc**  
-Môi trường làm việc rất thân thiện và cởi mở. Các thành viên trong FCJ luôn sẵn sàng hỗ trợ khi mình gặp khó khăn, kể cả ngoài giờ làm việc. Không gian làm việc gọn gàng, thoải mái, giúp mình tập trung tốt hơn. Tuy nhiên, mình nghĩ có thể bổ sung thêm một số buổi giao lưu hoặc team bonding để mọi người hiểu nhau hơn.
+## Môi trường học tập và làm việc
 
-**2. Sự hỗ trợ của mentor / team admin**  
-Mentor hướng dẫn rất chi tiết, giải thích rõ ràng khi mình chưa hiểu và luôn khuyến khích mình đặt câu hỏi. Team admin hỗ trợ các thủ tục, tài liệu và tạo điều kiện để mình làm việc thuận lợi. Mình đánh giá cao việc mentor cho phép mình thử và tự xử lý vấn đề thay vì chỉ đưa đáp án.
+First Cloud Journey tạo ra một môi trường học tập thực hành và cởi mở. Cấu trúc workshop khuyến khích tự triển khai, vì vậy mình hiểu sâu hơn các khái niệm AWS so với chỉ đọc tài liệu hoặc xem hướng dẫn.
 
-**3. Sự phù hợp giữa công việc và chuyên ngành học**  
-Công việc mình được giao phù hợp với kiến thức mình đã học ở trường, đồng thời mở rộng thêm những mảng mới mà mình chưa từng được tiếp cận. Nhờ vậy, mình vừa củng cố kiến thức nền tảng, vừa học thêm kỹ năng thực tế.
+Trong quá trình thực hiện, mình phải kiểm tra AWS Console, đọc lỗi, rà soát dependency giữa các dịch vụ và so sánh kiến trúc dự kiến với trạng thái đã deploy. Các tình huống như WAF chặn request XSS, quyền IAM cho worker, SQS idempotency, RDS final snapshot và CloudFront pricing-plan transition đã giúp trải nghiệm sát với công việc cloud engineering thực tế.
 
-**4. Cơ hội học hỏi & phát triển kỹ năng**  
-Trong quá trình thực tập, mình học được nhiều kỹ năng mới như sử dụng công cụ quản lý dự án, kỹ năng làm việc nhóm, và cả cách giao tiếp chuyên nghiệp trong môi trường công ty. Mentor cũng chia sẻ nhiều kinh nghiệm thực tế giúp mình định hướng tốt hơn cho sự nghiệp.
+## Sự hỗ trợ từ mentor và team
 
-**5. Văn hóa & tinh thần đồng đội**  
-Văn hóa công ty rất tích cực: mọi người tôn trọng lẫn nhau, làm việc nghiêm túc nhưng vẫn vui vẻ. Khi có dự án gấp, mọi người cùng nhau cố gắng, hỗ trợ không phân biệt vị trí. Điều này giúp mình cảm thấy mình là một phần của tập thể, dù chỉ là thực tập sinh.
+Mentor và team hỗ trợ theo hướng gợi mở cách phân tích vấn đề thay vì chỉ đưa đáp án. Mình học được cách đặt câu hỏi kỹ thuật rõ ràng hơn, thu thập evidence, kiểm tra hành vi của từng dịch vụ AWS và giải thích quyết định của mình.
 
-**6. Chính sách / phúc lợi cho thực tập sinh**  
-Công ty có hỗ trợ phụ cấp thực tập và tạo điều kiện về thời gian linh hoạt khi cần thiết. Ngoài ra, việc được tham gia các buổi đào tạo nội bộ là một điểm cộng lớn.
+Làm việc theo nhóm cũng giúp mình hiểu tầm quan trọng của việc phân chia trách nhiệm, ghi nhận quyết định và xác nhận dependency trước khi xóa tài nguyên dùng chung.
 
+## Giá trị chuyên môn
 
-### Một số câu hỏi khác
-- Điều bạn **hài lòng nhất** trong thời gian thực tập?  
-- Điều bạn nghĩ công ty **cần cải thiện** cho các thực tập sinh sau?  
-- Nếu giới thiệu cho bạn bè, bạn có **khuyên họ thực tập ở đây không**? Vì sao?  
+Dự án kết hợp các phần mình quan tâm: machine learning, cloud engineering và cybersecurity. Mình làm việc với Zeek logs, traffic HTTP, adapter AI, fusion logic, API backend, SQS/DLQ, RDS PostgreSQL và dashboard cho analyst.
 
+Mình cũng hiểu rằng một mô hình AI không tự tạo thành sản phẩm có thể vận hành. Model cần được tích hợp với API, queue, database, storage, monitoring, access control và giao diện người dùng. Điều đó giúp mình nhìn rõ hơn toàn bộ vòng đời từ model artifact đến hệ thống deploy.
 
-### Đề xuất & mong muốn
-- Bạn có đề xuất gì để cải thiện trải nghiệm trong kỳ thực tập?  
-- Bạn có muốn tiếp tục chương trình này trong tương lai?
-- Góp ý khác (tự do chia sẻ):
+## Kỹ năng và bài học chính
+
+- Thiết kế dependency giữa VPC, EC2, ALB, CloudFront, S3, SQS, RDS và CloudWatch.
+- Phân tách human access qua IAM Identity Center với runtime access qua IAM roles.
+- Lưu credential RDS trong Secrets Manager và kiểm tra quyền tối thiểu cho backend/worker.
+- Kiểm thử SQL Injection và XSS theo luồng API, worker, RDS và dashboard.
+- Xử lý idempotency cho SQS Standard bằng `event_id` và upsert ở bảng `final_alerts`.
+- Thực hiện cleanup theo nguyên tắc evidence-first, final snapshot và recovery window.
+
+Một bài học quan trọng là cloud engineering không kết thúc khi ứng dụng chạy được. Monitoring, kiểm soát chi phí, quản lý quyền, lưu evidence và cleanup đúng dependency cũng là một phần của hệ thống.
+
+## Đề xuất cho chương trình
+
+Chương trình đã rất hữu ích. Một số nội dung có thể giúp các khóa sau làm workshop hiệu quả hơn:
+
+- Có checklist cleanup chuẩn cho các tài nguyên AWS phổ biến.
+- Có hướng dẫn ngắn về kiểm soát chi phí sau lab/workshop.
+- So sánh rõ IAM Identity Center, IAM users, IAM roles và permission sets.
+- Bổ sung ví dụ về CloudFront, WAF và pricing-plan behavior.
+- Cung cấp evidence register để học viên biết ảnh nào cần chụp và trường nào cần mask trước khi public.
+
+## Định hướng tiếp theo
+
+Sau kỳ thực tập, mình muốn tiếp tục phát triển kỹ năng về AWS architecture, cloud security, DevOps, MLOps và giám sát an ninh có hỗ trợ AI. Với SOC AI platform, các hướng cải tiến tiếp theo gồm đánh giá model kỹ hơn, cải thiện dashboard, tự động hóa deployment, infrastructure as code và observability.
+
+Tổng thể, First Cloud Journey giúp mình chuyển từ việc học các dịch vụ cloud riêng lẻ sang hiểu cách xây dựng, vận hành, bảo vệ và cleanup một hệ thống cloud thực tế.

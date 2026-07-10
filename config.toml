@@ -1,4 +1,4 @@
-baseURL = "https://workshop-sample.fcjuni.com/"
+baseURL = "https://fcj-workshop-thien-it-84-git-main-thienit84s-projects.vercel.app/"
 relativeURLs = false
 canonifyURLs = false
 defaultContentLanguage = "en"

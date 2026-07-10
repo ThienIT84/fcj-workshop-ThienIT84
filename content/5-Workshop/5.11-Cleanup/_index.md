@@ -417,10 +417,10 @@ attempting disassociation.
 
 | Item | Status | Evidence | Note |
 |---|---|---|---|
-| CloudFront distribution `E2FO8ADXYHNOSW` deleted | DEFERRED | E11 | Flat-rate pricing-plan lock; disabled but cannot delete |
-| CloudFront distribution `E1UCULAFOQB3ZB` deleted | DEFERRED | E11 | Transitioning to pay-as-you-go |
-| WAF Web ACL deleted | DEFERRED | E14 | Required by CloudFront pricing plan; `CreatedByCloudFront-be875b92` still active |
-| OAC deleted | DEFERRED | E13 | Distribution still references OAC; cannot delete |
+| CloudFront distribution `E2FO8ADXYHNOSW` deletion | DEFERRED | E11 | Flat-rate pricing-plan lock; disabled but cannot delete |
+| CloudFront distribution `E1UCULAFOQB3ZB` deletion | DEFERRED | E11 | Transitioning to pay-as-you-go |
+| WAF Web ACL deletion | DEFERRED | E14 | Required by CloudFront pricing plan; `CreatedByCloudFront-be875b92` still active |
+| OAC deletion | DEFERRED | E13 | Distribution still references OAC; cannot delete |
 | Default behavior reduced to minimum | DONE | E12 | Only required Default (*) behavior remains |
 
 #### 9. IAM Identity Center and runtime IAM
@@ -663,10 +663,10 @@ Resources that cannot be deleted immediately must be recorded:
 | Target group deleted | DONE | E04 | TG removed after ALB |
 | RDS DB deleted with final snapshot | DONE | E09 | Snapshot retained as evidence |
 | Secrets Manager secret scheduled | DONE | E10 | Recovery window active |
-| CloudFront distribution `E2FO8ADXYHNOSW` deleted | DEFERRED | E11 | Flat-rate pricing-plan lock |
-| CloudFront distribution `E1UCULAFOQB3ZB` deleted | DEFERRED | E11 | Transitioning to pay-as-you-go |
-| WAF Web ACL deleted | DEFERRED | E14 | Required by CloudFront pricing plan |
-| OAC deleted | DEFERRED | E13 | Distribution still references OAC |
+| CloudFront distribution `E2FO8ADXYHNOSW` deletion | DEFERRED | E11 | Flat-rate pricing-plan lock |
+| CloudFront distribution `E1UCULAFOQB3ZB` deletion | DEFERRED | E11 | Transitioning to pay-as-you-go |
+| WAF Web ACL deletion | DEFERRED | E14 | Required by CloudFront pricing plan |
+| OAC deletion | DEFERRED | E13 | Distribution still references OAC |
 | IAM Identity Center reviewed | REVIEWED | E15 | MFA enabled; human access via Identity Center |
 | `AWSReservedSSO_*` roles not manually deleted | DONE | — | Managed via Identity Center only |
 | Runtime IAM roles cleaned | DONE | — | Cleaned after all dependencies removed |
@@ -685,4 +685,3 @@ For CloudFront/WAF, if AWS still enforces a flat-rate pricing-plan lock, the
 correct status is `PARTIAL / DEFERRED`. Record the evidence, the reason for the
 deferred state, and the follow-up date after the distribution returns to
 pay-as-you-go.
-

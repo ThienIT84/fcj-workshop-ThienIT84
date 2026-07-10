@@ -32,5 +32,4 @@ The console screenshot is useful to confirm there are no critical browser errors
 
 The API and WebSocket CloudFront behavior screenshots are future evidence. Do not claim these paths are production-ready unless the backend and ALB evidence also exist.
 
-![API behavior ](/images/5-Workshop/5.4-Frontend-S3-CloudFront-WAF/w-phu-26-api-behavior.png)
-
+![API behavior](/images/5-Workshop/5.4-Frontend-S3-CloudFront-WAF/w-phu-26-api-behavior-placeholder.png)

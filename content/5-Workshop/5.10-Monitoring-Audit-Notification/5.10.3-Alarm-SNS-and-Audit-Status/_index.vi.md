@@ -12,7 +12,7 @@ Ghi lại CloudTrail, SNS và DLQ alarm evidence mà không claim quá phạm vi
 
 CloudTrail trail đã có evidence cấu hình và log delivery, nhưng cần verify phạm vi production trước khi claim vận hành hoàn chỉnh.
 
-![CloudTrail  or status](/images/5-Workshop/5.10-Monitoring-Audit-Notification/w-phu-65-cloudtrail.png)
+![CloudTrail status](/images/5-Workshop/5.10-Monitoring-Audit-Notification/w-phu-65-cloudtrail-placeholder.png)
 
 ![CloudTrail event history](/images/5-Workshop/5.10-Monitoring-Audit-Notification/w-phu-66-cloudtrail-event-history.png)
 
@@ -26,9 +26,9 @@ Các screenshot CloudTrail bổ sung của Tín có thể dùng như configured 
 
 SNS subscription đã có evidence `Confirmed`, nhưng không claim alarm email delivery nếu chưa có screenshot email trong mailbox.
 
-![SNS  or status](/images/5-Workshop/5.10-Monitoring-Audit-Notification/w-phu-68-sns.png)
+![SNS status](/images/5-Workshop/5.10-Monitoring-Audit-Notification/w-phu-68-sns-placeholder.png)
 
-![SNS topic after config](/images/5-Workshop/5.10-Monitoring-Audit-Notification/w-phu-69-sns-topic-after-config.png)
+![SNS subscription after config](/images/5-Workshop/5.10-Monitoring-Audit-Notification/w-phu-70-sns-subscription-after-config.png)
 
 ![SNS subscription after config](/images/5-Workshop/5.10-Monitoring-Audit-Notification/w-phu-70-sns-subscription-after-config.png)
 
@@ -41,4 +41,3 @@ DLQ CloudWatch Alarm đã có evidence state và actions enabled, nhưng không 
 SNS test notification screenshot chỉ nên dùng làm evidence cho đúng phạm vi test nhìn thấy trong ảnh.
 
 ![SNS test notification](/images/5-Workshop/5.10-Monitoring-Audit-Notification/w-phu-71-sns-test-notification.png)
-

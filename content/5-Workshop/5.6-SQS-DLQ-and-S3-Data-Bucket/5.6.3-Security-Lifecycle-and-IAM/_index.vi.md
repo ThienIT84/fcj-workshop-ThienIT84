@@ -21,7 +21,7 @@ S3 Data Bucket chứa security evidence, vì vậy Block Public Access phải đ
 
 Lifecycle rule giúp expire temporary raw evidence hoặc chuyển object cũ sang storage class rẻ hơn. Nếu rule chưa cấu hình đầy đủ, giữ phần này là cost-control .
 
-![S3 lifecycle or ](/images/5-Workshop/5.6-SQS-DLQ-and-S3-Data-Bucket/w-tin-09-s3-lifecycle-or.png)
+![S3 lifecycle](/images/5-Workshop/5.6-SQS-DLQ-and-S3-Data-Bucket/w-tin-09-s3-lifecycle.png)
 
 ## Bước 3: Xác minh backend IAM permissions
 

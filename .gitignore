@@ -5,6 +5,9 @@ static/images/worklog/week8/docs/
 static/images/worklog/week9/docs/
 static/images/worklog/week10/docs/
 private-evidence/
+/static/picture aws/
+/static/images/5-Workshop_image.zip
+/5.6-Cleanup-content.tar.gz
 
 # Hugo build output
 public/

@@ -26,5 +26,4 @@ Backend and worker log stream screenshots should be described as available evide
 
 If log groups are not fully configured, keep the  wording instead of claiming centralized logging is complete.
 
-![CloudWatch ](/images/5-Workshop/5.10-Monitoring-Audit-Notification/w-phu-64-cloudwatch.png.png)
-
+![CloudWatch](/images/5-Workshop/5.10-Monitoring-Audit-Notification/w-phu-64-cloudwatch.png)

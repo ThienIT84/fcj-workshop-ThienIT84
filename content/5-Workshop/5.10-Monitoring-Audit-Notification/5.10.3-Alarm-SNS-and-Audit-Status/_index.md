@@ -12,7 +12,7 @@ Document CloudTrail, SNS, and DLQ alarm evidence without over-claiming productio
 
 CloudTrail trail evidence has been captured, including logging and log delivery, but the production audit scope should be verified before claiming full operational coverage.
 
-![CloudTrail  or status](/images/5-Workshop/5.10-Monitoring-Audit-Notification/w-phu-65-cloudtrail.png)
+![CloudTrail status](/images/5-Workshop/5.10-Monitoring-Audit-Notification/w-phu-65-cloudtrail-placeholder.png)
 
 ![CloudTrail event history](/images/5-Workshop/5.10-Monitoring-Audit-Notification/w-phu-66-cloudtrail-event-history.png)
 
@@ -26,9 +26,9 @@ Tin's supplementary CloudTrail screenshots can be used as configured AWS evidenc
 
 SNS subscription evidence shows a `Confirmed` email subscription, but alarm email delivery is not claimed without mailbox evidence.
 
-![SNS  or status](/images/5-Workshop/5.10-Monitoring-Audit-Notification/w-phu-68-sns.png)
+![SNS status](/images/5-Workshop/5.10-Monitoring-Audit-Notification/w-phu-68-sns-placeholder.png)
 
-![SNS topic after config](/images/5-Workshop/5.10-Monitoring-Audit-Notification/w-phu-69-sns-topic-after-config.png)
+![SNS subscription after config](/images/5-Workshop/5.10-Monitoring-Audit-Notification/w-phu-70-sns-subscription-after-config.png)
 
 ![SNS subscription after config](/images/5-Workshop/5.10-Monitoring-Audit-Notification/w-phu-70-sns-subscription-after-config.png)
 
@@ -41,4 +41,3 @@ DLQ CloudWatch Alarm evidence shows the alarm state and enabled actions, but SNS
 The SNS test notification screenshot can be included only as evidence for the visible test scope.
 
 ![SNS test notification](/images/5-Workshop/5.10-Monitoring-Audit-Notification/w-phu-71-sns-test-notification.png)
-

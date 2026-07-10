@@ -1,16 +1,11 @@
 ---
-title: "Internship Report"
-date: 2024-01-01
+title: "SOC AI Internship Report"
+date: 2026-07-10
 weight: 1
 chapter: false
 ---
 
-    
-# Internship Report
-
-{{% notice warning %}}
-⚠️ **Note:** The information below is for reference purposes only. Please **do not copy verbatim** for your report, including this warning.
-{{% /notice %}}
+# SOC AI Internship Report
 
 ### Student Information:
 &emsp; **Full Name:** Tran Thanh Thien
@@ -29,9 +24,7 @@ chapter: false
 
 &emsp; **Internship Position:** FCJ Cloud Intern
 
-&emsp; **Internship Duration:** From 12/08/2025 to 12/11/2025
-
-![Your profile picture](/images/avatar.png)
+&emsp; **Internship Duration:** 20/04/2026 - 12/07/2026
 
 ### Report Content
 

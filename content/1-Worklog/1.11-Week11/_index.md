@@ -70,13 +70,25 @@ The key persistence contract was `final_alerts.event_id`. A caller-provided `eve
 ## Evidence Gallery
 
 <figure class="worklog-evidence">
+  <img src="/images/worklog/week11/w11-e01-sqs-main-dlq-queues.png" alt="SQS main queue and dead-letter queue overview">
+  <figcaption>Figure 1 - Amazon SQS showed the Standard main queue and DLQ used by the asynchronous event pipeline.</figcaption>
+</figure>
+
+**Observation:** The queue pair formed the asynchronous boundary between API ingestion and worker processing. Messages visible in the DLQ were retained for failure inspection before any cleanup decision.
+
+<figure class="worklog-evidence">
   <img src="/images/worklog/week11/w11-e02-rds-final-alerts-query.png" alt="RDS final_alerts query result">
-  <figcaption>Figure 1 - RDS `final_alerts` contained persisted SQL Injection and XSS alerts from the deployed pipeline.</figcaption>
+  <figcaption>Figure 2 - RDS `final_alerts` contained persisted SQL Injection and XSS alerts from the deployed pipeline.</figcaption>
 </figure>
 
 **Observation:** Querying `final_alerts` returned alert rows with `event_id`, `severity`, `attack_type`, `risk_score`, and `created_at`. This confirmed that worker output was persisted beyond the in-memory FastAPI store.
 
-**Evidence note:** The SQS queue overview, D5-5 idempotency count, AI2B/Fusion payload, and backend `202 Accepted` log screenshots are referenced in the written validation, but their public image files were not present in this repository path during this cleanup pass. They should be added only after masking and placed under `static/images/worklog/week11/` with the expected `w11-*` filenames.
+<figure class="worklog-evidence">
+  <img src="/images/worklog/week11/w11-e04-ai2b-fusion-payload.png" alt="AI2B and Fusion SQL Injection decision payload">
+  <figcaption>Figure 3 - The captured AI2B and Fusion payload classified the HTTP request as SQL Injection and produced the final critical decision.</figcaption>
+</figure>
+
+**Evidence note:** The D5-5 idempotency-count screenshot and the backend `202 Accepted` log screenshot were not preserved as public image files before the AWS environment was cleaned up. The test results remain documented below, but this page does not present those two screenshots as published evidence.
 
 ## D5-5 Idempotency Validation
 

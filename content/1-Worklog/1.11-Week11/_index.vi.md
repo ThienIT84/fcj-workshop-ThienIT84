@@ -70,13 +70,25 @@ Contract lưu trữ quan trọng là `final_alerts.event_id`. `event_id` do call
 ## Bộ ảnh minh chứng
 
 <figure class="worklog-evidence">
+  <img src="/images/worklog/week11/w11-e01-sqs-main-dlq-queues.png" alt="SQS main queue and dead-letter queue overview">
+  <figcaption>Hình 1 - Amazon SQS hiển thị Standard main queue và DLQ được dùng bởi pipeline event bất đồng bộ.</figcaption>
+</figure>
+
+**Quan sát:** Cặp queue tạo ranh giới bất đồng bộ giữa API ingestion và worker processing. Message xuất hiện trong DLQ được giữ để kiểm tra lỗi trước bất kỳ quyết định cleanup nào.
+
+<figure class="worklog-evidence">
   <img src="/images/worklog/week11/w11-e02-rds-final-alerts-query.png" alt="RDS final_alerts query result">
-  <figcaption>Hình 1 - RDS `final_alerts` chứa các alert SQL Injection và XSS đã được lưu từ pipeline deploy.</figcaption>
+  <figcaption>Hình 2 - RDS `final_alerts` chứa các alert SQL Injection và XSS đã được lưu từ pipeline deploy.</figcaption>
 </figure>
 
 **Quan sát:** Query `final_alerts` trả về các row có `event_id`, `severity`, `attack_type`, `risk_score` và `created_at`. Điều này xác nhận output của worker đã được persist ngoài in-memory store của FastAPI.
 
-**Ghi chú evidence:** Các ảnh SQS queue overview, D5-5 idempotency count, AI2B/Fusion payload và log backend `202 Accepted` được nhắc trong phần validation, nhưng file ảnh public chưa có trong repo ở thời điểm chỉnh pass này. Chỉ nên thêm các ảnh đó sau khi mask và đặt vào `static/images/worklog/week11/` theo đúng tên `w11-*`.
+<figure class="worklog-evidence">
+  <img src="/images/worklog/week11/w11-e04-ai2b-fusion-payload.png" alt="AI2B and Fusion SQL Injection decision payload">
+  <figcaption>Hình 3 - Payload AI2B và Fusion đã chụp phân loại HTTP request là SQL Injection và tạo final critical decision.</figcaption>
+</figure>
+
+**Ghi chú evidence:** Screenshot D5-5 idempotency count và backend log `202 Accepted` không còn được lưu thành file public trước khi môi trường AWS được cleanup. Kết quả test vẫn được ghi trong phần bên dưới, nhưng trang này không trình bày hai screenshot đó như evidence đã publish.
 
 ## Xác thực D5-5 Idempotency
 

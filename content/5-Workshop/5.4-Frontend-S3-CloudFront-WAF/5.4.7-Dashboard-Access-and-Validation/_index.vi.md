@@ -32,5 +32,4 @@ Console screenshot giúp xác nhận không có lỗi browser nghiêm trọng sa
 
 Các screenshot API và WebSocket CloudFront behavior là future evidence. Không claim các path này production-ready nếu chưa có backend và ALB evidence tương ứng.
 
-![API behavior ](/images/5-Workshop/5.4-Frontend-S3-CloudFront-WAF/w-phu-26-api-behavior.png)
-
+![API behavior](/images/5-Workshop/5.4-Frontend-S3-CloudFront-WAF/w-phu-26-api-behavior-placeholder.png)

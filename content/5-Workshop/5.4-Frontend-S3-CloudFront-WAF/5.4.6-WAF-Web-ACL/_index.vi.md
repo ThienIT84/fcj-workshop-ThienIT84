@@ -28,5 +28,4 @@ Rule scope note rất quan trọng với project này: payload SQL injection ho�
 
 Nếu WAF logging chưa cấu hình đầy đủ, giữ wording là  thay vì claim centralized WAF logging.
 
-![WAF metrics and logging ](/images/5-Workshop/5.4-Frontend-S3-CloudFront-WAF/w-phu-34-waf-metrics-logging.png)
-
+![WAF metrics and logging](/images/5-Workshop/5.4-Frontend-S3-CloudFront-WAF/w-phu-34-waf-metrics-logging-placeholder.png)

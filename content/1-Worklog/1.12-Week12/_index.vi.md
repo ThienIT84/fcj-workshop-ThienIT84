@@ -61,41 +61,48 @@ Mục tiêu cleanup không phải là ép mọi tài nguyên biến mất ngay l
 ## Bộ ảnh minh chứng
 
 <figure class="worklog-evidence">
+  <img src="/images/worklog/week12/w12-e01-final-dashboard-alert-ui.png" alt="Final dashboard SQL Injection alert">
+  <figcaption>Hình 1 - Dashboard cuối hiển thị alert SQL Injection mức Critical đã được persist cùng AI2B, Fusion, MITRE và network context.</figcaption>
+</figure>
+
+**Quan sát:** Ảnh này xác thực trạng thái alert cuối được hiển thị. Ảnh không được dùng để claim worker broadcast alert sang dashboard qua realtime WebSocket.
+
+<figure class="worklog-evidence">
   <img src="/images/worklog/week12/w12-e02-s3-data-bucket-deleted.png" alt="S3 data bucket object cleanup evidence">
-  <figcaption>Hình 1 - Object trong S3 data bucket đã được xóa trước bước xóa bucket sau khi xử lý evidence và artifact.</figcaption>
+  <figcaption>Hình 2 - Object trong S3 data bucket đã được xóa trước bước xóa bucket sau khi xử lý evidence và artifact.</figcaption>
 </figure>
 
 **Quan sát:** Data/artifact bucket chỉ được cleanup sau khi evidence, model artifacts, receipts và screenshots đã được archive bên ngoài bucket.
 
 <figure class="worklog-evidence">
   <img src="/images/worklog/week12/w12-e04-rds-final-snapshot-confirmation.png" alt="RDS final snapshot confirmation evidence">
-  <figcaption>Hình 2 - Dialog delete RDS giữ tùy chọn tạo final snapshot trước khi xóa PostgreSQL instance.</figcaption>
+  <figcaption>Hình 3 - Dialog delete RDS giữ tùy chọn tạo final snapshot trước khi xóa PostgreSQL instance.</figcaption>
 </figure>
 
 **Quan sát:** RDS deletion nên giữ final snapshot trừ khi có approval riêng để skip. Điều này giúp bảo vệ dữ liệu final alert sau khi live database bị gỡ bỏ.
 
 <figure class="worklog-evidence">
   <img src="/images/worklog/week12/w12-e05-sqs-queues-deleted.png" alt="SQS queues deleted evidence">
-  <figcaption>Hình 3 - Danh sách SQS queue không còn queue sau khi main queue và DLQ được xóa.</figcaption>
+  <figcaption>Hình 4 - Danh sách SQS queue không còn queue sau khi main queue và DLQ được xóa.</figcaption>
 </figure>
 
 **Quan sát:** Queue deletion diễn ra sau khi queue state và DLQ evidence decision đã được xử lý. Purge không bắt buộc nếu queue được xóa luôn.
 
 <figure class="worklog-evidence">
   <img src="/images/worklog/week12/w12-e06-cloudfront-deferred-pro-plan.png" alt="CloudFront deferred cleanup due to Pro plan evidence">
-  <figcaption>Hình 4 - CloudFront distributions vẫn bị giữ ở Pro / flat-rate pricing plan nên việc xóa hoàn toàn được deferred.</figcaption>
+  <figcaption>Hình 5 - CloudFront distributions vẫn bị giữ ở Pro / flat-rate pricing plan nên việc xóa hoàn toàn được deferred.</figcaption>
 </figure>
 
 **Quan sát:** Đây là cleanup limitation quan trọng nhất. Distribution, Web ACL và OAC cần ở deferred register cho tới khi AWS cho phép WAF disassociation và distribution deletion.
 
 <figure class="worklog-evidence">
   <img src="/images/worklog/week12/w12-e07-s3-static-bucket-deleted.png" alt="S3 static bucket deleted evidence">
-  <figcaption>Hình 5 - Frontend/static S3 bucket deletion được xác nhận sau khi không còn cần AWS public hosting cho demo.</figcaption>
+  <figcaption>Hình 6 - Frontend/static S3 bucket deletion được xác nhận sau khi không còn cần AWS public hosting cho demo.</figcaption>
 </figure>
 
 **Quan sát:** Cleanup frontend static bucket được tách khỏi report publication. Final FCAJ report được phục vụ từ Hugo/Vercel thay vì AWS S3 frontend bucket đã xóa.
 
-**Ghi chú evidence:** Ảnh final dashboard UI, RDS action menu và Vercel live-site chưa có file public trong repo ở thời điểm chỉnh pass này. Chỉ nên thêm các ảnh đó sau khi mask, rồi đặt vào `static/images/worklog/week12/` theo đúng tên `w12-*`.
+**Ghi chú evidence:** Screenshot RDS action menu và ảnh Vercel live-site riêng không còn được lưu thành file public trước cleanup. Dialog RDS final snapshot bên trên ghi lại safeguard khi xóa; public URL cuối được xác thực qua Vercel deployment đã cấu hình. Trang này không trình bày screenshot bị thiếu như evidence.
 
 ## Ghi chú CloudFront deferred cleanup
 

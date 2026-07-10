@@ -18,7 +18,7 @@ The mock environment evidence shows that the dashboard can run while backend int
 
 The real API environment screenshot is  and should only be used to explain how the endpoint is configured, not to expose private domains or tokens.
 
-![Frontend real API environment ](/images/5-Workshop/5.9-AI-Fusion-and-Dashboard-Validation/w-phu-45-frontend-env-real-api.png)
+![Frontend real API environment](/images/5-Workshop/5.9-AI-Fusion-and-Dashboard-Validation/w-phu-45-frontend-env-real-api-redacted.png)
 
 The mock status evidence is acceptable for UI validation, but it must not be described as live telemetry.
 
@@ -27,4 +27,3 @@ The mock status evidence is acceptable for UI validation, but it must not be des
 If real API evidence is available, this screenshot can show the dashboard connected to backend data. The text should still state the exact scope of what was validated.
 
 ![Dashboard API status real](/images/5-Workshop/5.9-AI-Fusion-and-Dashboard-Validation/w-phu-47-dashboard-api-status-real.png)
-

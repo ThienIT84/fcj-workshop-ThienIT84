@@ -28,5 +28,4 @@ The rule scope note is important for this project: evidence such as SQL injectio
 
 If WAF logging is not fully configured, keep it as a  instead of claiming centralized WAF logging.
 
-![WAF metrics and logging ](/images/5-Workshop/5.4-Frontend-S3-CloudFront-WAF/w-phu-34-waf-metrics-logging.png)
-
+![WAF metrics and logging](/images/5-Workshop/5.4-Frontend-S3-CloudFront-WAF/w-phu-34-waf-metrics-logging-placeholder.png)

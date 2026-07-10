@@ -21,7 +21,7 @@ The S3 Data Bucket contains security evidence, so Block Public Access must remai
 
 Lifecycle rules can help expire temporary raw evidence or move older objects to cheaper storage classes. If the rule is not fully configured, keep this as a cost-control .
 
-![S3 lifecycle or ](/images/5-Workshop/5.6-SQS-DLQ-and-S3-Data-Bucket/w-tin-09-s3-lifecycle-or.png)
+![S3 lifecycle](/images/5-Workshop/5.6-SQS-DLQ-and-S3-Data-Bucket/w-tin-09-s3-lifecycle.png)
 
 ## Step 3: Verify backend IAM permissions
 

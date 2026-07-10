@@ -26,5 +26,4 @@ Backend và worker log stream screenshot chỉ nên được mô tả là eviden
 
 Nếu log groups chưa cấu hình đầy đủ, giữ wording  thay vì claim centralized logging hoàn chỉnh.
 
-![CloudWatch ](/images/5-Workshop/5.10-Monitoring-Audit-Notification/w-phu-64-cloudwatch.png.png)
-
+![CloudWatch](/images/5-Workshop/5.10-Monitoring-Audit-Notification/w-phu-64-cloudwatch.png)

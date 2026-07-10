@@ -10,7 +10,7 @@ pre: " <b> 6. </b> "
 
 My internship was carried out at **Amazon Web Services Vietnam Co., Ltd.** from **20/04/2026 to 12/07/2026**. During this period, I worked on the project **AI-Powered Multi-Model Hybrid Cloud Security Monitoring Platform**, a security monitoring platform that combines cloud infrastructure, network telemetry, AI model outputs, backend processing, and an analyst-facing dashboard.
 
-The project required me to connect several areas that are usually learned separately: AWS networking, IAM, storage, database services, Zeek/Suricata-style security logs, AI model evaluation, FastAPI backend integration, asynchronous processing with SQS, RDS persistence, deployment evidence, and cleanup discipline. Because of that, the internship helped me understand the difference between a feature that works locally and a system that can be deployed, tested, documented, and cleaned up responsibly.
+The project required me to connect several areas that are usually learned separately: AWS networking, IAM, storage, database services, Zeek connection logs and HTTP security telemetry, AI model evaluation, FastAPI backend integration, asynchronous processing with SQS, RDS persistence, deployment evidence, and cleanup discipline. Because of that, the internship helped me understand the difference between a feature that works locally and a system that can be deployed, tested, documented, and cleaned up responsibly.
 
 ## Main Contributions
 
@@ -22,9 +22,12 @@ Across the 12-week internship, my main contributions were:
 | Data and telemetry | Built and reviewed lab traffic sources using Zeek logs, HTTP events, connection logs, and attack/normal traffic profiles |
 | AI model work | Supported AI2A and AI2B workflows, including feature review, dataset quality checks, model freeze notes, and SQL Injection/XSS prediction validation |
 | Backend integration | Connected FastAPI ingestion, model adapters, evidence routing, fusion decision output, and alert API contracts |
-| AWS deployment | Helped validate the deployed thin slice with CloudFront, ALB, EC2 backend, API routes, SQS, DLQ, worker service, and RDS PostgreSQL |
+| AWS deployment | Helped validate the deployed thin slice with CloudFront, ALB, EC2 backend, API routes, SQS, DLQ, worker service, RDS PostgreSQL, and screenshot/API evidence |
 | Persistence and reliability | Verified RDS `final_alerts`, `/api/alerts/latest`, and D5-5 idempotency behavior using `event_id` |
-| Final reporting | Organized worklog evidence, cleanup documentation, Vercel deployment notes, and final workshop publication material |
+| Final reporting | Organized worklog evidence, cleanup documentation, Hugo/Vercel deployment notes, and final workshop publication material |
+
+These contributions helped connect the local AI/security lab with a cloud-based deployment and a publishable workshop report.
+
 
 ## Self-Assessment Table
 
@@ -33,9 +36,9 @@ Across the 12-week internship, my main contributions were:
 | 1 | Professional knowledge and technical skills | Good | I applied AWS, backend, security monitoring, AI model, and database knowledge in one integrated SOC AI project. |
 | 2 | Ability to learn | Good | I learned unfamiliar AWS services and debugging flows while working through deployment, IAM, SQS/RDS, and dashboard issues. |
 | 3 | Proactiveness | Good | I actively tested API paths, checked logs, traced dashboard behavior, and prepared cleanup/deployment runbooks instead of only waiting for fixed instructions. |
-| 4 | Sense of responsibility | Good | I preserved evidence, avoided unsupported claims, used RDS final snapshot thinking, and documented CloudFront/WAF/OAC deferred cleanup clearly. |
-| 5 | Discipline and consistency | Fair to Good | I maintained a 12-week worklog and final report, but I still need to organize screenshots and documentation earlier instead of concentrating too much work near the deadline. |
-| 6 | Communication and reporting | Fair to Good | I produced technical documentation and runbooks, but I still need to make status reports shorter, clearer, and easier for others to follow quickly. |
+| 4 | Sense of responsibility | Good | I preserved evidence, avoided unsupported claims, used RDS final snapshot thinking, and documented CloudFront/WAF/OAC deferred cleanup caused by the CloudFront flat-rate pricing-plan constraint. |
+| 5 | Discipline and consistency | Good | I maintained a 12-week worklog and final report, but I still need to organize screenshots and documentation earlier instead of concentrating too much work near the deadline. |
+| 6 | Communication and reporting | Good | I produced technical documentation and runbooks, but I still need to make status reports shorter, clearer, and easier for others to follow quickly. |
 | 7 | Teamwork and collaboration | Good | I followed the FCAJ workshop structure, aligned work with mentor guidance, and converted technical progress into reviewable workshop pages. |
 | 8 | Problem-solving ability | Good | I debugged issues across frontend API usage, WebSocket assumptions, CloudFront/WAF behavior, S3 permissions, SQS/RDS wiring, and cleanup dependencies. |
 | 9 | Security and cost awareness | Good | I considered least privilege, evidence retention, S3 versioning, RDS snapshots, Secrets Manager recovery window, DLQ handling, and AWS cleanup order. |
@@ -45,6 +48,8 @@ Across the 12-week internship, my main contributions were:
 ## Strengths
 
 My strongest improvement during this internship was the ability to connect multiple technical layers into one working flow. At the beginning, I mostly treated cloud services, AI models, backend APIs, and security logs as separate topics. By the end, I could reason about an end-to-end path such as:
+
+Example end-to-end reasoning path:
 
 ```text
 Zeek / replay event

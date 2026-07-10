@@ -10,7 +10,7 @@ pre: " <b> 6. </b> "
 
 Quá trình thực tập của tôi được thực hiện tại **Công ty TNHH Amazon Web Services Việt Nam** trong thời gian từ **20/04/2026 đến 12/07/2026**. Trong giai đoạn này, tôi thực hiện đề tài **AI-Powered Multi-Model Hybrid Cloud Security Monitoring Platform**, một nền tảng giám sát an ninh kết hợp hạ tầng cloud, dữ liệu telemetry mạng, kết quả từ nhiều mô hình AI, backend xử lý alert và dashboard cho người phân tích.
 
-Dự án yêu cầu tôi kết nối nhiều mảng kiến thức thường được học riêng lẻ: AWS networking, IAM, storage, database, log bảo mật dạng Zeek/Suricata, đánh giá mô hình AI, tích hợp backend FastAPI, xử lý bất đồng bộ bằng SQS, lưu trữ alert bằng RDS, lưu evidence triển khai và cleanup tài nguyên sau demo. Nhờ đó, tôi hiểu rõ hơn sự khác nhau giữa một chức năng chạy được ở local và một hệ thống có thể deploy, kiểm thử, ghi tài liệu và dọn dẹp có trách nhiệm.
+Dự án yêu cầu tôi kết nối nhiều mảng kiến thức thường được học riêng lẻ: AWS networking, IAM, storage, database, log kết nối Zeek và dữ liệu HTTP telemetry bảo mật, đánh giá mô hình AI, tích hợp backend FastAPI, xử lý bất đồng bộ bằng SQS, lưu trữ alert bằng RDS, lưu evidence triển khai và cleanup tài nguyên sau demo. Nhờ đó, tôi hiểu rõ hơn sự khác nhau giữa một chức năng chạy được ở local và một hệ thống có thể deploy, kiểm thử, ghi tài liệu và dọn dẹp có trách nhiệm.
 
 ## Đóng góp chính
 
@@ -22,9 +22,12 @@ Trong 12 tuần thực tập, các phần đóng góp chính của tôi gồm:
 | Dữ liệu và telemetry | Xây dựng, rà soát nguồn traffic lab bằng Zeek log, HTTP event, connection log và các profile normal/attack |
 | Mô hình AI | Hỗ trợ luồng AI2A và AI2B, gồm rà soát feature, kiểm tra chất lượng dữ liệu, ghi chú freeze model và kiểm thử dự đoán SQL Injection/XSS |
 | Tích hợp backend | Kết nối FastAPI ingestion, model adapter, evidence routing, fusion decision output và API contract cho alert |
-| Triển khai AWS | Kiểm thử thin-slice deployment với CloudFront, ALB, EC2 backend, API route, SQS, DLQ, worker service và RDS PostgreSQL |
+| Triển khai AWS | Kiểm thử thin-slice deployment với CloudFront, ALB, EC2 backend, API route, SQS, DLQ, worker service, RDS PostgreSQL cùng minh chứng screenshot/API |
 | Persistence và độ tin cậy | Xác thực RDS `final_alerts`, `/api/alerts/latest` và kiểm thử D5-5 idempotency theo `event_id` |
-| Báo cáo cuối | Tổ chức worklog evidence, tài liệu cleanup, hướng dẫn deploy Vercel và nội dung workshop để nộp cuối kỳ |
+| Báo cáo cuối | Tổ chức worklog evidence, tài liệu cleanup, hướng dẫn deploy Hugo/Vercel và nội dung workshop để nộp cuối kỳ |
+
+Những đóng góp này đã giúp kết nối phòng lab AI/bảo mật cục bộ với triển khai trên đám mây và báo cáo thực hành có thể xuất bản.
+
 
 ## Bảng tự đánh giá
 
@@ -33,9 +36,9 @@ Trong 12 tuần thực tập, các phần đóng góp chính của tôi gồm:
 | 1 | Kiến thức và kỹ năng chuyên môn | Tốt | Tôi đã áp dụng kiến thức AWS, backend, security monitoring, AI model và database trong một dự án SOC AI tích hợp. |
 | 2 | Khả năng học hỏi | Tốt | Tôi học và xử lý nhiều phần mới như deployment, IAM, SQS/RDS, worker, dashboard và cleanup AWS. |
 | 3 | Tính chủ động | Tốt | Tôi chủ động kiểm thử API, xem log, truy nguyên lỗi dashboard và chuẩn bị runbook cleanup/deploy thay vì chỉ chờ hướng dẫn cố định. |
-| 4 | Tinh thần trách nhiệm | Tốt | Tôi lưu evidence, tránh claim quá mức, ghi nhận final snapshot cho RDS và nêu rõ CloudFront/WAF/OAC là cleanup deferred. |
-| 5 | Kỷ luật và tính nhất quán | Khá đến Tốt | Tôi duy trì worklog 12 tuần và hoàn thiện báo cáo cuối, nhưng cần tổ chức ảnh/evidence sớm hơn để tránh dồn việc gần deadline. |
-| 6 | Giao tiếp và báo cáo | Khá đến Tốt | Tôi viết được tài liệu kỹ thuật và runbook, nhưng cần trình bày trạng thái ngắn gọn, rõ nguyên nhân và hành động hơn khi báo cáo với người khác. |
+| 4 | Tinh thần trách nhiệm | Tốt | Tôi lưu evidence, tránh claim quá mức, ghi nhận final snapshot cho RDS và nêu rõ CloudFront/WAF/OAC là cleanup deferred do ràng buộc của gói CloudFront flat-rate pricing-plan. |
+| 5 | Kỷ luật và tính nhất quán | Tốt | Tôi duy trì worklog 12 tuần và hoàn thiện báo cáo cuối, nhưng cần tổ chức ảnh/evidence sớm hơn để tránh dồn việc gần deadline. |
+| 6 | Giao tiếp và báo cáo | Tốt | Tôi viết được tài liệu kỹ thuật và runbook, nhưng cần trình bày trạng thái ngắn gọn, rõ nguyên nhân và hành động hơn khi báo cáo với người khác. |
 | 7 | Hợp tác nhóm | Tốt | Tôi bám theo cấu trúc workshop FCAJ, tiếp nhận định hướng từ mentor và chuyển tiến độ kỹ thuật thành nội dung có thể review. |
 | 8 | Tư duy giải quyết vấn đề | Tốt | Tôi đã debug các lỗi liên quan đến frontend API, giả định WebSocket, CloudFront/WAF, quyền S3, SQS/RDS wiring và cleanup dependency. |
 | 9 | Nhận thức về bảo mật và chi phí | Tốt | Tôi chú ý đến least privilege, lưu evidence, S3 versioning, RDS snapshot, Secrets Manager recovery window, DLQ và thứ tự cleanup AWS. |
@@ -45,6 +48,8 @@ Trong 12 tuần thực tập, các phần đóng góp chính của tôi gồm:
 ## Điểm mạnh
 
 Điểm tiến bộ rõ nhất của tôi trong kỳ thực tập là khả năng nối nhiều lớp kỹ thuật thành một luồng hoạt động thống nhất. Ở giai đoạn đầu, tôi nhìn cloud service, AI model, backend API và security log như các phần khá rời rạc. Đến cuối kỳ, tôi có thể phân tích một luồng end-to-end như:
+
+Đường dẫn phân tích end-to-end mẫu:
 
 ```text
 Zeek / replay event

@@ -1,31 +1,32 @@
 ---
-title: "Workshop"
+title: "FCAJ Hybrid SOC/AWS Workshop"
 date: 2024-01-01
 weight: 5
 chapter: false
 pre: " <b> 5. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Note:** The information below is for reference purposes only. Please **do not copy verbatim** for your report, including this warning.
-{{% /notice %}}
 
-# Secure Hybrid Access to S3 using VPC Endpoints
 
-#### Overview
+## Overview
 
-**AWS PrivateLink** provides private connectivity to AWS services from VPCs and your on-premises networks, without exposing your traffic to the Public Internet.
+This workshop documents the FCAJ Hybrid SOC/AWS project: a hybrid SOC pipeline that starts from local security evidence, moves events into AWS, processes them through cloud data services and AI/Fusion components, and prepares final alerts for downstream storage, monitoring, and dashboard views.
 
-In this lab, you will learn how to create, configure, and test VPC endpoints that enable your workloads to reach AWS services without traversing the Public Internet.
+The current workshop is organized into 11 main sections, fully documented with verified configuration details and screenshots.
 
-You will create two types of endpoints to access Amazon S3: a Gateway VPC endpoint, and an Interface VPC endpoint. These two types of VPC endpoints offer different benefits depending on if you are accessing Amazon S3 from the cloud or your on-premises location
-+ **Gateway** - Create a gateway endpoint to send traffic to Amazon S3 or DynamoDB using private IP addresses.You route traffic from your VPC to the gateway endpoint using route tables.
-+ **Interface** - Create an interface endpoint to send traffic to endpoint services that use a Network Load Balancer to distribute traffic. Traffic destined for the endpoint service is resolved using DNS.
+## Workshop content
 
-#### Content
+1. [Overview and Architecture](5.1-Overview-and-Architecture/)
+2. [Prerequisites and Naming](5.2-Prerequisites-and-Naming/)
+3. [Networking, IAM and Security Baseline](5.3-Networking-IAM-Security-Baseline/)
+4. [Frontend S3, CloudFront and WAF](5.4-Frontend-S3-CloudFront-WAF/)
+5. [Backend EC2 Runtime](5.5-Backend-EC2-Runtime/)
+6. [SQS, DLQ and S3 Data Bucket](5.6-SQS-DLQ-and-S3-Data-Bucket/)
+7. [RDS, Secrets and Worker Pipeline](5.7-RDS-Secrets-Worker-Pipeline/)
+8. [AWS Pipeline Validation and Dashboard Evidence](5.8-AWS-Pipeline-Validation-and-Dashboard-Evidence/)
+9. [AI Fusion and Dashboard Validation](5.9-AI-Fusion-and-Dashboard-Validation/)
+10. [Monitoring, Audit and Notification](5.10-Monitoring-Audit-Notification/)
+11. [Cleanup and Cost Control](5.11-Cleanup/)
 
-1. [Workshop overview](5.1-Workshop-overview)
-2. [Prerequiste](5.2-Prerequiste/)
-3. [Access S3 from VPC](5.3-S3-vpc/)
-4. [Access S3 from On-premises](5.4-S3-onprem/)
-5. [VPC Endpoint Policies (Bonus)](5.5-Policy/)
-6. [Clean up](5.6-Cleanup/)
+## Evidence policy
+
+Only verified evidence should be included in workshop pages. All documented configurations are backed by active deployment and validation materials.

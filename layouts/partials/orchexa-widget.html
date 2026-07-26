@@ -1,0 +1,27 @@
+<!-- Orchexa VoiceAgent widget -->
+<script>
+  (function (w, d, s, id) {
+    var js;
+    var firstScript = d.getElementsByTagName(s)[0];
+
+    if (d.getElementById(id)) {
+      return;
+    }
+
+    js = d.createElement(s);
+    js.id = id;
+    js.src = "https://app.orchexa.io/sdk/voice-agent.js?v=v2.2.4";
+    js.async = true;
+    firstScript.parentNode.insertBefore(js, firstScript);
+
+    js.onload = function () {
+      w.VoiceAgent.init({
+        widgetId: "f76342b4-48f1-4c57-9c15-e061d61ae3a7",
+        apiUrl: "https://api.orchexa.io/api/v1",
+        position: "bottom-right",
+        offsetX: "20px",
+        offsetY: "20px",
+      });
+    };
+  })(window, document, "script", "voice-agent-sdk");
+</script>

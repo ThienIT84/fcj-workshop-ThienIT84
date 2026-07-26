@@ -14,7 +14,7 @@ chapter: false
 
 &emsp; **Email:** thientran805954@gmail.com
 
-&emsp; **University:** Ho Chi Minh City University of Technology and Education
+&emsp; **University:** Ho Chi Minh City University of Technology (HUTECH)
 
 &emsp; **Major:** Information Technology
 

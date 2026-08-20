@@ -1,27 +1,24 @@
 <!-- Orchexa VoiceAgent widget -->
 <script>
-  (function (w, d, s, id) {
-    var js;
-    var firstScript = d.getElementsByTagName(s)[0];
+  (function(w, d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "https://app.orchexa.io/sdk/voice-agent.js?v=v2.7.1-mobile-layout";
+    fjs.parentNode.insertBefore(js, fjs);
+    js.onload = function() {
+      VoiceAgent.init({
+        widgetId: "a238ea66-6802-45b9-b035-94ed24573a1e",
+        apiUrl: "https://api.orchexa.io/api/v1"
+      });
 
-    if (d.getElementById(id)) {
-      return;
-    }
+      VoiceAgent.on('call.connected', function() {
+        console.log('Voice call connected!');
+      });
 
-    js = d.createElement(s);
-    js.id = id;
-    js.src = "https://app.orchexa.io/sdk/voice-agent.js?v=v2.2.4";
-    js.async = true;
-    firstScript.parentNode.insertBefore(js, firstScript);
-
-    js.onload = function () {
-      w.VoiceAgent.init({
-        widgetId: "130e5597-5aa8-44a8-a0b4-9ac2476a47d2",
-        apiUrl: "https://api.orchexa.io/api/v1",
-        position: "bottom-right",
-        offsetX: "20px",
-        offsetY: "20px",
+      VoiceAgent.on('error', function(error) {
+        console.error('Widget error:', error);
       });
     };
-  })(window, document, "script", "voice-agent-sdk");
+  }(window, document, 'script', 'voice-agent-sdk'));
 </script>
